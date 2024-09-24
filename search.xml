@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>博客快速搭建教程</title>
+    <url>/2024/09/22/%E5%8D%9A%E5%AE%A2%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>教程分享</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 flag存放指南</title>
+    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>NISACTF2022 破损的flag</title>
     <url>/2024/09/22/NISACTF2022%20%E7%A0%B4%E6%8D%9F%E7%9A%84flag/</url>
     <content><![CDATA[<p><img  
@@ -44,73 +75,43 @@
       </categories>
   </entry>
   <entry>
-    <title>SUSCTF2024 flag存放指南</title>
-    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+    <title>广东强网杯 2021 pic</title>
+    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162449931.png"
+                      alt="image-20240924162449931"
+                ></p>
+<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162544453.png"
+                      alt="image-20240924162544453"
+                ></p>
+<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162644386.png"
+                      alt="image-20240924162644386"
+                ></p>
+<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
+<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/flag.png"
+                      alt="flag"
+                ></p>
+<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
 ]]></content>
       <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客快速搭建教程</title>
-    <url>/2024/09/22/%E5%8D%9A%E5%AE%A2%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>教程分享</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东省大学生攻防大赛2021 这是道签到题</title>
-    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
-    <content><![CDATA[<p>附件是一个gif</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923105522632.png"
-                      alt="image-20240923105522632"
-                ></p>
-<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
-<p>好家伙幸亏拖进去了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923110932109.png"
-                      alt="image-20240923110932109"
-                ></p>
-<p>把后缀改成.zip</p>
-<p>然后把解压出来的图片拖进随波逐流一把梭</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111114402.png"
-                      alt="image-20240923111114402"
-                ></p>
-<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111224267.png"
-                      alt="image-20240923111224267"
-                ></p>
-<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
+        <category>CTF赛题复现</category>
         <category>Misc</category>
       </categories>
   </entry>
@@ -275,7 +276,7 @@
                      data-src="/images/image-20240916132514742.png"
                       alt="image-20240916132514742"
                 ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#x6f;&#x6e;&#103;&#53;&#x35;&#50;&#x30;&#x38;&#53;&#49;&#x30;&#x37;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d;" >&#x73;&#x6f;&#x6e;&#103;&#53;&#x35;&#50;&#x30;&#x38;&#53;&#49;&#x30;&#x37;&#64;&#113;&#113;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#56;&#53;&#x31;&#x30;&#55;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;" >&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#56;&#53;&#x31;&#x30;&#55;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -286,6 +287,105 @@
 ]]></content>
       <categories>
         <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>广东省大学生攻防大赛2021 这是道签到题</title>
+    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
+    <content><![CDATA[<p>附件是一个gif</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923105522632.png"
+                      alt="image-20240923105522632"
+                ></p>
+<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
+<p>好家伙幸亏拖进去了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923110932109.png"
+                      alt="image-20240923110932109"
+                ></p>
+<p>把后缀改成.zip</p>
+<p>然后把解压出来的图片拖进随波逐流一把梭</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111114402.png"
+                      alt="image-20240923111114402"
+                ></p>
+<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111224267.png"
+                      alt="image-20240923111224267"
+                ></p>
+<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>鹤城杯2021 A_MISC</title>
+    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924165930083.png"
+                      alt="image-20240924165930083"
+                ></p>
+<p>附件是一个加密的压缩包</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170010613.png"
+                      alt="image-20240924170010613"
+                ></p>
+<p>拖进随波逐流看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170211965.png"
+                      alt="image-20240924170211965"
+                ></p>
+<p>试了一下不是伪加密</p>
+<p>我们试试密码爆破，密码为qwer</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170439100.png"
+                      alt="image-20240924170439100"
+                ></p>
+<p>把加密压缩包解密，得到了一个图片。</p>
+<p>我们再把图片拖进随波逐流，得到了这个：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170615384.png"
+                      alt="image-20240924170615384"
+                ></p>
+<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170854737.png"
+                      alt="image-20240924170854737"
+                ></p>
+<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924171131923.png"
+                      alt="image-20240924171131923"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF赛题复现</category>
         <category>Misc</category>
       </categories>
   </entry>
