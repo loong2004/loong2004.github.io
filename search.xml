@@ -187,80 +187,9 @@
       </categories>
   </entry>
   <entry>
-    <title>广东省大学生攻防大赛2021 这是道签到题</title>
-    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
-    <content><![CDATA[<p>附件是一个gif</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923105522632.png"
-                      alt="image-20240923105522632"
-                ></p>
-<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
-<p>好家伙幸亏拖进去了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923110932109.png"
-                      alt="image-20240923110932109"
-                ></p>
-<p>把后缀改成.zip</p>
-<p>然后把解压出来的图片拖进随波逐流一把梭</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111114402.png"
-                      alt="image-20240923111114402"
-                ></p>
-<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111224267.png"
-                      alt="image-20240923111224267"
-                ></p>
-<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东强网杯 2021 pic</title>
-    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162449931.png"
-                      alt="image-20240924162449931"
-                ></p>
-<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162544453.png"
-                      alt="image-20240924162544453"
-                ></p>
-<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162644386.png"
-                      alt="image-20240924162644386"
-                ></p>
-<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
-<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>提取图中的盲水印 (需要原图)</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/flag.png"
-                      alt="flag"
-                ></p>
-<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
+    <title>SUSCTF2024 高清flag</title>
+    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -329,9 +258,40 @@
       </categories>
   </entry>
   <entry>
-    <title>SUSCTF2024 高清flag</title>
-    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+    <title>广东强网杯 2021 pic</title>
+    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162449931.png"
+                      alt="image-20240924162449931"
+                ></p>
+<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162544453.png"
+                      alt="image-20240924162544453"
+                ></p>
+<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162644386.png"
+                      alt="image-20240924162644386"
+                ></p>
+<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
+<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/flag.png"
+                      alt="flag"
+                ></p>
+<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -414,6 +374,46 @@
       </categories>
   </entry>
   <entry>
+    <title>广东省大学生攻防大赛2021 这是道签到题</title>
+    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
+    <content><![CDATA[<p>附件是一个gif</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923105522632.png"
+                      alt="image-20240923105522632"
+                ></p>
+<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
+<p>好家伙幸亏拖进去了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923110932109.png"
+                      alt="image-20240923110932109"
+                ></p>
+<p>把后缀改成.zip</p>
+<p>然后把解压出来的图片拖进随波逐流一把梭</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111114402.png"
+                      alt="image-20240923111114402"
+                ></p>
+<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111224267.png"
+                      alt="image-20240923111224267"
+                ></p>
+<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>羊城杯2021 Baby_Forensic</title>
     <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
     <content><![CDATA[<p><img  
@@ -470,7 +470,7 @@
                      data-src="/images/image-20240916132514742.png"
                       alt="image-20240916132514742"
                 ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#115;&#111;&#110;&#103;&#53;&#53;&#50;&#x30;&#x38;&#53;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;" >&#115;&#111;&#110;&#103;&#53;&#53;&#50;&#x30;&#x38;&#53;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#115;&#111;&#110;&#x67;&#53;&#x35;&#50;&#x30;&#56;&#53;&#x31;&#x30;&#x37;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;" >&#115;&#111;&#110;&#x67;&#53;&#x35;&#50;&#x30;&#56;&#53;&#x31;&#x30;&#x37;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -478,65 +478,6 @@
                       alt="image-20240916133446332"
                 ></p>
 <p>在Github上搜索此用户，找到关键项目：<br><a class="link"   href="https://github.com/Ha1f00L/whatsthat" >https://github.com/Ha1f00L/whatsthat <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>访问后下载项目中的__APP__，在其中可以找到：<br>U2FuZ0ZvcntTMF8zYXp5XzJfY3JhY2tfbm9vYl9wbGF5ZXJ9<br>base64解码后就得到了flag ：<code>SangFor&#123;S0_3azy_2_crack_noob_player&#125;</code></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>鹤城杯2021 A_MISC</title>
-    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924165930083.png"
-                      alt="image-20240924165930083"
-                ></p>
-<p>附件是一个加密的压缩包</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170010613.png"
-                      alt="image-20240924170010613"
-                ></p>
-<p>拖进随波逐流看一看</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170211965.png"
-                      alt="image-20240924170211965"
-                ></p>
-<p>试了一下不是伪加密</p>
-<p>我们试试密码爆破，密码为qwer</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170439100.png"
-                      alt="image-20240924170439100"
-                ></p>
-<p>把加密压缩包解密，得到了一个图片。</p>
-<p>我们再把图片拖进随波逐流，得到了这个：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170615384.png"
-                      alt="image-20240924170615384"
-                ></p>
-<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170854737.png"
-                      alt="image-20240924170854737"
-                ></p>
-<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924171131923.png"
-                      alt="image-20240924171131923"
-                ></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -648,8 +589,106 @@
       </categories>
   </entry>
   <entry>
-    <title>隐写-wbs43open使用教程</title>
-    <url>/2024/09/25/%E9%9A%90%E5%86%99-wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <title>鹤城杯2021 A_MISC</title>
+    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924165930083.png"
+                      alt="image-20240924165930083"
+                ></p>
+<p>附件是一个加密的压缩包</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170010613.png"
+                      alt="image-20240924170010613"
+                ></p>
+<p>拖进随波逐流看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170211965.png"
+                      alt="image-20240924170211965"
+                ></p>
+<p>试了一下不是伪加密</p>
+<p>我们试试密码爆破，密码为qwer</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170439100.png"
+                      alt="image-20240924170439100"
+                ></p>
+<p>把加密压缩包解密，得到了一个图片。</p>
+<p>我们再把图片拖进随波逐流，得到了这个：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170615384.png"
+                      alt="image-20240924170615384"
+                ></p>
+<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170854737.png"
+                      alt="image-20240924170854737"
+                ></p>
+<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924171131923.png"
+                      alt="image-20240924171131923"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解密神器-Ciphey使用教程</title>
+    <url>/2024/09/28/%E8%A7%A3%E5%AF%86%E7%A5%9E%E5%99%A8-Ciphey%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="1，ciphey安装-Windows版"><a href="#1，ciphey安装-Windows版" class="headerlink" title="1，ciphey安装(Windows版)"></a>1，<strong>ciphey安装</strong>(Windows版)</h1><p><strong>前提：</strong></p>
+<ul>
+<li>python3.8（3.7也可以，亲测其他版本安装会报错）</li>
+<li>pip必须在python3以上</li>
+</ul>
+<p><strong>安装：</strong></p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">python <span class="literal">-m</span> pip install ciphey <span class="literal">-i</span> https://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure></div>
+
+<p>然后我们找到这个路径，编辑这个文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125722437.png"
+                      alt="image-20240928125722437"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125804229.png"
+                      alt="image-20240928125804229"
+                ></p>
+<p>在终端中输入ciphey测试一下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125848532.png"
+                      alt="image-20240928125848532"
+                ></p>
+<p>安装成功！</p>
+<h1 id="2，使用参数"><a href="#2，使用参数" class="headerlink" title="2，使用参数"></a>2，使用参数</h1><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">ciphey <span class="literal">--help</span></span><br><span class="line">用法: ciphey [选项] [<span class="type">TEXT_STDIN</span>]</span><br><span class="line"> </span><br><span class="line">  Ciphey - 自动解密工具</span><br><span class="line"> </span><br><span class="line">  文档地址: https://github.com/Ciphey/Ciphey/wiki</span><br><span class="line"> </span><br><span class="line">  Discord (这里支持，我们大部分时间都在线):</span><br><span class="line">  https://discord.ciphey.online/</span><br><span class="line"> </span><br><span class="line">  GitHub: https://github.com/ciphey/ciphey</span><br><span class="line"> </span><br><span class="line"> cipher是一种使用智能人工智能的自动解密工具</span><br><span class="line">和自然语言处理。输入加密文本，获取解密文本</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">例如:</span><br><span class="line">	基本用法: ciphey <span class="literal">-t</span> <span class="string">&quot;aGVsbG8gbXkgbmFtZSBpcyBiZWU=&quot;</span></span><br><span class="line"> </span><br><span class="line">选项:</span><br><span class="line">  <span class="literal">-t</span>, <span class="literal">--text</span> TEXT            您想要解密的密文。</span><br><span class="line">  <span class="literal">-q</span>, <span class="literal">--quiet</span>                减少冗长的显示,直接给结果</span><br><span class="line">  <span class="literal">-g</span>, <span class="literal">--greppable</span>            只输出答案(对于grep很有用)</span><br><span class="line">  <span class="literal">-v</span>, <span class="literal">--verbose</span></span><br><span class="line">  <span class="literal">-C</span>, <span class="literal">--checker</span> TEXT         使用给定的检查器</span><br><span class="line">  <span class="literal">-c</span>, <span class="literal">--config</span> TEXT          使用给定的配置文件。默认为</span><br><span class="line">                             appdirs.user_config_dir(<span class="string">&#x27;ciphey&#x27;</span>,</span><br><span class="line">                             <span class="string">&#x27;ciphey&#x27;</span>)/<span class="string">&#x27;config.yml&#x27;</span></span><br><span class="line"> </span><br><span class="line">  <span class="literal">-w</span>, <span class="literal">--wordlist</span> TEXT        使用给定的密码字典</span><br><span class="line">  <span class="literal">-p</span>, <span class="literal">--param</span> TEXT           将参数传递给语言检查器</span><br><span class="line">  <span class="literal">-l</span>, <span class="literal">--list-params</span> BOOLEAN  列出所选模块的参数</span><br><span class="line">  <span class="literal">--searcher</span> TEXT            选择要使用的搜索算法</span><br><span class="line">  <span class="literal">-b</span>, <span class="literal">--bytes</span>                强制密码使用二进制模式作为输入</span><br><span class="line">  <span class="literal">--default-dist</span> TEXT        设置默认的字符/字节分布</span><br><span class="line">  <span class="literal">-m</span>, <span class="literal">--module</span> PATH          从给定路径添加模块</span><br><span class="line">  <span class="literal">-A</span>, <span class="literal">--appdirs</span>              输出密码到想要的文件位置</span><br><span class="line"> </span><br><span class="line">  <span class="operator">-f</span>, <span class="literal">--file</span> FILENAME</span><br><span class="line">  <span class="literal">--help</span>                     显示此帮助消息并退出。</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>教程分享</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>隐写-Wbs43open使用教程</title>
+    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
 <h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
