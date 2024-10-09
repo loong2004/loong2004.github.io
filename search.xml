@@ -1,169 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2024年国庆假期黑神话悟空争夺赛 1z_recover</title>
-    <url>/2024/10/01/2024%E5%B9%B4%E5%9B%BD%E5%BA%86%E5%81%87%E6%9C%9F%E9%BB%91%E7%A5%9E%E8%AF%9D%E6%82%9F%E7%A9%BA%E4%BA%89%E5%A4%BA%E8%B5%9B%201z_recover/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214443612.png"
-                      alt="image-20241001214443612"
-                ></p>
-<p>用010打开图片附件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214557206.png"
-                      alt="image-20241001214557206"
-                ></p>
-<p>发现zip信息</p>
-<p>PNG文件尾是：AE 42 60 82</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214631614.png"
-                      alt="image-20241001214631614"
-                ></p>
-<p>把reversed的zip数据复制出来，并保存为reverse_zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214739985.png"
-                      alt="image-20241001214739985"
-                ></p>
-<p>使用脚本倒写：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;reverse_zip&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f1:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;result.zip&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        reversed_contents = f1.read()[::-<span class="number">1</span>]</span><br><span class="line">        f2.write(reversed_contents)</span><br></pre></td></tr></table></figure></div>
-
-<p>用提示的密码解压：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001215408295.png"
-                      alt="image-20241001215408295"
-                ></p>
-<p>但压缩包打不开，看看hint</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130528831.png"
-                      alt="image-20241008130528831"
-                ></p>
-<p>将 flag.zip 放到 010 中全选，进行异或运算，即可还原出zip文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130612044.png"
-                      alt="image-20241008130612044"
-                ></p>
-<p>用010查看图片</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130654479.png"
-                      alt="image-20241008130654479"
-                ></p>
-<p>结尾的这段 a2V5Ojk1Mjc&#x3D; 经过base64解密得到:key:9527 </p>
-<p>然后将 9527 作为密钥，使用 outguess 解密,将得到的内容保存在 flag.txt 中</p>
-<p>命令：outguess -k “9527” -r flaggg.jpg flag.txt </p>
-<p>得到 flag{C0n9ratu1ati0ns!_you_are_so_cool}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2024年国庆假期黑神话悟空争夺赛 诗词</title>
-    <url>/2024/10/01/2024%E5%B9%B4%E5%9B%BD%E5%BA%86%E5%81%87%E6%9C%9F%E9%BB%91%E7%A5%9E%E8%AF%9D%E6%82%9F%E7%A9%BA%E4%BA%89%E5%A4%BA%E8%B5%9B%20%E8%AF%97%E8%AF%8D/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212535098.png"
-                      alt="image-20241001212535098"
-                ></p>
-<p>先在word的设置里打开这个选项</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212634715.png"
-                      alt="image-20241001212634715"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212648499.png"
-                      alt="image-20241001212648499"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212826496.png"
-                      alt="image-20241001212826496"
-                ></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">zip文件头：504B0304</span><br><span class="line">zip文件尾：504B</span><br></pre></td></tr></table></figure></div>
-
-<p>把后缀改成.zip试试，也能正常解压</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001213340130.png"
-                      alt="image-20241001213340130"
-                ></p>
-<p>其中有一个PNG文件，010打开又发现了zip信息</p>
-<p>PNG文件尾：AE 42 60 82</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001223639974.png"
-                      alt="image-20241001223639974"
-                ></p>
-<p>我们把PNG内容移除，保存为flag.zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001224104308.png"
-                      alt="image-20241001224104308"
-                ></p>
-<p>压缩包内容如下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001224455549.png"
-                      alt="image-20241001224455549"
-                ></p>
-<p>修改日期有问题，包是时间戳考点</p>
-<p>提取时间戳隐藏的信息</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>):</span><br><span class="line">    filename = <span class="string">&quot;C:\\Users\\leeso\\Desktop\\flag\\&#123;0&#125;.txt&quot;</span>.<span class="built_in">format</span>(i)</span><br><span class="line">    file_attr = os.stat(filename)<span class="comment">#读取文件属性</span></span><br><span class="line">    modify_time = <span class="built_in">str</span>(file_attr.st_mtime)</span><br><span class="line">    secret_numbers = <span class="built_in">int</span>(modify_time[<span class="number">7</span>:<span class="number">10</span>])</span><br><span class="line">    <span class="built_in">print</span>(secret_numbers, end = <span class="string">&quot;,&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>这些是隐藏信息的ascii码：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">102,108,98,104,124,48,104,34,90,48,118,96,52,114,102,96,84,106,110,102,96,78,52,116,116,102,114,34,126</span><br></pre></td></tr></table></figure></div>
-
-<p>把它转成字符：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">98</span>,<span class="number">104</span>,<span class="number">124</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">34</span>,<span class="number">90</span>,<span class="number">48</span>,<span class="number">118</span>,<span class="number">96</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">84</span>,<span class="number">106</span>,<span class="number">110</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">78</span>,<span class="number">52</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">102</span>,<span class="number">114</span>,<span class="number">34</span>,<span class="number">126</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002121401534.png"
-                      alt="image-20241002121401534"
-                ></p>
-<p>奇怪，有些ascii码应该减去1，试试</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">97</span>,<span class="number">103</span>,<span class="number">123</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">33</span>,<span class="number">89</span>,<span class="number">48</span>,<span class="number">117</span>,<span class="number">95</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">84</span>,<span class="number">105</span>,<span class="number">109</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">77</span>,<span class="number">52</span>,<span class="number">115</span>,<span class="number">116</span>,<span class="number">101</span>,<span class="number">114</span>,<span class="number">33</span>,<span class="number">125</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>得到flag{0h!Y0u_4re_Time_M4ster!}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002122033778.png"
-                      alt="image-20241002122033778"
-                ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CISCN2022 Conversio</title>
     <url>/2024/09/28/CISCN2022%20Conversio/</url>
     <content><![CDATA[<p><img  
@@ -186,6 +23,90 @@
                      src="/images/loading.svg"
                      data-src="/images/image-20240928182155658.png"
                       alt="image-20240928182155658"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>MoeCTF2022 zip套娃</title>
+    <url>/2024/10/02/MoeCTF2022%20zip%E5%A5%97%E5%A8%83/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142835223.png"
+                      alt="image-20241002142835223"
+                ></p>
+<p>附件是这个，没有伪加密</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142905249.png"
+                      alt="image-20241002142905249"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142914922.png"
+                      alt="image-20241002142914922"
+                ></p>
+<p>爆破一下，得到密码1235</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142945154.png"
+                      alt="image-20241002142945154"
+                ></p>
+<p>卧槽，套娃啊</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002143056261.png"
+                      alt="image-20241002143056261"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002143841019.png"
+                      alt="image-20241002143841019"
+                ></p>
+<p>爆破出来密码是1234567qwq</p>
+<p>解压，还有！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144046436.png"
+                      alt="image-20241002144046436"
+                ></p>
+<p>这回爆破不出来了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144152382.png"
+                      alt="image-20241002144152382"
+                ></p>
+<p>试试伪加密</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144258799.png"
+                      alt="image-20241002144258799"
+                ></p>
+<p>然后伪加密修复一下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144320186.png"
+                      alt="image-20241002144320186"
+                ></p>
+<p>拿到flag   moectf{!zip_qwq_ZIP}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144347279.png"
+                      alt="image-20241002144347279"
                 ></p>
 ]]></content>
       <categories>
@@ -371,83 +292,71 @@
       </categories>
   </entry>
   <entry>
-    <title>MoeCTF2022 zip套娃</title>
-    <url>/2024/10/02/MoeCTF2022%20zip%E5%A5%97%E5%A8%83/</url>
+    <title>SFeatherCTF2024 1z_recover</title>
+    <url>/2024/10/01/SFeatherCTF2024%201z_recover/</url>
     <content><![CDATA[<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002142835223.png"
-                      alt="image-20241002142835223"
+                     data-src="/images/image-20241001214443612.png"
+                      alt="image-20241001214443612"
                 ></p>
-<p>附件是这个，没有伪加密</p>
+<p>用010打开图片附件</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002142905249.png"
-                      alt="image-20241002142905249"
+                     data-src="/images/image-20241001214557206.png"
+                      alt="image-20241001214557206"
                 ></p>
+<p>发现zip信息</p>
+<p>PNG文件尾是：AE 42 60 82</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002142914922.png"
-                      alt="image-20241002142914922"
+                     data-src="/images/image-20241001214631614.png"
+                      alt="image-20241001214631614"
                 ></p>
-<p>爆破一下，得到密码1235</p>
+<p>把reversed的zip数据复制出来，并保存为reverse_zip</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002142945154.png"
-                      alt="image-20241002142945154"
+                     data-src="/images/image-20241001214739985.png"
+                      alt="image-20241001214739985"
                 ></p>
-<p>卧槽，套娃啊</p>
+<p>使用脚本倒写：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;reverse_zip&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f1:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;result.zip&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        reversed_contents = f1.read()[::-<span class="number">1</span>]</span><br><span class="line">        f2.write(reversed_contents)</span><br></pre></td></tr></table></figure></div>
+
+<p>用提示的密码解压：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002143056261.png"
-                      alt="image-20241002143056261"
+                     data-src="/images/image-20241001215408295.png"
+                      alt="image-20241001215408295"
                 ></p>
+<p>但压缩包打不开，看看hint</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002143841019.png"
-                      alt="image-20241002143841019"
+                     data-src="/images/image-20241008130528831.png"
+                      alt="image-20241008130528831"
                 ></p>
-<p>爆破出来密码是1234567qwq</p>
-<p>解压，还有！</p>
+<p>将 flag.zip 放到 010 中全选，进行异或运算，即可还原出zip文件</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002144046436.png"
-                      alt="image-20241002144046436"
+                     data-src="/images/image-20241008130612044.png"
+                      alt="image-20241008130612044"
                 ></p>
-<p>这回爆破不出来了</p>
+<p>用010查看图片</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20241002144152382.png"
-                      alt="image-20241002144152382"
+                     data-src="/images/image-20241008130654479.png"
+                      alt="image-20241008130654479"
                 ></p>
-<p>试试伪加密</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144258799.png"
-                      alt="image-20241002144258799"
-                ></p>
-<p>然后伪加密修复一下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144320186.png"
-                      alt="image-20241002144320186"
-                ></p>
-<p>拿到flag   moectf{!zip_qwq_ZIP}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144347279.png"
-                      alt="image-20241002144347279"
-                ></p>
+<p>结尾的这段 a2V5Ojk1Mjc&#x3D; 经过base64解密得到:key:9527 </p>
+<p>然后将 9527 作为密钥，使用 outguess 解密,将得到的内容保存在 flag.txt 中</p>
+<p>命令：outguess -k “9527” -r flaggg.jpg flag.txt </p>
+<p>得到 flag{C0n9ratu1ati0ns!_you_are_so_cool}</p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -631,6 +540,249 @@
       </categories>
   </entry>
   <entry>
+    <title>SFeatherCTF2024 海尔之眼</title>
+    <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009211950095.png"
+                      alt="image-20241009211950095"
+                ></p>
+<p>附件是两张图片</p>
+<p>先用010打开png图片，得到key：15740</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009212445947.png"
+                      alt="image-20241009212445947"
+                ></p>
+<p>再看看jpg图片</p>
+<p>这里插播一下文件头：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">jpg:</span><br><span class="line">文件头：FFD8FF， 文件尾： FFD9</span><br><span class="line"></span><br><span class="line"><span class="built_in">zip</span>:</span><br><span class="line">文件头：504B0304， 文件尾：504B</span><br></pre></td></tr></table></figure></div>
+
+<p>我们先搜索一下jpg的文件尾：FFD9</p>
+<p>发现jpg末尾有zip文件，但是缺少zip文件头。</p>
+<p>我们把504B03041400补上，另存为flag.zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009213012030.png"
+                      alt="image-20241009213012030"
+                ></p>
+<p>用key：15740去解压缩，发现密码不正确，因此猜测有隐写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009220531310.png"
+                      alt="image-20241009220531310"
+                ></p>
+<p>我试了试steghide和outguess，都不对</p>
+<ul>
+<li>steghide不对</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221409258.png"
+                      alt="image-20241009221409258"
+                ></p>
+<ul>
+<li>outguess不对</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221808007.png"
+                      alt="image-20241009221808007"
+                ></p>
+<p>最后想了想应该是<a class="link"   href="https://sourceforge.net/projects/silenteye/%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6" >https://sourceforge.net/projects/silenteye/这个软件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221226888.png"
+                      alt="image-20241009221226888"
+                ></p>
+<p>得到flag{h@r_X4_Ya2}</p>
+<p>完事了</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SFeatherCTF2024 longpy</title>
+    <url>/2024/10/08/SFeatherCTF2024%20longpy/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213518118.png"
+                      alt="image-20241008213518118"
+                ></p>
+<p>题目附件是一张图片：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213543803.png"
+                      alt="image-20241008213543803"
+                ></p>
+<p>用随波逐流修复一下宽高</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213602930.png"
+                      alt="image-20241008213602930"
+                ></p>
+<p>提示pyc</p>
+<p>把修复后的图片用010打开看看</p>
+<p>搜索PNG的文件尾，发现文件尾后面有东西</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213854315.png"
+                      alt="image-20241008213854315"
+                ></p>
+<p>应该是pyc数据</p>
+<p>我们把PNG文件尾后的pyc数据另存为flag.pyc</p>
+<p>然后使用<a class="link"   href="https://www.lddgo.net/string/pyc-compile-decompile%E5%9C%A8%E7%BA%BF%E5%8F%8D%E7%BC%96%E8%AF%91" >https://www.lddgo.net/string/pyc-compile-decompile在线反编译 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173207050.png"
+                      alt="image-20241009173207050"
+                ></p>
+<p>接着，base换表，提示为pyc隐写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173238044.png"
+                      alt="image-20241009173238044"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173257284.png"
+                      alt="image-20241009173257284"
+                ></p>
+<p>得到flag{Pyc_to_stegosaurus}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 flag存放指南</title>
+    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SFeatherCTF2024 诗词</title>
+    <url>/2024/10/01/SFeatherCTF2024%20%E8%AF%97%E8%AF%8D/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212535098.png"
+                      alt="image-20241001212535098"
+                ></p>
+<p>先在word的设置里打开这个选项</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212634715.png"
+                      alt="image-20241001212634715"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212648499.png"
+                      alt="image-20241001212648499"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212826496.png"
+                      alt="image-20241001212826496"
+                ></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">zip文件头：504B0304</span><br><span class="line">zip文件尾：504B</span><br></pre></td></tr></table></figure></div>
+
+<p>把后缀改成.zip试试，也能正常解压</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001213340130.png"
+                      alt="image-20241001213340130"
+                ></p>
+<p>其中有一个PNG文件，010打开又发现了zip信息</p>
+<p>PNG文件尾：AE 42 60 82</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001223639974.png"
+                      alt="image-20241001223639974"
+                ></p>
+<p>我们把PNG内容移除，保存为flag.zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001224104308.png"
+                      alt="image-20241001224104308"
+                ></p>
+<p>压缩包内容如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001224455549.png"
+                      alt="image-20241001224455549"
+                ></p>
+<p>修改日期有问题，包是时间戳考点</p>
+<p>提取时间戳隐藏的信息</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>):</span><br><span class="line">    filename = <span class="string">&quot;C:\\Users\\leeso\\Desktop\\flag\\&#123;0&#125;.txt&quot;</span>.<span class="built_in">format</span>(i)</span><br><span class="line">    file_attr = os.stat(filename)<span class="comment">#读取文件属性</span></span><br><span class="line">    modify_time = <span class="built_in">str</span>(file_attr.st_mtime)</span><br><span class="line">    secret_numbers = <span class="built_in">int</span>(modify_time[<span class="number">7</span>:<span class="number">10</span>])</span><br><span class="line">    <span class="built_in">print</span>(secret_numbers, end = <span class="string">&quot;,&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>这些是隐藏信息的ascii码：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">102,108,98,104,124,48,104,34,90,48,118,96,52,114,102,96,84,106,110,102,96,78,52,116,116,102,114,34,126</span><br></pre></td></tr></table></figure></div>
+
+<p>把它转成字符：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">98</span>,<span class="number">104</span>,<span class="number">124</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">34</span>,<span class="number">90</span>,<span class="number">48</span>,<span class="number">118</span>,<span class="number">96</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">84</span>,<span class="number">106</span>,<span class="number">110</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">78</span>,<span class="number">52</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">102</span>,<span class="number">114</span>,<span class="number">34</span>,<span class="number">126</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002121401534.png"
+                      alt="image-20241002121401534"
+                ></p>
+<p>奇怪，有些ascii码应该减去1，试试</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">97</span>,<span class="number">103</span>,<span class="number">123</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">33</span>,<span class="number">89</span>,<span class="number">48</span>,<span class="number">117</span>,<span class="number">95</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">84</span>,<span class="number">105</span>,<span class="number">109</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">77</span>,<span class="number">52</span>,<span class="number">115</span>,<span class="number">116</span>,<span class="number">101</span>,<span class="number">114</span>,<span class="number">33</span>,<span class="number">125</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>得到flag{0h!Y0u_4re_Time_M4ster!}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002122033778.png"
+                      alt="image-20241002122033778"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 高清flag</title>
+    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SWPUCTF2020 来猜谜了</title>
     <url>/2024/09/30/SWPUCTF2020%20%E6%9D%A5%E7%8C%9C%E8%B0%9C%E4%BA%86/</url>
     <content><![CDATA[<p><img  
@@ -707,26 +859,6 @@
       </categories>
   </entry>
   <entry>
-    <title>SUSCTF2024 flag存放指南</title>
-    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 高清flag</title>
-    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>UTCTF2020 Observe closely</title>
     <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
     <content><![CDATA[<p><img  
@@ -781,87 +913,6 @@
                      data-src="/images/image-20240925112419324.png"
                       alt="image-20240925112419324"
                 ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东强网杯 2021 pic</title>
-    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162449931.png"
-                      alt="image-20240924162449931"
-                ></p>
-<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162544453.png"
-                      alt="image-20240924162544453"
-                ></p>
-<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162644386.png"
-                      alt="image-20240924162644386"
-                ></p>
-<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
-<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>提取图中的盲水印 (需要原图)</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/flag.png"
-                      alt="flag"
-                ></p>
-<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东省大学生攻防大赛2021 这是道签到题</title>
-    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
-    <content><![CDATA[<p>附件是一个gif</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923105522632.png"
-                      alt="image-20240923105522632"
-                ></p>
-<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
-<p>好家伙幸亏拖进去了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923110932109.png"
-                      alt="image-20240923110932109"
-                ></p>
-<p>把后缀改成.zip</p>
-<p>然后把解压出来的图片拖进随波逐流一把梭</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111114402.png"
-                      alt="image-20240923111114402"
-                ></p>
-<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111224267.png"
-                      alt="image-20240923111224267"
-                ></p>
-<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1000,7 +1051,7 @@
                      data-src="/images/image-20240916132514742.png"
                       alt="image-20240916132514742"
                 ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#111;&#110;&#103;&#x35;&#53;&#50;&#x30;&#56;&#x35;&#x31;&#x30;&#55;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d;" >&#x73;&#111;&#110;&#103;&#x35;&#53;&#50;&#x30;&#56;&#x35;&#x31;&#x30;&#55;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#115;&#111;&#x6e;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#53;&#x31;&#x30;&#x37;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;" >&#115;&#111;&#x6e;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#53;&#x31;&#x30;&#x37;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -1015,86 +1066,84 @@
       </categories>
   </entry>
   <entry>
-    <title>解密神器-Ciphey使用教程</title>
-    <url>/2024/09/28/%E8%A7%A3%E5%AF%86%E7%A5%9E%E5%99%A8-Ciphey%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="1，ciphey安装-Windows版"><a href="#1，ciphey安装-Windows版" class="headerlink" title="1，ciphey安装(Windows版)"></a>1，<strong>ciphey安装</strong>(Windows版)</h1><p><strong>前提：</strong></p>
-<ul>
-<li>python3.8（3.7也可以，亲测其他版本安装会报错）</li>
-<li>pip必须在python3以上</li>
-</ul>
-<p><strong>安装：</strong></p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">python <span class="literal">-m</span> pip install ciphey <span class="literal">-i</span> https://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure></div>
-
-<p>然后我们找到这个路径，编辑这个文件</p>
+    <title>广东省大学生攻防大赛2021 这是道签到题</title>
+    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
+    <content><![CDATA[<p>附件是一个gif</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240928125722437.png"
-                      alt="image-20240928125722437"
+                     data-src="/images/image-20240923105522632.png"
+                      alt="image-20240923105522632"
                 ></p>
+<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
+<p>好家伙幸亏拖进去了</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240928125804229.png"
-                      alt="image-20240928125804229"
+                     data-src="/images/image-20240923110932109.png"
+                      alt="image-20240923110932109"
                 ></p>
-<p>在终端中输入ciphey测试一下：</p>
+<p>把后缀改成.zip</p>
+<p>然后把解压出来的图片拖进随波逐流一把梭</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240928125848532.png"
-                      alt="image-20240928125848532"
+                     data-src="/images/image-20240923111114402.png"
+                      alt="image-20240923111114402"
                 ></p>
-<p>安装成功！</p>
-<h1 id="2，使用参数"><a href="#2，使用参数" class="headerlink" title="2，使用参数"></a>2，使用参数</h1><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">ciphey <span class="literal">--help</span></span><br><span class="line">用法: ciphey [选项] [<span class="type">TEXT_STDIN</span>]</span><br><span class="line"> </span><br><span class="line">  Ciphey - 自动解密工具</span><br><span class="line"> </span><br><span class="line">  文档地址: https://github.com/Ciphey/Ciphey/wiki</span><br><span class="line"> </span><br><span class="line">  Discord (这里支持，我们大部分时间都在线):</span><br><span class="line">  https://discord.ciphey.online/</span><br><span class="line"> </span><br><span class="line">  GitHub: https://github.com/ciphey/ciphey</span><br><span class="line"> </span><br><span class="line"> cipher是一种使用智能人工智能的自动解密工具</span><br><span class="line">和自然语言处理。输入加密文本，获取解密文本</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">例如:</span><br><span class="line">	基本用法: ciphey <span class="literal">-t</span> <span class="string">&quot;aGVsbG8gbXkgbmFtZSBpcyBiZWU=&quot;</span></span><br><span class="line"> </span><br><span class="line">选项:</span><br><span class="line">  <span class="literal">-t</span>, <span class="literal">--text</span> TEXT            您想要解密的密文。</span><br><span class="line">  <span class="literal">-q</span>, <span class="literal">--quiet</span>                减少冗长的显示,直接给结果</span><br><span class="line">  <span class="literal">-g</span>, <span class="literal">--greppable</span>            只输出答案(对于grep很有用)</span><br><span class="line">  <span class="literal">-v</span>, <span class="literal">--verbose</span></span><br><span class="line">  <span class="literal">-C</span>, <span class="literal">--checker</span> TEXT         使用给定的检查器</span><br><span class="line">  <span class="literal">-c</span>, <span class="literal">--config</span> TEXT          使用给定的配置文件。默认为</span><br><span class="line">                             appdirs.user_config_dir(<span class="string">&#x27;ciphey&#x27;</span>,</span><br><span class="line">                             <span class="string">&#x27;ciphey&#x27;</span>)/<span class="string">&#x27;config.yml&#x27;</span></span><br><span class="line"> </span><br><span class="line">  <span class="literal">-w</span>, <span class="literal">--wordlist</span> TEXT        使用给定的密码字典</span><br><span class="line">  <span class="literal">-p</span>, <span class="literal">--param</span> TEXT           将参数传递给语言检查器</span><br><span class="line">  <span class="literal">-l</span>, <span class="literal">--list-params</span> BOOLEAN  列出所选模块的参数</span><br><span class="line">  <span class="literal">--searcher</span> TEXT            选择要使用的搜索算法</span><br><span class="line">  <span class="literal">-b</span>, <span class="literal">--bytes</span>                强制密码使用二进制模式作为输入</span><br><span class="line">  <span class="literal">--default-dist</span> TEXT        设置默认的字符/字节分布</span><br><span class="line">  <span class="literal">-m</span>, <span class="literal">--module</span> PATH          从给定路径添加模块</span><br><span class="line">  <span class="literal">-A</span>, <span class="literal">--appdirs</span>              输出密码到想要的文件位置</span><br><span class="line"> </span><br><span class="line">  <span class="operator">-f</span>, <span class="literal">--file</span> FILENAME</span><br><span class="line">  <span class="literal">--help</span>                     显示此帮助消息并退出。</span><br></pre></td></tr></table></figure></div>
-
+<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111224267.png"
+                      alt="image-20240923111224267"
+                ></p>
+<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
 ]]></content>
       <categories>
-        <category>教程分享</category>
+        <category>CTF复现</category>
+        <category>Misc</category>
       </categories>
   </entry>
   <entry>
-    <title>隐写-Wbs43open使用教程</title>
-    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
-<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+    <title>广东强网杯 2021 pic</title>
+    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162449931.png"
+                      alt="image-20240924162449931"
+                ></p>
+<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925210024956.png"
-                      alt="image-20240925210024956"
+                     data-src="/images/image-20240924162544453.png"
+                      alt="image-20240924162544453"
                 ></p>
-<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925210128262.png"
-                      alt="image-20240925210128262"
-                ></p>
-<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
+<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925220330209.png"
-                      alt="image-20240925220330209"
+                     data-src="/images/image-20240924162644386.png"
+                      alt="image-20240924162644386"
                 ></p>
-<p>如果想加密，就选encode；解密就选decode。然后continue</p>
+<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
+<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925220408474.png"
-                      alt="image-20240925220408474"
+                     data-src="/images/flag.png"
+                      alt="flag"
                 ></p>
-<p>以decode为例</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220545035.png"
-                      alt="image-20240925220545035"
-                ></p>
-<p>continue</p>
+<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
 ]]></content>
       <categories>
-        <category>教程分享</category>
+        <category>CTF复现</category>
+        <category>Misc</category>
       </categories>
   </entry>
   <entry>
@@ -1199,6 +1248,89 @@
       <categories>
         <category>CTF复现</category>
         <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解密神器-Ciphey使用教程</title>
+    <url>/2024/09/28/%E8%A7%A3%E5%AF%86%E7%A5%9E%E5%99%A8-Ciphey%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="1，ciphey安装-Windows版"><a href="#1，ciphey安装-Windows版" class="headerlink" title="1，ciphey安装(Windows版)"></a>1，<strong>ciphey安装</strong>(Windows版)</h1><p><strong>前提：</strong></p>
+<ul>
+<li>python3.8（3.7也可以，亲测其他版本安装会报错）</li>
+<li>pip必须在python3以上</li>
+</ul>
+<p><strong>安装：</strong></p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">python <span class="literal">-m</span> pip install ciphey <span class="literal">-i</span> https://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure></div>
+
+<p>然后我们找到这个路径，编辑这个文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125722437.png"
+                      alt="image-20240928125722437"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125804229.png"
+                      alt="image-20240928125804229"
+                ></p>
+<p>在终端中输入ciphey测试一下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240928125848532.png"
+                      alt="image-20240928125848532"
+                ></p>
+<p>安装成功！</p>
+<h1 id="2，使用参数"><a href="#2，使用参数" class="headerlink" title="2，使用参数"></a>2，使用参数</h1><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">ciphey <span class="literal">--help</span></span><br><span class="line">用法: ciphey [选项] [<span class="type">TEXT_STDIN</span>]</span><br><span class="line"> </span><br><span class="line">  Ciphey - 自动解密工具</span><br><span class="line"> </span><br><span class="line">  文档地址: https://github.com/Ciphey/Ciphey/wiki</span><br><span class="line"> </span><br><span class="line">  Discord (这里支持，我们大部分时间都在线):</span><br><span class="line">  https://discord.ciphey.online/</span><br><span class="line"> </span><br><span class="line">  GitHub: https://github.com/ciphey/ciphey</span><br><span class="line"> </span><br><span class="line"> cipher是一种使用智能人工智能的自动解密工具</span><br><span class="line">和自然语言处理。输入加密文本，获取解密文本</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">例如:</span><br><span class="line">	基本用法: ciphey <span class="literal">-t</span> <span class="string">&quot;aGVsbG8gbXkgbmFtZSBpcyBiZWU=&quot;</span></span><br><span class="line"> </span><br><span class="line">选项:</span><br><span class="line">  <span class="literal">-t</span>, <span class="literal">--text</span> TEXT            您想要解密的密文。</span><br><span class="line">  <span class="literal">-q</span>, <span class="literal">--quiet</span>                减少冗长的显示,直接给结果</span><br><span class="line">  <span class="literal">-g</span>, <span class="literal">--greppable</span>            只输出答案(对于grep很有用)</span><br><span class="line">  <span class="literal">-v</span>, <span class="literal">--verbose</span></span><br><span class="line">  <span class="literal">-C</span>, <span class="literal">--checker</span> TEXT         使用给定的检查器</span><br><span class="line">  <span class="literal">-c</span>, <span class="literal">--config</span> TEXT          使用给定的配置文件。默认为</span><br><span class="line">                             appdirs.user_config_dir(<span class="string">&#x27;ciphey&#x27;</span>,</span><br><span class="line">                             <span class="string">&#x27;ciphey&#x27;</span>)/<span class="string">&#x27;config.yml&#x27;</span></span><br><span class="line"> </span><br><span class="line">  <span class="literal">-w</span>, <span class="literal">--wordlist</span> TEXT        使用给定的密码字典</span><br><span class="line">  <span class="literal">-p</span>, <span class="literal">--param</span> TEXT           将参数传递给语言检查器</span><br><span class="line">  <span class="literal">-l</span>, <span class="literal">--list-params</span> BOOLEAN  列出所选模块的参数</span><br><span class="line">  <span class="literal">--searcher</span> TEXT            选择要使用的搜索算法</span><br><span class="line">  <span class="literal">-b</span>, <span class="literal">--bytes</span>                强制密码使用二进制模式作为输入</span><br><span class="line">  <span class="literal">--default-dist</span> TEXT        设置默认的字符/字节分布</span><br><span class="line">  <span class="literal">-m</span>, <span class="literal">--module</span> PATH          从给定路径添加模块</span><br><span class="line">  <span class="literal">-A</span>, <span class="literal">--appdirs</span>              输出密码到想要的文件位置</span><br><span class="line"> </span><br><span class="line">  <span class="operator">-f</span>, <span class="literal">--file</span> FILENAME</span><br><span class="line">  <span class="literal">--help</span>                     显示此帮助消息并退出。</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>教程分享</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>隐写-Wbs43open使用教程</title>
+    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
+<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210024956.png"
+                      alt="image-20240925210024956"
+                ></p>
+<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210128262.png"
+                      alt="image-20240925210128262"
+                ></p>
+<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220330209.png"
+                      alt="image-20240925220330209"
+                ></p>
+<p>如果想加密，就选encode；解密就选decode。然后continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220408474.png"
+                      alt="image-20240925220408474"
+                ></p>
+<p>以decode为例</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220545035.png"
+                      alt="image-20240925220545035"
+                ></p>
+<p>continue</p>
+]]></content>
+      <categories>
+        <category>教程分享</category>
       </categories>
   </entry>
   <entry>
