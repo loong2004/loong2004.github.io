@@ -370,149 +370,6 @@
       </categories>
   </entry>
   <entry>
-    <title>SFeatherCTF2024 1z_recover</title>
-    <url>/2024/10/01/SFeatherCTF2024%201z_recover/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214443612.png"
-                      alt="image-20241001214443612"
-                ></p>
-<p>用010打开图片附件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214557206.png"
-                      alt="image-20241001214557206"
-                ></p>
-<p>发现zip信息</p>
-<p>PNG文件尾是：AE 42 60 82</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214631614.png"
-                      alt="image-20241001214631614"
-                ></p>
-<p>把reversed的zip数据复制出来，并保存为reverse_zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001214739985.png"
-                      alt="image-20241001214739985"
-                ></p>
-<p>使用脚本倒写：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;reverse_zip&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f1:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;result.zip&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        reversed_contents = f1.read()[::-<span class="number">1</span>]</span><br><span class="line">        f2.write(reversed_contents)</span><br></pre></td></tr></table></figure></div>
-
-<p>用提示的密码解压：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001215408295.png"
-                      alt="image-20241001215408295"
-                ></p>
-<p>但压缩包打不开，看看hint</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130528831.png"
-                      alt="image-20241008130528831"
-                ></p>
-<p>将 flag.zip 放到 010 中全选，进行异或运算，即可还原出zip文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130612044.png"
-                      alt="image-20241008130612044"
-                ></p>
-<p>用010查看图片</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008130654479.png"
-                      alt="image-20241008130654479"
-                ></p>
-<p>结尾的这段 a2V5Ojk1Mjc&#x3D; 经过base64解密得到:key:9527 </p>
-<p>然后将 9527 作为密钥，使用 outguess 解密,将得到的内容保存在 flag.txt 中</p>
-<p>命令：outguess -k “9527” -r flaggg.jpg flag.txt </p>
-<p>得到 flag{C0n9ratu1ati0ns!_you_are_so_cool}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SFeatherCTF2024 海尔之眼</title>
-    <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009211950095.png"
-                      alt="image-20241009211950095"
-                ></p>
-<p>附件是两张图片</p>
-<p>先用010打开png图片，得到key：15740</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009212445947.png"
-                      alt="image-20241009212445947"
-                ></p>
-<p>再看看jpg图片</p>
-<p>这里插播一下文件头：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">jpg:</span><br><span class="line">文件头：FFD8FF， 文件尾： FFD9</span><br><span class="line"></span><br><span class="line"><span class="built_in">zip</span>:</span><br><span class="line">文件头：504B0304， 文件尾：504B</span><br></pre></td></tr></table></figure></div>
-
-<p>我们先搜索一下jpg的文件尾：FFD9</p>
-<p>发现jpg末尾有zip文件，但是缺少zip文件头。</p>
-<p>我们把504B03041400补上，另存为flag.zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009213012030.png"
-                      alt="image-20241009213012030"
-                ></p>
-<p>用key：15740去解压缩，发现密码不正确，因此猜测有隐写</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009220531310.png"
-                      alt="image-20241009220531310"
-                ></p>
-<p>我试了试steghide和outguess，都不对</p>
-<ul>
-<li>steghide不对</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221409258.png"
-                      alt="image-20241009221409258"
-                ></p>
-<ul>
-<li>outguess不对</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221808007.png"
-                      alt="image-20241009221808007"
-                ></p>
-<p>最后想了想应该是<a class="link"   href="https://sourceforge.net/projects/silenteye/%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6" >https://sourceforge.net/projects/silenteye/这个软件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221226888.png"
-                      alt="image-20241009221226888"
-                ></p>
-<p>得到flag{h@r_X4_Ya2}</p>
-<p>完事了</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>MoeCTF2022 zip套娃</title>
     <url>/2024/10/02/MoeCTF2022%20zip%E5%A5%97%E5%A8%83/</url>
     <content><![CDATA[<p><img  
@@ -640,6 +497,77 @@
       </categories>
   </entry>
   <entry>
+    <title>SFeatherCTF2024 海尔之眼</title>
+    <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009211950095.png"
+                      alt="image-20241009211950095"
+                ></p>
+<p>附件是两张图片</p>
+<p>先用010打开png图片，得到key：15740</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009212445947.png"
+                      alt="image-20241009212445947"
+                ></p>
+<p>再看看jpg图片</p>
+<p>这里插播一下文件头：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">jpg:</span><br><span class="line">文件头：FFD8FF， 文件尾： FFD9</span><br><span class="line"></span><br><span class="line"><span class="built_in">zip</span>:</span><br><span class="line">文件头：504B0304， 文件尾：504B</span><br></pre></td></tr></table></figure></div>
+
+<p>我们先搜索一下jpg的文件尾：FFD9</p>
+<p>发现jpg末尾有zip文件，但是缺少zip文件头。</p>
+<p>我们把504B03041400补上，另存为flag.zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009213012030.png"
+                      alt="image-20241009213012030"
+                ></p>
+<p>用key：15740去解压缩，发现密码不正确，因此猜测有隐写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009220531310.png"
+                      alt="image-20241009220531310"
+                ></p>
+<p>我试了试steghide和outguess，都不对</p>
+<ul>
+<li>steghide不对</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221409258.png"
+                      alt="image-20241009221409258"
+                ></p>
+<ul>
+<li>outguess不对</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221808007.png"
+                      alt="image-20241009221808007"
+                ></p>
+<p>最后想了想应该是<a class="link"   href="https://sourceforge.net/projects/silenteye/%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6" >https://sourceforge.net/projects/silenteye/这个软件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009221226888.png"
+                      alt="image-20241009221226888"
+                ></p>
+<p>得到flag{h@r_X4_Ya2}</p>
+<p>完事了</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SFeatherCTF2024 诗词</title>
     <url>/2024/10/01/SFeatherCTF2024%20%E8%AF%97%E8%AF%8D/</url>
     <content><![CDATA[<p><img  
@@ -731,6 +659,98 @@
       </categories>
   </entry>
   <entry>
+    <title>SUSCTF2024 高清flag</title>
+    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 flag存放指南</title>
+    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SFeatherCTF2024 1z_recover</title>
+    <url>/2024/10/01/SFeatherCTF2024%201z_recover/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001214443612.png"
+                      alt="image-20241001214443612"
+                ></p>
+<p>用010打开图片附件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001214557206.png"
+                      alt="image-20241001214557206"
+                ></p>
+<p>发现zip信息</p>
+<p>PNG文件尾是：AE 42 60 82</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001214631614.png"
+                      alt="image-20241001214631614"
+                ></p>
+<p>把reversed的zip数据复制出来，并保存为reverse_zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001214739985.png"
+                      alt="image-20241001214739985"
+                ></p>
+<p>使用脚本倒写：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;reverse_zip&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f1:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;result.zip&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f2:</span><br><span class="line">        reversed_contents = f1.read()[::-<span class="number">1</span>]</span><br><span class="line">        f2.write(reversed_contents)</span><br></pre></td></tr></table></figure></div>
+
+<p>用提示的密码解压：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001215408295.png"
+                      alt="image-20241001215408295"
+                ></p>
+<p>但压缩包打不开，看看hint</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008130528831.png"
+                      alt="image-20241008130528831"
+                ></p>
+<p>将 flag.zip 放到 010 中全选，进行异或运算，即可还原出zip文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008130612044.png"
+                      alt="image-20241008130612044"
+                ></p>
+<p>用010查看图片</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008130654479.png"
+                      alt="image-20241008130654479"
+                ></p>
+<p>结尾的这段 a2V5Ojk1Mjc&#x3D; 经过base64解密得到:key:9527 </p>
+<p>然后将 9527 作为密钥，使用 outguess 解密,将得到的内容保存在 flag.txt 中</p>
+<p>命令：outguess -k “9527” -r flaggg.jpg flag.txt </p>
+<p>得到 flag{C0n9ratu1ati0ns!_you_are_so_cool}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SFeatherCTF2024 longpy</title>
     <url>/2024/10/08/SFeatherCTF2024%20longpy/</url>
     <content><![CDATA[<p><img  
@@ -792,9 +812,60 @@
       </categories>
   </entry>
   <entry>
-    <title>SUSCTF2024 flag存放指南</title>
-    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+    <title>UTCTF2020 Observe closely</title>
+    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111625297.png"
+                      alt="image-20240925111625297"
+                ></p>
+<p>附件是一张图片：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111710078.png"
+                      alt="image-20240925111710078"
+                ></p>
+<p>我们拖进随波逐流一把梭看看</p>
+<ul>
+<li>有LSB隐写，提示这里没有flag</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111920290.png"
+                      alt="image-20240925111920290"
+                ></p>
+<ul>
+<li>有文件包含</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111957976.png"
+                      alt="image-20240925111957976"
+                ></p>
+<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112256663.png"
+                      alt="image-20240925112256663"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112333119.png"
+                      alt="image-20240925112333119"
+                ></p>
+<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112419324.png"
+                      alt="image-20240925112419324"
+                ></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -871,158 +942,6 @@
                       alt="image-20240930005406230"
                 ></p>
 <p>flag{Out9uEsS_1s_V4rY_e4sy}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UTCTF2020 Observe closely</title>
-    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111625297.png"
-                      alt="image-20240925111625297"
-                ></p>
-<p>附件是一张图片：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111710078.png"
-                      alt="image-20240925111710078"
-                ></p>
-<p>我们拖进随波逐流一把梭看看</p>
-<ul>
-<li>有LSB隐写，提示这里没有flag</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111920290.png"
-                      alt="image-20240925111920290"
-                ></p>
-<ul>
-<li>有文件包含</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111957976.png"
-                      alt="image-20240925111957976"
-                ></p>
-<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112256663.png"
-                      alt="image-20240925112256663"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112333119.png"
-                      alt="image-20240925112333119"
-                ></p>
-<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112419324.png"
-                      alt="image-20240925112419324"
-                ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东强网杯 2021 pic</title>
-    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162449931.png"
-                      alt="image-20240924162449931"
-                ></p>
-<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162544453.png"
-                      alt="image-20240924162544453"
-                ></p>
-<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924162644386.png"
-                      alt="image-20240924162644386"
-                ></p>
-<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
-<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>提取图中的盲水印 (需要原图)</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/flag.png"
-                      alt="flag"
-                ></p>
-<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>广东省大学生攻防大赛2021 这是道签到题</title>
-    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
-    <content><![CDATA[<p>附件是一个gif</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923105522632.png"
-                      alt="image-20240923105522632"
-                ></p>
-<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
-<p>好家伙幸亏拖进去了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923110932109.png"
-                      alt="image-20240923110932109"
-                ></p>
-<p>把后缀改成.zip</p>
-<p>然后把解压出来的图片拖进随波逐流一把梭</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111114402.png"
-                      alt="image-20240923111114402"
-                ></p>
-<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240923111224267.png"
-                      alt="image-20240923111224267"
-                ></p>
-<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 高清flag</title>
-    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1178,6 +1097,162 @@
       </categories>
   </entry>
   <entry>
+    <title>广东强网杯 2021 pic</title>
+    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162449931.png"
+                      alt="image-20240924162449931"
+                ></p>
+<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162544453.png"
+                      alt="image-20240924162544453"
+                ></p>
+<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924162644386.png"
+                      alt="image-20240924162644386"
+                ></p>
+<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
+<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/flag.png"
+                      alt="flag"
+                ></p>
+<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>广东省大学生攻防大赛2021 这是道签到题</title>
+    <url>/2024/09/23/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B2021%20%E8%BF%99%E6%98%AF%E9%81%93%E7%AD%BE%E5%88%B0%E9%A2%98/</url>
+    <content><![CDATA[<p>附件是一个gif</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923105522632.png"
+                      alt="image-20240923105522632"
+                ></p>
+<p>本来想分帧处理，保险起见先拖入随波逐流一把梭</p>
+<p>好家伙幸亏拖进去了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923110932109.png"
+                      alt="image-20240923110932109"
+                ></p>
+<p>把后缀改成.zip</p>
+<p>然后把解压出来的图片拖进随波逐流一把梭</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111114402.png"
+                      alt="image-20240923111114402"
+                ></p>
+<p>试了一下，TxnaVrv9nTiXlFaED3K34oYrCryk4sGK9&#x2F;3oqaDZ&#x2F;CRnzKxnA5JdgQ&#x3D;&#x3D;是DES解码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240923111224267.png"
+                      alt="image-20240923111224267"
+                ></p>
+<p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>明文攻击-bkcrack使用教程</title>
+    <url>/2024/09/24/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB-bkcrack%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924225536812.png"
+                      alt="image-20240924225536812"
+                ></p>
+<p>项目地址：<a class="link"   href="https://github.com/kimci86/bkcrack" >https://github.com/kimci86/bkcrack <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h1 id="一，安装教程"><a href="#一，安装教程" class="headerlink" title="一，安装教程"></a>一，安装教程</h1><p>1，下载地址：<a class="link"   href="https://github.com/kimci86/bkcrack/releases" >https://github.com/kimci86/bkcrack/releases <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> （推荐Windows版本）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924225829316.png"
+                      alt="image-20240924225829316"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924225852318.png"
+                      alt="image-20240924225852318"
+                ></p>
+<p>至此安装结束！</p>
+<h1 id="二，使用参数"><a href="#二，使用参数" class="headerlink" title="二，使用参数"></a>二，使用参数</h1><p><strong>bkcrack常用参数：</strong></p>
+<blockquote>
+<p>-L 查看压缩包文件信息（比如加密算法）</p>
+<p>-C 指定被加密的压缩包</p>
+<p>-c 指定要提取的密文部分</p>
+<p>-P 是未加密，且含有明文的zip压缩包（不是必须的）（如果使用，则要求加密方式相同）</p>
+<p>-p 明文文件的位置（必须的）</p>
+<p>-x 压缩包内目标文件的偏移地址 部分已知明文值</p>
+<p>-o offset -p参数指定的明文在压缩包内目标文件的偏移量</p>
+</blockquote>
+<h2 id="1，查看算法"><a href="#1，查看算法" class="headerlink" title="1，查看算法"></a>1，查看算法</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-L</span> secrets.zip</span><br></pre></td></tr></table></figure></div>
+
+<p>可以列出文件内容，查看加密算法</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924230914026.png"
+                      alt="image-20240924230914026"
+                ></p>
+<p>PS：ZipCrypto算法是一种不安全的算法，可以使用明文攻击来破解它</p>
+<h2 id="2，提取密钥"><a href="#2，提取密钥" class="headerlink" title="2，提取密钥"></a>2，提取密钥</h2><p>此操作需要<strong>至少12字节</strong>的已知明文，<strong>相邻</strong>的已知明文越多，破解速度越快。</p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-c</span> 【待提取的密文部分】 <span class="literal">-P</span> 【存放明文的压缩包（非必须）】 <span class="literal">-p</span> 【明文位置】</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>偏移量</li>
+</ul>
+<p>如果明文 对应 密文开头以外的部分，则可以指定偏移量。（若明文包含加密Header的一部分，则可能为负值）</p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【明文】 <span class="literal">-o</span> 【偏移量】</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>稀疏明文</li>
+</ul>
+<p>如果你知道很少的连续明文（在8到11个字节之间，不满12个），但知道一些其他已知偏移量的字节，则可以使用 -x参数，后跟偏移量和十六进制字节：</p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【明文】 <span class="literal">-x</span> <span class="number">25</span> <span class="number">4</span>b4f <span class="literal">-x</span> <span class="number">30</span> <span class="number">21</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3，解密"><a href="#3，解密" class="headerlink" title="3，解密"></a>3，解密</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-k</span> b7509151 <span class="number">995</span>bc473 <span class="number">273</span>cf673 <span class="literal">-U</span> new.zip easypassword</span><br></pre></td></tr></table></figure></div>
+
+<p>-C后跟的是加密的压缩包，-k后跟的是第二部提取出来的密钥，-U是解密后的压缩包（自己随便命名），easypassword是给新压缩包设置的密码（自己随便更改）。如果不想设置密码的话，不妨采用下面的这种方式：</p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-k</span> <span class="number">12345678</span> <span class="number">23456789</span> <span class="number">34567890</span> <span class="literal">-D</span> decrypted.zip</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【密文】 <span class="literal">-k</span> 【密钥】 <span class="literal">-d</span> 【想要得到的密文文件】</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="4，恢复密钥"><a href="#4，恢复密钥" class="headerlink" title="4，恢复密钥"></a>4，恢复密钥</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-k</span> <span class="number">1</span>ded830c <span class="number">24454157</span> <span class="number">7213</span>b8c5 <span class="literal">-r</span> <span class="number">10</span> ?p</span><br></pre></td></tr></table></figure></div>
+
+<p>指定密码长度</p>
+<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-k</span> <span class="number">18</span>f285c6 <span class="number">881</span>f2169 b35d661d <span class="literal">-r</span> <span class="number">11</span>..<span class="number">13</span> ?p</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>CTF教程分享</category>
+      </categories>
+  </entry>
+  <entry>
     <title>羊城杯2021 Baby_Forensic</title>
     <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
     <content><![CDATA[<p><img  
@@ -1234,7 +1309,7 @@
                      data-src="/images/image-20240916132514742.png"
                       alt="image-20240916132514742"
                 ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#x6f;&#x6e;&#x67;&#53;&#x35;&#x32;&#48;&#x38;&#x35;&#x31;&#48;&#55;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;" >&#x73;&#x6f;&#x6e;&#x67;&#53;&#x35;&#x32;&#48;&#x38;&#x35;&#x31;&#48;&#55;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#x35;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;" >&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#x35;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
@@ -1353,81 +1428,6 @@
       </categories>
   </entry>
   <entry>
-    <title>明文攻击-bkcrack使用教程</title>
-    <url>/2024/09/24/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB-bkcrack%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924225536812.png"
-                      alt="image-20240924225536812"
-                ></p>
-<p>项目地址：<a class="link"   href="https://github.com/kimci86/bkcrack" >https://github.com/kimci86/bkcrack <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h1 id="一，安装教程"><a href="#一，安装教程" class="headerlink" title="一，安装教程"></a>一，安装教程</h1><p>1，下载地址：<a class="link"   href="https://github.com/kimci86/bkcrack/releases" >https://github.com/kimci86/bkcrack/releases <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> （推荐Windows版本）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924225829316.png"
-                      alt="image-20240924225829316"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924225852318.png"
-                      alt="image-20240924225852318"
-                ></p>
-<p>至此安装结束！</p>
-<h1 id="二，使用参数"><a href="#二，使用参数" class="headerlink" title="二，使用参数"></a>二，使用参数</h1><p><strong>bkcrack常用参数：</strong></p>
-<blockquote>
-<p>-L 查看压缩包文件信息（比如加密算法）</p>
-<p>-C 指定被加密的压缩包</p>
-<p>-c 指定要提取的密文部分</p>
-<p>-P 是未加密，且含有明文的zip压缩包（不是必须的）（如果使用，则要求加密方式相同）</p>
-<p>-p 明文文件的位置（必须的）</p>
-<p>-x 压缩包内目标文件的偏移地址 部分已知明文值</p>
-<p>-o offset -p参数指定的明文在压缩包内目标文件的偏移量</p>
-</blockquote>
-<h2 id="1，查看算法"><a href="#1，查看算法" class="headerlink" title="1，查看算法"></a>1，查看算法</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-L</span> secrets.zip</span><br></pre></td></tr></table></figure></div>
-
-<p>可以列出文件内容，查看加密算法</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924230914026.png"
-                      alt="image-20240924230914026"
-                ></p>
-<p>PS：ZipCrypto算法是一种不安全的算法，可以使用明文攻击来破解它</p>
-<h2 id="2，提取密钥"><a href="#2，提取密钥" class="headerlink" title="2，提取密钥"></a>2，提取密钥</h2><p>此操作需要<strong>至少12字节</strong>的已知明文，<strong>相邻</strong>的已知明文越多，破解速度越快。</p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-c</span> 【待提取的密文部分】 <span class="literal">-P</span> 【存放明文的压缩包（非必须）】 <span class="literal">-p</span> 【明文位置】</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>偏移量</li>
-</ul>
-<p>如果明文 对应 密文开头以外的部分，则可以指定偏移量。（若明文包含加密Header的一部分，则可能为负值）</p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【明文】 <span class="literal">-o</span> 【偏移量】</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>稀疏明文</li>
-</ul>
-<p>如果你知道很少的连续明文（在8到11个字节之间，不满12个），但知道一些其他已知偏移量的字节，则可以使用 -x参数，后跟偏移量和十六进制字节：</p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【明文】 <span class="literal">-x</span> <span class="number">25</span> <span class="number">4</span>b4f <span class="literal">-x</span> <span class="number">30</span> <span class="number">21</span></span><br></pre></td></tr></table></figure></div>
-
-<h2 id="3，解密"><a href="#3，解密" class="headerlink" title="3，解密"></a>3，解密</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-k</span> b7509151 <span class="number">995</span>bc473 <span class="number">273</span>cf673 <span class="literal">-U</span> new.zip easypassword</span><br></pre></td></tr></table></figure></div>
-
-<p>-C后跟的是加密的压缩包，-k后跟的是第二部提取出来的密钥，-U是解密后的压缩包（自己随便命名），easypassword是给新压缩包设置的密码（自己随便更改）。如果不想设置密码的话，不妨采用下面的这种方式：</p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-C</span> 【加密的压缩包】 <span class="literal">-k</span> <span class="number">12345678</span> <span class="number">23456789</span> <span class="number">34567890</span> <span class="literal">-D</span> decrypted.zip</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-c</span> 【密文】 <span class="literal">-p</span> 【密文】 <span class="literal">-k</span> 【密钥】 <span class="literal">-d</span> 【想要得到的密文文件】</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="4，恢复密钥"><a href="#4，恢复密钥" class="headerlink" title="4，恢复密钥"></a>4，恢复密钥</h2><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-k</span> <span class="number">1</span>ded830c <span class="number">24454157</span> <span class="number">7213</span>b8c5 <span class="literal">-r</span> <span class="number">10</span> ?p</span><br></pre></td></tr></table></figure></div>
-
-<p>指定密码长度</p>
-<div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">bkcrack <span class="literal">-k</span> <span class="number">18</span>f285c6 <span class="number">881</span>f2169 b35d661d <span class="literal">-r</span> <span class="number">11</span>..<span class="number">13</span> ?p</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      <categories>
-        <category>CTF教程分享</category>
-      </categories>
-  </entry>
-  <entry>
     <title>解密神器-Ciphey使用教程</title>
     <url>/2024/09/28/%E8%A7%A3%E5%AF%86%E7%A5%9E%E5%99%A8-Ciphey%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="1，ciphey安装-Windows版"><a href="#1，ciphey安装-Windows版" class="headerlink" title="1，ciphey安装(Windows版)"></a>1，<strong>ciphey安装</strong>(Windows版)</h1><p><strong>前提：</strong></p>
@@ -1461,6 +1461,50 @@
 <p>安装成功！</p>
 <h1 id="2，使用参数"><a href="#2，使用参数" class="headerlink" title="2，使用参数"></a>2，使用参数</h1><div class="highlight-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="code"><pre><span class="line">ciphey <span class="literal">--help</span></span><br><span class="line">用法: ciphey [选项] [<span class="type">TEXT_STDIN</span>]</span><br><span class="line"> </span><br><span class="line">  Ciphey - 自动解密工具</span><br><span class="line"> </span><br><span class="line">  文档地址: https://github.com/Ciphey/Ciphey/wiki</span><br><span class="line"> </span><br><span class="line">  Discord (这里支持，我们大部分时间都在线):</span><br><span class="line">  https://discord.ciphey.online/</span><br><span class="line"> </span><br><span class="line">  GitHub: https://github.com/ciphey/ciphey</span><br><span class="line"> </span><br><span class="line"> cipher是一种使用智能人工智能的自动解密工具</span><br><span class="line">和自然语言处理。输入加密文本，获取解密文本</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">例如:</span><br><span class="line">	基本用法: ciphey <span class="literal">-t</span> <span class="string">&quot;aGVsbG8gbXkgbmFtZSBpcyBiZWU=&quot;</span></span><br><span class="line"> </span><br><span class="line">选项:</span><br><span class="line">  <span class="literal">-t</span>, <span class="literal">--text</span> TEXT            您想要解密的密文。</span><br><span class="line">  <span class="literal">-q</span>, <span class="literal">--quiet</span>                减少冗长的显示,直接给结果</span><br><span class="line">  <span class="literal">-g</span>, <span class="literal">--greppable</span>            只输出答案(对于grep很有用)</span><br><span class="line">  <span class="literal">-v</span>, <span class="literal">--verbose</span></span><br><span class="line">  <span class="literal">-C</span>, <span class="literal">--checker</span> TEXT         使用给定的检查器</span><br><span class="line">  <span class="literal">-c</span>, <span class="literal">--config</span> TEXT          使用给定的配置文件。默认为</span><br><span class="line">                             appdirs.user_config_dir(<span class="string">&#x27;ciphey&#x27;</span>,</span><br><span class="line">                             <span class="string">&#x27;ciphey&#x27;</span>)/<span class="string">&#x27;config.yml&#x27;</span></span><br><span class="line"> </span><br><span class="line">  <span class="literal">-w</span>, <span class="literal">--wordlist</span> TEXT        使用给定的密码字典</span><br><span class="line">  <span class="literal">-p</span>, <span class="literal">--param</span> TEXT           将参数传递给语言检查器</span><br><span class="line">  <span class="literal">-l</span>, <span class="literal">--list-params</span> BOOLEAN  列出所选模块的参数</span><br><span class="line">  <span class="literal">--searcher</span> TEXT            选择要使用的搜索算法</span><br><span class="line">  <span class="literal">-b</span>, <span class="literal">--bytes</span>                强制密码使用二进制模式作为输入</span><br><span class="line">  <span class="literal">--default-dist</span> TEXT        设置默认的字符/字节分布</span><br><span class="line">  <span class="literal">-m</span>, <span class="literal">--module</span> PATH          从给定路径添加模块</span><br><span class="line">  <span class="literal">-A</span>, <span class="literal">--appdirs</span>              输出密码到想要的文件位置</span><br><span class="line"> </span><br><span class="line">  <span class="operator">-f</span>, <span class="literal">--file</span> FILENAME</span><br><span class="line">  <span class="literal">--help</span>                     显示此帮助消息并退出。</span><br></pre></td></tr></table></figure></div>
 
+]]></content>
+      <categories>
+        <category>CTF教程分享</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>隐写-Wbs43open使用教程</title>
+    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
+<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210024956.png"
+                      alt="image-20240925210024956"
+                ></p>
+<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210128262.png"
+                      alt="image-20240925210128262"
+                ></p>
+<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220330209.png"
+                      alt="image-20240925220330209"
+                ></p>
+<p>如果想加密，就选encode；解密就选decode。然后continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220408474.png"
+                      alt="image-20240925220408474"
+                ></p>
+<p>以decode为例</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220545035.png"
+                      alt="image-20240925220545035"
+                ></p>
+<p>continue</p>
 ]]></content>
       <categories>
         <category>CTF教程分享</category>
@@ -1553,50 +1597,6 @@
       <categories>
         <category>CTF复现</category>
         <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>隐写-Wbs43open使用教程</title>
-    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
-<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925210024956.png"
-                      alt="image-20240925210024956"
-                ></p>
-<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925210128262.png"
-                      alt="image-20240925210128262"
-                ></p>
-<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220330209.png"
-                      alt="image-20240925220330209"
-                ></p>
-<p>如果想加密，就选encode；解密就选decode。然后continue</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220408474.png"
-                      alt="image-20240925220408474"
-                ></p>
-<p>以decode为例</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220545035.png"
-                      alt="image-20240925220545035"
-                ></p>
-<p>continue</p>
-]]></content>
-      <categories>
-        <category>CTF教程分享</category>
       </categories>
   </entry>
   <entry>
