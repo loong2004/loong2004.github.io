@@ -454,231 +454,6 @@
       </categories>
   </entry>
   <entry>
-    <title>NISACTF2022 破损的flag</title>
-    <url>/2024/09/22/NISACTF2022%20%E7%A0%B4%E6%8D%9F%E7%9A%84flag/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240922192709580.png"
-                      alt="image-20240922192709580"
-                ></p>
-<p>先把附件改成.pcapng后缀，是键盘流量信息</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240922193319100.png"
-                      alt="image-20240922193319100"
-                ></p>
-<p>然后附上脚本：</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">tshark -r usb.pcapng -T fields -e usb.capdata | sed <span class="string">&#x27;/^\s*$/d&#x27;</span> &gt; usbdata.txt</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="comment">#使用脚本删除空行</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line">lines = <span class="built_in">filter</span>(<span class="keyword">lambda</span> x: x.strip(), lines)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(lines)</span><br><span class="line"><span class="comment">#将上面的文件用脚本分隔，加上冒号；</span></span><br><span class="line">f=<span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) </span><br><span class="line">fi=<span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">  a=f.readline().strip() </span><br><span class="line">  <span class="keyword">if</span> a:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(a)==<span class="number">16</span>:<span class="comment">#键盘流量的话len为16鼠标为8 </span></span><br><span class="line">      out=<span class="string">&#x27;&#x27;</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(a),<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">2</span> != <span class="built_in">len</span>(a):</span><br><span class="line">          out+=a[i]+a[i+<span class="number">1</span>]+<span class="string">&quot;:&quot;</span> </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">          out+=a[i]+a[i+<span class="number">1</span>] </span><br><span class="line">      fi.write(out) </span><br><span class="line">      fi.write(<span class="string">&#x27;\n&#x27;</span>) </span><br><span class="line">  <span class="keyword">else</span>: </span><br><span class="line">    <span class="keyword">break</span> </span><br><span class="line">fi.close()</span><br><span class="line"><span class="comment">#最后用脚本提取</span></span><br><span class="line">mappings = &#123; <span class="number">0x04</span>:<span class="string">&quot;A&quot;</span>,  <span class="number">0x05</span>:<span class="string">&quot;B&quot;</span>,  <span class="number">0x06</span>:<span class="string">&quot;C&quot;</span>, <span class="number">0x07</span>:<span class="string">&quot;D&quot;</span>, <span class="number">0x08</span>:<span class="string">&quot;E&quot;</span>, <span class="number">0x09</span>:<span class="string">&quot;F&quot;</span>, <span class="number">0x0A</span>:<span class="string">&quot;G&quot;</span>,  <span class="number">0x0B</span>:<span class="string">&quot;H&quot;</span>, <span class="number">0x0C</span>:<span class="string">&quot;I&quot;</span>,  <span class="number">0x0D</span>:<span class="string">&quot;J&quot;</span>, <span class="number">0x0E</span>:<span class="string">&quot;K&quot;</span>, <span class="number">0x0F</span>:<span class="string">&quot;L&quot;</span>, <span class="number">0x10</span>:<span class="string">&quot;M&quot;</span>, <span class="number">0x11</span>:<span class="string">&quot;N&quot;</span>,<span class="number">0x12</span>:<span class="string">&quot;O&quot;</span>,  <span class="number">0x13</span>:<span class="string">&quot;P&quot;</span>, <span class="number">0x14</span>:<span class="string">&quot;Q&quot;</span>, <span class="number">0x15</span>:<span class="string">&quot;R&quot;</span>, <span class="number">0x16</span>:<span class="string">&quot;S&quot;</span>, <span class="number">0x17</span>:<span class="string">&quot;T&quot;</span>, <span class="number">0x18</span>:<span class="string">&quot;U&quot;</span>,<span class="number">0x19</span>:<span class="string">&quot;V&quot;</span>, <span class="number">0x1A</span>:<span class="string">&quot;W&quot;</span>, <span class="number">0x1B</span>:<span class="string">&quot;X&quot;</span>, <span class="number">0x1C</span>:<span class="string">&quot;Y&quot;</span>, <span class="number">0x1D</span>:<span class="string">&quot;Z&quot;</span>, <span class="number">0x1E</span>:<span class="string">&quot;1&quot;</span>, <span class="number">0x1F</span>:<span class="string">&quot;2&quot;</span>, <span class="number">0x20</span>:<span class="string">&quot;3&quot;</span>, <span class="number">0x21</span>:<span class="string">&quot;4&quot;</span>, <span class="number">0x22</span>:<span class="string">&quot;5&quot;</span>,  <span class="number">0x23</span>:<span class="string">&quot;6&quot;</span>, <span class="number">0x24</span>:<span class="string">&quot;7&quot;</span>, <span class="number">0x25</span>:<span class="string">&quot;8&quot;</span>, <span class="number">0x26</span>:<span class="string">&quot;9&quot;</span>, <span class="number">0x27</span>:<span class="string">&quot;0&quot;</span>, <span class="number">0x28</span>:<span class="string">&quot;\n&quot;</span>, <span class="number">0x2a</span>:<span class="string">&quot;[DEL]&quot;</span>,  <span class="number">0X2B</span>:<span class="string">&quot;    &quot;</span>, <span class="number">0x2C</span>:<span class="string">&quot; &quot;</span>,  <span class="number">0x2D</span>:<span class="string">&quot;-&quot;</span>, <span class="number">0x2E</span>:<span class="string">&quot;=&quot;</span>, <span class="number">0x2F</span>:<span class="string">&quot;[&quot;</span>,  <span class="number">0x30</span>:<span class="string">&quot;]&quot;</span>,  <span class="number">0x31</span>:<span class="string">&quot;\\&quot;</span>, <span class="number">0x32</span>:<span class="string">&quot;~&quot;</span>, <span class="number">0x33</span>:<span class="string">&quot;;&quot;</span>,  <span class="number">0x34</span>:<span class="string">&quot;&#x27;&quot;</span>, <span class="number">0x36</span>:<span class="string">&quot;,&quot;</span>,  <span class="number">0x37</span>:<span class="string">&quot;.&quot;</span> &#125;</span><br><span class="line">nums = []</span><br><span class="line">keys = <span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> keys:</span><br><span class="line">    <span class="keyword">if</span> line[<span class="number">0</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">1</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">3</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">4</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">9</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">10</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">12</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">13</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">15</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">16</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">18</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">19</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">21</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">22</span>]!=<span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">    nums.append(<span class="built_in">int</span>(line[<span class="number">6</span>:<span class="number">8</span>],<span class="number">16</span>)) </span><br><span class="line">keys.close()</span><br><span class="line">output = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> :</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">in</span> mappings:</span><br><span class="line">        output += mappings[n]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        output += <span class="string">&#x27;[unknown]&#x27;</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;output :\n&#x27;</span> + output)</span><br></pre></td></tr></table></figure></div>
-
-<p>得到：UJKONJK,TFVBHYHJIPOKRDCVGRDCVGPOKQWSZTFVBHUJKOWAZXDQASEWSDRPOKXDFVIKLPNJKWSDRRFGYRDCVGUHNMKBHJMYHJI</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240922193903433.png"
-                      alt="image-20240922193903433"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240922202346480.png"
-                      alt="image-20240922202346480"
-                ></p>
-<p>i m g u l f f l a g i s w e l c o m e t f j n u</p>
-<p>拼一下就得到flag,并且要补齐to</p>
-<p>NSSCTF{welcome_to_fjnu}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SFeatherCTF2024 海尔之眼</title>
-    <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009211950095.png"
-                      alt="image-20241009211950095"
-                ></p>
-<p>附件是两张图片</p>
-<p>先用010打开png图片，得到key：15740</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009212445947.png"
-                      alt="image-20241009212445947"
-                ></p>
-<p>再看看jpg图片</p>
-<p>这里插播一下文件头：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">jpg:</span><br><span class="line">文件头：FFD8FF， 文件尾： FFD9</span><br><span class="line"></span><br><span class="line"><span class="built_in">zip</span>:</span><br><span class="line">文件头：504B0304， 文件尾：504B</span><br></pre></td></tr></table></figure></div>
-
-<p>我们先搜索一下jpg的文件尾：FFD9</p>
-<p>发现jpg末尾有zip文件，但是缺少zip文件头。</p>
-<p>我们把504B03041400补上，另存为flag.zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009213012030.png"
-                      alt="image-20241009213012030"
-                ></p>
-<p>用key：15740去解压缩，发现密码不正确，因此猜测有隐写</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009220531310.png"
-                      alt="image-20241009220531310"
-                ></p>
-<p>我试了试steghide和outguess，都不对</p>
-<ul>
-<li>steghide不对</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221409258.png"
-                      alt="image-20241009221409258"
-                ></p>
-<ul>
-<li>outguess不对</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221808007.png"
-                      alt="image-20241009221808007"
-                ></p>
-<p>最后想了想应该是<a class="link"   href="https://sourceforge.net/projects/silenteye/%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6" >https://sourceforge.net/projects/silenteye/这个软件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009221226888.png"
-                      alt="image-20241009221226888"
-                ></p>
-<p>得到flag{h@r_X4_Ya2}</p>
-<p>完事了</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SFeatherCTF2024 诗词</title>
-    <url>/2024/10/01/SFeatherCTF2024%20%E8%AF%97%E8%AF%8D/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212535098.png"
-                      alt="image-20241001212535098"
-                ></p>
-<p>先在word的设置里打开这个选项</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212634715.png"
-                      alt="image-20241001212634715"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212648499.png"
-                      alt="image-20241001212648499"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001212826496.png"
-                      alt="image-20241001212826496"
-                ></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">zip文件头：504B0304</span><br><span class="line">zip文件尾：504B</span><br></pre></td></tr></table></figure></div>
-
-<p>把后缀改成.zip试试，也能正常解压</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001213340130.png"
-                      alt="image-20241001213340130"
-                ></p>
-<p>其中有一个PNG文件，010打开又发现了zip信息</p>
-<p>PNG文件尾：AE 42 60 82</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001223639974.png"
-                      alt="image-20241001223639974"
-                ></p>
-<p>我们把PNG内容移除，保存为flag.zip</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001224104308.png"
-                      alt="image-20241001224104308"
-                ></p>
-<p>压缩包内容如下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241001224455549.png"
-                      alt="image-20241001224455549"
-                ></p>
-<p>修改日期有问题，包是时间戳考点</p>
-<p>提取时间戳隐藏的信息</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>):</span><br><span class="line">    filename = <span class="string">&quot;C:\\Users\\leeso\\Desktop\\flag\\&#123;0&#125;.txt&quot;</span>.<span class="built_in">format</span>(i)</span><br><span class="line">    file_attr = os.stat(filename)<span class="comment">#读取文件属性</span></span><br><span class="line">    modify_time = <span class="built_in">str</span>(file_attr.st_mtime)</span><br><span class="line">    secret_numbers = <span class="built_in">int</span>(modify_time[<span class="number">7</span>:<span class="number">10</span>])</span><br><span class="line">    <span class="built_in">print</span>(secret_numbers, end = <span class="string">&quot;,&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>这些是隐藏信息的ascii码：</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">102,108,98,104,124,48,104,34,90,48,118,96,52,114,102,96,84,106,110,102,96,78,52,116,116,102,114,34,126</span><br></pre></td></tr></table></figure></div>
-
-<p>把它转成字符：</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">98</span>,<span class="number">104</span>,<span class="number">124</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">34</span>,<span class="number">90</span>,<span class="number">48</span>,<span class="number">118</span>,<span class="number">96</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">84</span>,<span class="number">106</span>,<span class="number">110</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">78</span>,<span class="number">52</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">102</span>,<span class="number">114</span>,<span class="number">34</span>,<span class="number">126</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002121401534.png"
-                      alt="image-20241002121401534"
-                ></p>
-<p>奇怪，有些ascii码应该减去1，试试</p>
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">97</span>,<span class="number">103</span>,<span class="number">123</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">33</span>,<span class="number">89</span>,<span class="number">48</span>,<span class="number">117</span>,<span class="number">95</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">84</span>,<span class="number">105</span>,<span class="number">109</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">77</span>,<span class="number">52</span>,<span class="number">115</span>,<span class="number">116</span>,<span class="number">101</span>,<span class="number">114</span>,<span class="number">33</span>,<span class="number">125</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>得到flag{0h!Y0u_4re_Time_M4ster!}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002122033778.png"
-                      alt="image-20241002122033778"
-                ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 高清flag</title>
-    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 flag存放指南</title>
-    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>SFeatherCTF2024 1z_recover</title>
     <url>/2024/10/01/SFeatherCTF2024%201z_recover/</url>
     <content><![CDATA[<p><img  
@@ -812,60 +587,224 @@
       </categories>
   </entry>
   <entry>
-    <title>UTCTF2020 Observe closely</title>
-    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
+    <title>NISACTF2022 破损的flag</title>
+    <url>/2024/09/22/NISACTF2022%20%E7%A0%B4%E6%8D%9F%E7%9A%84flag/</url>
     <content><![CDATA[<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925111625297.png"
-                      alt="image-20240925111625297"
+                     data-src="/images/image-20240922192709580.png"
+                      alt="image-20240922192709580"
                 ></p>
-<p>附件是一张图片：</p>
+<p>先把附件改成.pcapng后缀，是键盘流量信息</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925111710078.png"
-                      alt="image-20240925111710078"
+                     data-src="/images/image-20240922193319100.png"
+                      alt="image-20240922193319100"
                 ></p>
-<p>我们拖进随波逐流一把梭看看</p>
+<p>然后附上脚本：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">tshark -r usb.pcapng -T fields -e usb.capdata | sed <span class="string">&#x27;/^\s*$/d&#x27;</span> &gt; usbdata.txt</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="comment">#使用脚本删除空行</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line">lines = <span class="built_in">filter</span>(<span class="keyword">lambda</span> x: x.strip(), lines)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(lines)</span><br><span class="line"><span class="comment">#将上面的文件用脚本分隔，加上冒号；</span></span><br><span class="line">f=<span class="built_in">open</span>(<span class="string">&#x27;usbdata.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) </span><br><span class="line">fi=<span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">  a=f.readline().strip() </span><br><span class="line">  <span class="keyword">if</span> a:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(a)==<span class="number">16</span>:<span class="comment">#键盘流量的话len为16鼠标为8 </span></span><br><span class="line">      out=<span class="string">&#x27;&#x27;</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(a),<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">2</span> != <span class="built_in">len</span>(a):</span><br><span class="line">          out+=a[i]+a[i+<span class="number">1</span>]+<span class="string">&quot;:&quot;</span> </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">          out+=a[i]+a[i+<span class="number">1</span>] </span><br><span class="line">      fi.write(out) </span><br><span class="line">      fi.write(<span class="string">&#x27;\n&#x27;</span>) </span><br><span class="line">  <span class="keyword">else</span>: </span><br><span class="line">    <span class="keyword">break</span> </span><br><span class="line">fi.close()</span><br><span class="line"><span class="comment">#最后用脚本提取</span></span><br><span class="line">mappings = &#123; <span class="number">0x04</span>:<span class="string">&quot;A&quot;</span>,  <span class="number">0x05</span>:<span class="string">&quot;B&quot;</span>,  <span class="number">0x06</span>:<span class="string">&quot;C&quot;</span>, <span class="number">0x07</span>:<span class="string">&quot;D&quot;</span>, <span class="number">0x08</span>:<span class="string">&quot;E&quot;</span>, <span class="number">0x09</span>:<span class="string">&quot;F&quot;</span>, <span class="number">0x0A</span>:<span class="string">&quot;G&quot;</span>,  <span class="number">0x0B</span>:<span class="string">&quot;H&quot;</span>, <span class="number">0x0C</span>:<span class="string">&quot;I&quot;</span>,  <span class="number">0x0D</span>:<span class="string">&quot;J&quot;</span>, <span class="number">0x0E</span>:<span class="string">&quot;K&quot;</span>, <span class="number">0x0F</span>:<span class="string">&quot;L&quot;</span>, <span class="number">0x10</span>:<span class="string">&quot;M&quot;</span>, <span class="number">0x11</span>:<span class="string">&quot;N&quot;</span>,<span class="number">0x12</span>:<span class="string">&quot;O&quot;</span>,  <span class="number">0x13</span>:<span class="string">&quot;P&quot;</span>, <span class="number">0x14</span>:<span class="string">&quot;Q&quot;</span>, <span class="number">0x15</span>:<span class="string">&quot;R&quot;</span>, <span class="number">0x16</span>:<span class="string">&quot;S&quot;</span>, <span class="number">0x17</span>:<span class="string">&quot;T&quot;</span>, <span class="number">0x18</span>:<span class="string">&quot;U&quot;</span>,<span class="number">0x19</span>:<span class="string">&quot;V&quot;</span>, <span class="number">0x1A</span>:<span class="string">&quot;W&quot;</span>, <span class="number">0x1B</span>:<span class="string">&quot;X&quot;</span>, <span class="number">0x1C</span>:<span class="string">&quot;Y&quot;</span>, <span class="number">0x1D</span>:<span class="string">&quot;Z&quot;</span>, <span class="number">0x1E</span>:<span class="string">&quot;1&quot;</span>, <span class="number">0x1F</span>:<span class="string">&quot;2&quot;</span>, <span class="number">0x20</span>:<span class="string">&quot;3&quot;</span>, <span class="number">0x21</span>:<span class="string">&quot;4&quot;</span>, <span class="number">0x22</span>:<span class="string">&quot;5&quot;</span>,  <span class="number">0x23</span>:<span class="string">&quot;6&quot;</span>, <span class="number">0x24</span>:<span class="string">&quot;7&quot;</span>, <span class="number">0x25</span>:<span class="string">&quot;8&quot;</span>, <span class="number">0x26</span>:<span class="string">&quot;9&quot;</span>, <span class="number">0x27</span>:<span class="string">&quot;0&quot;</span>, <span class="number">0x28</span>:<span class="string">&quot;\n&quot;</span>, <span class="number">0x2a</span>:<span class="string">&quot;[DEL]&quot;</span>,  <span class="number">0X2B</span>:<span class="string">&quot;    &quot;</span>, <span class="number">0x2C</span>:<span class="string">&quot; &quot;</span>,  <span class="number">0x2D</span>:<span class="string">&quot;-&quot;</span>, <span class="number">0x2E</span>:<span class="string">&quot;=&quot;</span>, <span class="number">0x2F</span>:<span class="string">&quot;[&quot;</span>,  <span class="number">0x30</span>:<span class="string">&quot;]&quot;</span>,  <span class="number">0x31</span>:<span class="string">&quot;\\&quot;</span>, <span class="number">0x32</span>:<span class="string">&quot;~&quot;</span>, <span class="number">0x33</span>:<span class="string">&quot;;&quot;</span>,  <span class="number">0x34</span>:<span class="string">&quot;&#x27;&quot;</span>, <span class="number">0x36</span>:<span class="string">&quot;,&quot;</span>,  <span class="number">0x37</span>:<span class="string">&quot;.&quot;</span> &#125;</span><br><span class="line">nums = []</span><br><span class="line">keys = <span class="built_in">open</span>(<span class="string">&#x27;out.txt&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> keys:</span><br><span class="line">    <span class="keyword">if</span> line[<span class="number">0</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">1</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">3</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">4</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">9</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">10</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">12</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">13</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">15</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">16</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">18</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">19</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">21</span>]!=<span class="string">&#x27;0&#x27;</span> <span class="keyword">or</span> line[<span class="number">22</span>]!=<span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">         <span class="keyword">continue</span></span><br><span class="line">    nums.append(<span class="built_in">int</span>(line[<span class="number">6</span>:<span class="number">8</span>],<span class="number">16</span>)) </span><br><span class="line">keys.close()</span><br><span class="line">output = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> :</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">in</span> mappings:</span><br><span class="line">        output += mappings[n]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        output += <span class="string">&#x27;[unknown]&#x27;</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;output :\n&#x27;</span> + output)</span><br></pre></td></tr></table></figure></div>
+
+<p>得到：UJKONJK,TFVBHYHJIPOKRDCVGRDCVGPOKQWSZTFVBHUJKOWAZXDQASEWSDRPOKXDFVIKLPNJKWSDRRFGYRDCVGUHNMKBHJMYHJI</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922193903433.png"
+                      alt="image-20240922193903433"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922202346480.png"
+                      alt="image-20240922202346480"
+                ></p>
+<p>i m g u l f f l a g i s w e l c o m e t f j n u</p>
+<p>拼一下就得到flag,并且要补齐to</p>
+<p>NSSCTF{welcome_to_fjnu}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SFeatherCTF2024 诗词</title>
+    <url>/2024/10/01/SFeatherCTF2024%20%E8%AF%97%E8%AF%8D/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212535098.png"
+                      alt="image-20241001212535098"
+                ></p>
+<p>先在word的设置里打开这个选项</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212634715.png"
+                      alt="image-20241001212634715"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212648499.png"
+                      alt="image-20241001212648499"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001212826496.png"
+                      alt="image-20241001212826496"
+                ></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">zip文件头：504B0304</span><br><span class="line">zip文件尾：504B</span><br></pre></td></tr></table></figure></div>
+
+<p>把后缀改成.zip试试，也能正常解压</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001213340130.png"
+                      alt="image-20241001213340130"
+                ></p>
+<p>其中有一个PNG文件，010打开又发现了zip信息</p>
+<p>PNG文件尾：AE 42 60 82</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001223639974.png"
+                      alt="image-20241001223639974"
+                ></p>
+<p>我们把PNG内容移除，保存为flag.zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001224104308.png"
+                      alt="image-20241001224104308"
+                ></p>
+<p>压缩包内容如下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241001224455549.png"
+                      alt="image-20241001224455549"
+                ></p>
+<p>修改日期有问题，包是时间戳考点</p>
+<p>提取时间戳隐藏的信息</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>):</span><br><span class="line">    filename = <span class="string">&quot;C:\\Users\\leeso\\Desktop\\flag\\&#123;0&#125;.txt&quot;</span>.<span class="built_in">format</span>(i)</span><br><span class="line">    file_attr = os.stat(filename)<span class="comment">#读取文件属性</span></span><br><span class="line">    modify_time = <span class="built_in">str</span>(file_attr.st_mtime)</span><br><span class="line">    secret_numbers = <span class="built_in">int</span>(modify_time[<span class="number">7</span>:<span class="number">10</span>])</span><br><span class="line">    <span class="built_in">print</span>(secret_numbers, end = <span class="string">&quot;,&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>这些是隐藏信息的ascii码：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">102,108,98,104,124,48,104,34,90,48,118,96,52,114,102,96,84,106,110,102,96,78,52,116,116,102,114,34,126</span><br></pre></td></tr></table></figure></div>
+
+<p>把它转成字符：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">98</span>,<span class="number">104</span>,<span class="number">124</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">34</span>,<span class="number">90</span>,<span class="number">48</span>,<span class="number">118</span>,<span class="number">96</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">84</span>,<span class="number">106</span>,<span class="number">110</span>,<span class="number">102</span>,<span class="number">96</span>,<span class="number">78</span>,<span class="number">52</span>,<span class="number">116</span>,<span class="number">116</span>,<span class="number">102</span>,<span class="number">114</span>,<span class="number">34</span>,<span class="number">126</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002121401534.png"
+                      alt="image-20241002121401534"
+                ></p>
+<p>奇怪，有些ascii码应该减去1，试试</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">102</span>,<span class="number">108</span>,<span class="number">97</span>,<span class="number">103</span>,<span class="number">123</span>,<span class="number">48</span>,<span class="number">104</span>,<span class="number">33</span>,<span class="number">89</span>,<span class="number">48</span>,<span class="number">117</span>,<span class="number">95</span>,<span class="number">52</span>,<span class="number">114</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">84</span>,<span class="number">105</span>,<span class="number">109</span>,<span class="number">101</span>,<span class="number">95</span>,<span class="number">77</span>,<span class="number">52</span>,<span class="number">115</span>,<span class="number">116</span>,<span class="number">101</span>,<span class="number">114</span>,<span class="number">33</span>,<span class="number">125</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(i)), end = <span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>得到flag{0h!Y0u_4re_Time_M4ster!}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002122033778.png"
+                      alt="image-20241002122033778"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SFeatherCTF2024 海尔之眼</title>
+    <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009211950095.png"
+                      alt="image-20241009211950095"
+                ></p>
+<p>附件是两张图片</p>
+<p>先用010打开png图片，得到key：15740</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009212445947.png"
+                      alt="image-20241009212445947"
+                ></p>
+<p>再看看jpg图片</p>
+<p>这里插播一下文件头：</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">jpg:</span><br><span class="line">文件头：FFD8FF， 文件尾： FFD9</span><br><span class="line"></span><br><span class="line"><span class="built_in">zip</span>:</span><br><span class="line">文件头：504B0304， 文件尾：504B</span><br></pre></td></tr></table></figure></div>
+
+<p>我们先搜索一下jpg的文件尾：FFD9</p>
+<p>发现jpg末尾有zip文件，但是缺少zip文件头。</p>
+<p>我们把504B03041400补上，另存为flag.zip</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009213012030.png"
+                      alt="image-20241009213012030"
+                ></p>
+<p>用key：15740去解压缩，发现密码不正确，因此猜测有隐写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009220531310.png"
+                      alt="image-20241009220531310"
+                ></p>
+<p>我试了试steghide和outguess，都不对</p>
 <ul>
-<li>有LSB隐写，提示这里没有flag</li>
+<li>steghide不对</li>
 </ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925111920290.png"
-                      alt="image-20240925111920290"
+                     data-src="/images/image-20241009221409258.png"
+                      alt="image-20241009221409258"
                 ></p>
 <ul>
-<li>有文件包含</li>
+<li>outguess不对</li>
 </ul>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925111957976.png"
-                      alt="image-20240925111957976"
+                     data-src="/images/image-20241009221808007.png"
+                      alt="image-20241009221808007"
                 ></p>
-<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
+<p>最后想了想应该是<a class="link"   href="https://sourceforge.net/projects/silenteye/%E8%BF%99%E4%B8%AA%E8%BD%AF%E4%BB%B6" >https://sourceforge.net/projects/silenteye/这个软件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240925112256663.png"
-                      alt="image-20240925112256663"
+                     data-src="/images/image-20241009221226888.png"
+                      alt="image-20241009221226888"
                 ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112333119.png"
-                      alt="image-20240925112333119"
-                ></p>
-<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112419324.png"
-                      alt="image-20240925112419324"
-                ></p>
+<p>得到flag{h@r_X4_Ya2}</p>
+<p>完事了</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 flag存放指南</title>
+    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 高清flag</title>
+    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -942,6 +881,67 @@
                       alt="image-20240930005406230"
                 ></p>
 <p>flag{Out9uEsS_1s_V4rY_e4sy}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UTCTF2020 Observe closely</title>
+    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111625297.png"
+                      alt="image-20240925111625297"
+                ></p>
+<p>附件是一张图片：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111710078.png"
+                      alt="image-20240925111710078"
+                ></p>
+<p>我们拖进随波逐流一把梭看看</p>
+<ul>
+<li>有LSB隐写，提示这里没有flag</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111920290.png"
+                      alt="image-20240925111920290"
+                ></p>
+<ul>
+<li>有文件包含</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111957976.png"
+                      alt="image-20240925111957976"
+                ></p>
+<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112256663.png"
+                      alt="image-20240925112256663"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112333119.png"
+                      alt="image-20240925112333119"
+                ></p>
+<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112419324.png"
+                      alt="image-20240925112419324"
+                ></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1253,77 +1253,6 @@
       </categories>
   </entry>
   <entry>
-    <title>羊城杯2021 Baby_Forensic</title>
-    <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130639644.png"
-                      alt="image-20240916130639644"
-                ></p>
-<p>题目附件链接：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130748754.png"
-                      alt="image-20240916130748754"
-                ></p>
-<p>首先进行imageinfo，查看镜像信息</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130948605.png"
-                      alt="image-20240916130948605"
-                ></p>
-<p>然后cmdscan，查看一下cmd进程</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916131708432.png"
-                      alt="image-20240916131708432"
-                ></p>
-<p>应该跟git有关，而且我们还要想办法找到他的账号。这里我们使用filescan</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 filescan | grep -E &quot;txt|git&quot;</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132031186.png"
-                      alt="image-20240916132031186"
-                ></p>
-<p>使用dumpfiles把ssh.txt给dump下来</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 dumpfiles -Q 0x00000000020bf6a0 -D ../</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132355102.png"
-                      alt="image-20240916132355102"
-                ></p>
-<p>dump下来是这个文件，我们base64解码一下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132514742.png"
-                      alt="image-20240916132514742"
-                ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#x35;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;" >&#x73;&#x6f;&#110;&#x67;&#x35;&#x35;&#x32;&#48;&#x38;&#x35;&#49;&#x30;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916133446332.png"
-                      alt="image-20240916133446332"
-                ></p>
-<p>在Github上搜索此用户，找到关键项目：<br><a class="link"   href="https://github.com/Ha1f00L/whatsthat" >https://github.com/Ha1f00L/whatsthat <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>访问后下载项目中的__APP__，在其中可以找到：<br>U2FuZ0ZvcntTMF8zYXp5XzJfY3JhY2tfbm9vYl9wbGF5ZXJ9<br>base64解码后就得到了flag ：<code>SangFor&#123;S0_3azy_2_crack_noob_player&#125;</code></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>蓝帽杯2022 domainhacker</title>
     <url>/2024/09/22/%E8%93%9D%E5%B8%BD%E6%9D%AF2022%20domainhacker/</url>
     <content><![CDATA[<p><img  
@@ -1428,6 +1357,77 @@
       </categories>
   </entry>
   <entry>
+    <title>羊城杯2021 Baby_Forensic</title>
+    <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916130639644.png"
+                      alt="image-20240916130639644"
+                ></p>
+<p>题目附件链接：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916130748754.png"
+                      alt="image-20240916130748754"
+                ></p>
+<p>首先进行imageinfo，查看镜像信息</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916130948605.png"
+                      alt="image-20240916130948605"
+                ></p>
+<p>然后cmdscan，查看一下cmd进程</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916131708432.png"
+                      alt="image-20240916131708432"
+                ></p>
+<p>应该跟git有关，而且我们还要想办法找到他的账号。这里我们使用filescan</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 filescan | grep -E &quot;txt|git&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132031186.png"
+                      alt="image-20240916132031186"
+                ></p>
+<p>使用dumpfiles把ssh.txt给dump下来</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 dumpfiles -Q 0x00000000020bf6a0 -D ../</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132355102.png"
+                      alt="image-20240916132355102"
+                ></p>
+<p>dump下来是这个文件，我们base64解码一下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132514742.png"
+                      alt="image-20240916132514742"
+                ></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#111;&#110;&#x67;&#53;&#x35;&#50;&#48;&#56;&#x35;&#x31;&#x30;&#55;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;" >&#x73;&#111;&#110;&#x67;&#53;&#x35;&#50;&#48;&#56;&#x35;&#x31;&#x30;&#55;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916133446332.png"
+                      alt="image-20240916133446332"
+                ></p>
+<p>在Github上搜索此用户，找到关键项目：<br><a class="link"   href="https://github.com/Ha1f00L/whatsthat" >https://github.com/Ha1f00L/whatsthat <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>访问后下载项目中的__APP__，在其中可以找到：<br>U2FuZ0ZvcntTMF8zYXp5XzJfY3JhY2tfbm9vYl9wbGF5ZXJ9<br>base64解码后就得到了flag ：<code>SangFor&#123;S0_3azy_2_crack_noob_player&#125;</code></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>解密神器-Ciphey使用教程</title>
     <url>/2024/09/28/%E8%A7%A3%E5%AF%86%E7%A5%9E%E5%99%A8-Ciphey%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="1，ciphey安装-Windows版"><a href="#1，ciphey安装-Windows版" class="headerlink" title="1，ciphey安装(Windows版)"></a>1，<strong>ciphey安装</strong>(Windows版)</h1><p><strong>前提：</strong></p>
@@ -1508,6 +1508,65 @@
 ]]></content>
       <categories>
         <category>CTF教程分享</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>鹤城杯2021 A_MISC</title>
+    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924165930083.png"
+                      alt="image-20240924165930083"
+                ></p>
+<p>附件是一个加密的压缩包</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170010613.png"
+                      alt="image-20240924170010613"
+                ></p>
+<p>拖进随波逐流看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170211965.png"
+                      alt="image-20240924170211965"
+                ></p>
+<p>试了一下不是伪加密</p>
+<p>我们试试密码爆破，密码为qwer</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170439100.png"
+                      alt="image-20240924170439100"
+                ></p>
+<p>把加密压缩包解密，得到了一个图片。</p>
+<p>我们再把图片拖进随波逐流，得到了这个：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170615384.png"
+                      alt="image-20240924170615384"
+                ></p>
+<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170854737.png"
+                      alt="image-20240924170854737"
+                ></p>
+<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924171131923.png"
+                      alt="image-20240924171131923"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
       </categories>
   </entry>
   <entry>
@@ -1593,65 +1652,6 @@
                       alt="image-20240928235609494"
                 ></p>
 <p>完事了NSSCTF{f0b31d6f9abc59f34815678c31d79178}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>鹤城杯2021 A_MISC</title>
-    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924165930083.png"
-                      alt="image-20240924165930083"
-                ></p>
-<p>附件是一个加密的压缩包</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170010613.png"
-                      alt="image-20240924170010613"
-                ></p>
-<p>拖进随波逐流看一看</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170211965.png"
-                      alt="image-20240924170211965"
-                ></p>
-<p>试了一下不是伪加密</p>
-<p>我们试试密码爆破，密码为qwer</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170439100.png"
-                      alt="image-20240924170439100"
-                ></p>
-<p>把加密压缩包解密，得到了一个图片。</p>
-<p>我们再把图片拖进随波逐流，得到了这个：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170615384.png"
-                      alt="image-20240924170615384"
-                ></p>
-<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170854737.png"
-                      alt="image-20240924170854737"
-                ></p>
-<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924171131923.png"
-                      alt="image-20240924171131923"
-                ></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
