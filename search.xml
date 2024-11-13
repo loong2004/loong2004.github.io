@@ -208,6 +208,105 @@
       </categories>
   </entry>
   <entry>
+    <title>C语言-getchar()函数</title>
+    <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-getchar()%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p><code>getchar()</code> 函数是 C 标准库中的一个简单输入函数，用于从标准输入（通常是键盘）读取<strong>一个字符</strong>。</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getchar</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>getchar()</code> 函数<strong>没有参数</strong>，它从标准输入中<strong>读取一个字符并返回该字符的 ASCII 值（整数类型）</strong>。如果读取失败（例如遇到文件结束符 <code>EOF</code>），它会返回 <code>EOF</code>。</p>
+<p>（ps：当输入流（例如文件、标准输入）到达末尾时，<code>getchar()</code> 会返回 <code>EOF</code>，表示没有更多的数据可以读取。对于标准输入，用户可以通过按 <code>Ctrl+D</code>（在 Linux 和 macOS 上）或 <code>Ctrl+Z</code>（在 Windows 上）来手动发送 <code>EOF</code>。）</p>
+<h3 id="基本用法示例"><a href="#基本用法示例" class="headerlink" title="基本用法示例"></a>基本用法示例</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> ch;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please enter a character: &quot;</span>);</span><br><span class="line">    ch = getchar(); <span class="comment">// 读取输入的第一个字符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;You entered: %c\n&quot;</span>, ch);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，程序会等待用户输入一个字符并按下回车键。<code>getchar()</code> 将读取输入的<strong>第一个字符</strong>，存入变量 <code>ch</code> 中并输出。</p>
+<h3 id="常见应用场景"><a href="#常见应用场景" class="headerlink" title="常见应用场景"></a>常见应用场景</h3><ol>
+<li><p><strong>逐字符读取输入</strong>：<code>getchar()</code> 经常用于逐字符读取用户输入，特别是当我们不需要一次性读取一整行时。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line">ch = getchar(); <span class="comment">// 读取一个字符，比如输入hello时，只读取h</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;You entered: %c\n&quot;</span>, ch);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">单独调用：只读取一个字符，即输入缓冲区的第一个字符，然后不再继续读取。因此，在你输入 hello world 时，ch = getchar(); 只会读取并返回第一个字符 h。后续字符 e, l, l, o, 等还留在输入缓冲区中。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>逐行读取</strong>：通过循环 <code>getchar()</code> 读取字符，直到遇到换行符（<code>\n</code>）或文件结束符（<code>EOF</code>）。</p>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (  (demo = getchar()) != <span class="string">&#x27;\n&#x27;</span> &amp;&amp; (demo = getchar()) != EOF  ) <span class="comment">// 可以读取所有输入（回车除外）</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">putchar</span>(demo); <span class="comment">// 输出每个字符</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">循环调用：在这种情况下，getchar() 被反复调用。每次循环中，getchar() 会从输入缓冲区中读取下一个字符，直到遇到换行符 \n（回车）或 EOF 才停止。这就使得整个输入（如 hello world）被逐个字符地读取并处理。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<h3 id="示例：读取一行字符"><a href="#示例：读取一行字符" class="headerlink" title="示例：读取一行字符"></a>示例：读取一行字符</h3><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> ch;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Enter a line of text (press Enter to finish):\n&quot;</span>);</span><br><span class="line">    <span class="keyword">while</span> (  (ch = getchar()) != <span class="string">&#x27;\n&#x27;</span> &amp;&amp; (ch = getchar()) != EOF  ) &#123;</span><br><span class="line">        <span class="built_in">putchar</span>(ch); <span class="comment">// 输出每个字符</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\nEnd of input.\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中：</p>
+<ul>
+<li><code>getchar()</code> 逐个读取字符并将其输出，直到遇到换行符或 <code>EOF</code>。</li>
+<li><code>putchar(ch);</code> 将读取的字符逐个输出到屏幕上。</li>
+</ul>
+<h3 id="getchar-与scanf-的区别"><a href="#getchar-与scanf-的区别" class="headerlink" title="getchar()与scanf()的区别"></a>getchar()与scanf()的区别</h3><h5 id="1-功能和用途"><a href="#1-功能和用途" class="headerlink" title="1. 功能和用途"></a>1. <strong>功能和用途</strong></h5><ul>
+<li>**<code>getchar()</code>**：用于从标准输入（通常是键盘）读取一个字符。每次调用 <code>getchar()</code>，它会读取输入流中的下一个字符，包括空格、换行符等。</li>
+<li>**<code>scanf()</code>**：用于从标准输入读取格式化的数据。它根据提供的格式控制符（如 <code>%d</code>, <code>%s</code>, <code>%f</code> 等）来读取不同类型的数据，并将结果存储到指定的变量中。</li>
+</ul>
+<h5 id="2-读取的内容"><a href="#2-读取的内容" class="headerlink" title="2. 读取的内容"></a>2. <strong>读取的内容</strong></h5><ul>
+<li>**<code>getchar()</code>**：每次读取一个字符，返回该字符的 ASCII 值。如果读取失败（如遇到文件结束符 <code>EOF</code>），则返回 <code>EOF</code>。</li>
+<li><strong><code>scanf()</code><strong>：读取一个或多个格式化的值。它会根据格式控制符来确定读取的数据类型，并将结果存储到相应的变量中。<code>scanf()</code> 会</strong>跳过输入中的空白字符</strong>（空格、制表符、换行符等），直到遇到下一个有效的输入。</li>
+</ul>
+<h5 id="3-格式化输入"><a href="#3-格式化输入" class="headerlink" title="3. 格式化输入"></a>3. <strong>格式化输入</strong></h5><ul>
+<li><strong><code>getchar()</code><strong>：</strong>没有格式控制</strong>。它始终从标准输入流中读取下一个字符，不管是什么字符（包括空格、换行符等）。</li>
+<li><strong><code>scanf()</code><strong>：</strong>支持格式化输入</strong>。你可以通过格式控制符（如 <code>%d</code>, <code>%f</code>, <code>%s</code>）来指定输入的类型和格式。</li>
+</ul>
+<h5 id="4-返回值"><a href="#4-返回值" class="headerlink" title="4. 返回值"></a>4. <strong>返回值</strong></h5><ul>
+<li>**<code>getchar()</code>**：返回一个整数，表示读取的字符的 ASCII 值。如果读取失败（如遇到文件结束符 <code>EOF</code>），它会返回 <code>EOF</code>。</li>
+<li>**<code>scanf()</code>**：返回成功读取的项数，表示有多少个输入项被成功赋值。如果遇到输入错误或输入结束，返回的数字可能会小于预期。</li>
+</ul>
+<h5 id="5-跳过空白字符"><a href="#5-跳过空白字符" class="headerlink" title="5. 跳过空白字符"></a>5. <strong>跳过空白字符</strong></h5><ul>
+<li>**<code>getchar()</code>**：不会自动跳过空白字符。每次调用都会读取下一个字符，包括空格、换行符等。</li>
+<li>**<code>scanf()</code>**：会自动跳过空白字符（空格、制表符、换行符等），直到遇到符合格式的有效输入。</li>
+</ul>
+<h5 id="6-输入结束"><a href="#6-输入结束" class="headerlink" title="6. 输入结束"></a>6. <strong>输入结束</strong></h5><ul>
+<li>**<code>getchar()</code>**：<code>getchar()</code> 在遇到文件结束符 <code>EOF</code> 时停止读取。如果从终端输入，通常按 <code>Ctrl+D</code>（Linux&#x2F;macOS）或 <code>Ctrl+Z</code>（Windows）来结束输入并返回 <code>EOF</code>。</li>
+<li>**<code>scanf()</code>**：<code>scanf()</code> 读取输入直到满足格式要求或遇到 <code>EOF</code>，它的行为也依赖于输入的格式。如果输入不符合格式，<code>scanf()</code> 可能会停止或返回错误。</li>
+</ul>
+<h5 id="7-例子"><a href="#7-例子" class="headerlink" title="7. 例子"></a>7. <strong>例子</strong></h5><h6 id="getchar-示例："><a href="#getchar-示例：" class="headerlink" title="getchar() 示例："></a><code>getchar()</code> 示例：</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> ch;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Enter a character: &quot;</span>);</span><br><span class="line">    ch = getchar();  <span class="comment">// 读取一个字符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;You entered: %c\n&quot;</span>, ch);  <span class="comment">// 输出字符</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>解释：</strong> <code>getchar()</code> 只读取一个字符。</p>
+<h6 id="scanf-示例："><a href="#scanf-示例：" class="headerlink" title="scanf() 示例："></a><code>scanf()</code> 示例：</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> num;</span><br><span class="line">    <span class="type">char</span> letter;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Enter a number and a character: &quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %c&quot;</span>, &amp;num, &amp;letter);  <span class="comment">// 读取一个整数和一个字符</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;You entered: %d and %c\n&quot;</span>, num, letter);  <span class="comment">// 输出读取的整数和字符</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>解释：</strong> <code>scanf()</code> 根据格式控制符 <code>%d</code> 和 <code>%c</code> 读取一个整数和一个字符，并将它们存储在 <code>num</code> 和 <code>letter</code> 中。</p>
+<h5 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. <strong>总结</strong></h5><table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>getchar()</code></th>
+<th><code>scanf()</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>功能</strong></td>
+<td>从标准输入读取一个字符</td>
+<td>从标准输入读取格式化的数据</td>
+</tr>
+<tr>
+<td><strong>读取内容</strong></td>
+<td>每次读取一个字符，包括空格和换行符</td>
+<td>读取多个符合格式的数据项</td>
+</tr>
+<tr>
+<td><strong>格式化输入</strong></td>
+<td>无格式化输入</td>
+<td>支持格式化输入，根据格式符读取不同类型的数据</td>
+</tr>
+<tr>
+<td><strong>返回值</strong></td>
+<td>返回字符的 ASCII 值或 <code>EOF</code></td>
+<td>返回成功读取的项数</td>
+</tr>
+<tr>
+<td><strong>跳过空白字符</strong></td>
+<td>不跳过空白字符</td>
+<td>自动跳过空白字符（空格、换行符、制表符等）</td>
+</tr>
+<tr>
+<td><strong>输入结束</strong></td>
+<td>遇到 <code>EOF</code> 停止</td>
+<td>遇到错误输入或 <code>EOF</code> 停止</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C语言-位域</title>
     <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
     <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
@@ -256,90 +355,6 @@
 ]]></content>
       <categories>
         <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>MoeCTF2022 zip套娃</title>
-    <url>/2024/10/02/MoeCTF2022%20zip%E5%A5%97%E5%A8%83/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002142835223.png"
-                      alt="image-20241002142835223"
-                ></p>
-<p>附件是这个，没有伪加密</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002142905249.png"
-                      alt="image-20241002142905249"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002142914922.png"
-                      alt="image-20241002142914922"
-                ></p>
-<p>爆破一下，得到密码1235</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002142945154.png"
-                      alt="image-20241002142945154"
-                ></p>
-<p>卧槽，套娃啊</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002143056261.png"
-                      alt="image-20241002143056261"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002143841019.png"
-                      alt="image-20241002143841019"
-                ></p>
-<p>爆破出来密码是1234567qwq</p>
-<p>解压，还有！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144046436.png"
-                      alt="image-20241002144046436"
-                ></p>
-<p>这回爆破不出来了</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144152382.png"
-                      alt="image-20241002144152382"
-                ></p>
-<p>试试伪加密</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144258799.png"
-                      alt="image-20241002144258799"
-                ></p>
-<p>然后伪加密修复一下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144320186.png"
-                      alt="image-20241002144320186"
-                ></p>
-<p>拿到flag   moectf{!zip_qwq_ZIP}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241002144347279.png"
-                      alt="image-20241002144347279"
-                ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
       </categories>
   </entry>
   <entry>
@@ -476,6 +491,90 @@
       </categories>
   </entry>
   <entry>
+    <title>MoeCTF2022 zip套娃</title>
+    <url>/2024/10/02/MoeCTF2022%20zip%E5%A5%97%E5%A8%83/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142835223.png"
+                      alt="image-20241002142835223"
+                ></p>
+<p>附件是这个，没有伪加密</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142905249.png"
+                      alt="image-20241002142905249"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142914922.png"
+                      alt="image-20241002142914922"
+                ></p>
+<p>爆破一下，得到密码1235</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002142945154.png"
+                      alt="image-20241002142945154"
+                ></p>
+<p>卧槽，套娃啊</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002143056261.png"
+                      alt="image-20241002143056261"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002143841019.png"
+                      alt="image-20241002143841019"
+                ></p>
+<p>爆破出来密码是1234567qwq</p>
+<p>解压，还有！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144046436.png"
+                      alt="image-20241002144046436"
+                ></p>
+<p>这回爆破不出来了</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144152382.png"
+                      alt="image-20241002144152382"
+                ></p>
+<p>试试伪加密</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144258799.png"
+                      alt="image-20241002144258799"
+                ></p>
+<p>然后伪加密修复一下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144320186.png"
+                      alt="image-20241002144320186"
+                ></p>
+<p>拿到flag   moectf{!zip_qwq_ZIP}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241002144347279.png"
+                      alt="image-20241002144347279"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SFeatherCTF2024 1z_recover</title>
     <url>/2024/10/01/SFeatherCTF2024%201z_recover/</url>
     <content><![CDATA[<p><img  
@@ -591,6 +690,67 @@
       </categories>
   </entry>
   <entry>
+    <title>SFeatherCTF2024 longpy</title>
+    <url>/2024/10/08/SFeatherCTF2024%20longpy/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213518118.png"
+                      alt="image-20241008213518118"
+                ></p>
+<p>题目附件是一张图片：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213543803.png"
+                      alt="image-20241008213543803"
+                ></p>
+<p>用随波逐流修复一下宽高</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213602930.png"
+                      alt="image-20241008213602930"
+                ></p>
+<p>提示pyc</p>
+<p>把修复后的图片用010打开看看</p>
+<p>搜索PNG的文件尾，发现文件尾后面有东西</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241008213854315.png"
+                      alt="image-20241008213854315"
+                ></p>
+<p>应该是pyc数据</p>
+<p>我们把PNG文件尾后的pyc数据另存为flag.pyc</p>
+<p>然后使用<a class="link"   href="https://www.lddgo.net/string/pyc-compile-decompile%E5%9C%A8%E7%BA%BF%E5%8F%8D%E7%BC%96%E8%AF%91" >https://www.lddgo.net/string/pyc-compile-decompile在线反编译 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173207050.png"
+                      alt="image-20241009173207050"
+                ></p>
+<p>接着，base换表，提示为pyc隐写</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173238044.png"
+                      alt="image-20241009173238044"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241009173257284.png"
+                      alt="image-20241009173257284"
+                ></p>
+<p>得到flag{Pyc_to_stegosaurus}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SFeatherCTF2024 海尔之眼</title>
     <url>/2024/10/09/SFeatherCTF2024%20%E6%B5%B7%E5%B0%94%E4%B9%8B%E7%9C%BC/</url>
     <content><![CDATA[<p><img  
@@ -655,77 +815,6 @@
                 ></p>
 <p>得到flag{h@r_X4_Ya2}</p>
 <p>完事了</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SFeatherCTF2024 longpy</title>
-    <url>/2024/10/08/SFeatherCTF2024%20longpy/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008213518118.png"
-                      alt="image-20241008213518118"
-                ></p>
-<p>题目附件是一张图片：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008213543803.png"
-                      alt="image-20241008213543803"
-                ></p>
-<p>用随波逐流修复一下宽高</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008213602930.png"
-                      alt="image-20241008213602930"
-                ></p>
-<p>提示pyc</p>
-<p>把修复后的图片用010打开看看</p>
-<p>搜索PNG的文件尾，发现文件尾后面有东西</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241008213854315.png"
-                      alt="image-20241008213854315"
-                ></p>
-<p>应该是pyc数据</p>
-<p>我们把PNG文件尾后的pyc数据另存为flag.pyc</p>
-<p>然后使用<a class="link"   href="https://www.lddgo.net/string/pyc-compile-decompile%E5%9C%A8%E7%BA%BF%E5%8F%8D%E7%BC%96%E8%AF%91" >https://www.lddgo.net/string/pyc-compile-decompile在线反编译 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009173207050.png"
-                      alt="image-20241009173207050"
-                ></p>
-<p>接着，base换表，提示为pyc隐写</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009173238044.png"
-                      alt="image-20241009173238044"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20241009173257284.png"
-                      alt="image-20241009173257284"
-                ></p>
-<p>得到flag{Pyc_to_stegosaurus}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 flag存放指南</title>
-    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -817,6 +906,163 @@
                      data-src="/images/image-20241002122033778.png"
                       alt="image-20241002122033778"
                 ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 高清flag</title>
+    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SWPUCTF2020 来猜谜了</title>
+    <url>/2024/09/30/SWPUCTF2020%20%E6%9D%A5%E7%8C%9C%E8%B0%9C%E4%BA%86/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930001740893.png"
+                      alt="image-20240930001740893"
+                ></p>
+<p>题目附件是一张图片</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930001820613.png"
+                      alt="image-20240930001820613"
+                ></p>
+<p>拖进随波逐流一把梭看一下，发现有LSB低位隐写：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930001906476.png"
+                      alt="image-20240930001906476"
+                ></p>
+<p>使用Stegsolve提取压缩包数据，另存为flag.zip，解压后是这个：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930002023655.png"
+                      alt="image-20240930002023655"
+                ></p>
+<p>使用一把梭工具分析一下流量包：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930002105146.png"
+                      alt="image-20240930002105146"
+                ></p>
+<p>怎么全是AGDX？用必应搜索一下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930002221739.png"
+                      alt="image-20240930002221739"
+                ></p>
+<p>哦，原来是ADFGX编码</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/618497464a6d549353d606f62fed7910.png"
+                      alt="618497464a6d549353d606f62fed7910"
+                ></p>
+<p>根据对照表，得出来gogogo</p>
+<p>接下来就是outguess隐写了</p>
+<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">加密：</span><br><span class="line">outguess -k &#x27;my secret key&#x27; -d hidden.txt demo.jpg out.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">解密：</span><br><span class="line">outguess -k &#x27;my secret key&#x27; -r out.jpg hidden.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">outguess -k &#x27;gogogo&#x27; -r mi.jpg hidden.txt</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930005341204.png"
+                      alt="image-20240930005341204"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240930005406230.png"
+                      alt="image-20240930005406230"
+                ></p>
+<p>flag{Out9uEsS_1s_V4rY_e4sy}</p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UTCTF2020 Observe closely</title>
+    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111625297.png"
+                      alt="image-20240925111625297"
+                ></p>
+<p>附件是一张图片：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111710078.png"
+                      alt="image-20240925111710078"
+                ></p>
+<p>我们拖进随波逐流一把梭看看</p>
+<ul>
+<li>有LSB隐写，提示这里没有flag</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111920290.png"
+                      alt="image-20240925111920290"
+                ></p>
+<ul>
+<li>有文件包含</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925111957976.png"
+                      alt="image-20240925111957976"
+                ></p>
+<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112256663.png"
+                      alt="image-20240925112256663"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112333119.png"
+                      alt="image-20240925112333119"
+                ></p>
+<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925112419324.png"
+                      alt="image-20240925112419324"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SUSCTF2024 flag存放指南</title>
+    <url>/2024/09/24/SUSCTF2024%20flag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5Dflag%E5%AD%98%E6%94%BE%E6%8C%87%E5%8D%97 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -972,146 +1218,40 @@
       </categories>
   </entry>
   <entry>
-    <title>SWPUCTF2020 来猜谜了</title>
-    <url>/2024/09/30/SWPUCTF2020%20%E6%9D%A5%E7%8C%9C%E8%B0%9C%E4%BA%86/</url>
+    <title>广东强网杯 2021 pic</title>
+    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
     <content><![CDATA[<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240930001740893.png"
-                      alt="image-20240930001740893"
+                     data-src="/images/image-20240924162449931.png"
+                      alt="image-20240924162449931"
                 ></p>
-<p>题目附件是一张图片</p>
+<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240930001820613.png"
-                      alt="image-20240930001820613"
+                     data-src="/images/image-20240924162544453.png"
+                      alt="image-20240924162544453"
                 ></p>
-<p>拖进随波逐流一把梭看一下，发现有LSB低位隐写：</p>
+<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240930001906476.png"
-                      alt="image-20240930001906476"
+                     data-src="/images/image-20240924162644386.png"
+                      alt="image-20240924162644386"
                 ></p>
-<p>使用Stegsolve提取压缩包数据，另存为flag.zip，解压后是这个：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240930002023655.png"
-                      alt="image-20240930002023655"
-                ></p>
-<p>使用一把梭工具分析一下流量包：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240930002105146.png"
-                      alt="image-20240930002105146"
-                ></p>
-<p>怎么全是AGDX？用必应搜索一下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240930002221739.png"
-                      alt="image-20240930002221739"
-                ></p>
-<p>哦，原来是ADFGX编码</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/618497464a6d549353d606f62fed7910.png"
-                      alt="618497464a6d549353d606f62fed7910"
-                ></p>
-<p>根据对照表，得出来gogogo</p>
-<p>接下来就是outguess隐写了</p>
-<div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">加密：</span><br><span class="line">outguess -k &#x27;my secret key&#x27; -d hidden.txt demo.jpg out.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">解密：</span><br><span class="line">outguess -k &#x27;my secret key&#x27; -r out.jpg hidden.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">outguess -k &#x27;gogogo&#x27; -r mi.jpg hidden.txt</span><br></pre></td></tr></table></figure></div>
+<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
+<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>提取图中的盲水印 (需要原图)</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
 
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240930005341204.png"
-                      alt="image-20240930005341204"
+                     data-src="/images/flag.png"
+                      alt="flag"
                 ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240930005406230.png"
-                      alt="image-20240930005406230"
-                ></p>
-<p>flag{Out9uEsS_1s_V4rY_e4sy}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>SUSCTF2024 高清flag</title>
-    <url>/2024/09/24/SUSCTF2024%20%E9%AB%98%E6%B8%85flag/</url>
-    <content><![CDATA[<p><a class="link"   href="https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag" >https://gitee.com/yangyilong2004/ctfer-new-guide/tree/master/Misc/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%5BSUSCTF%202024%5D%E9%AB%98%E6%B8%85flag <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UTCTF2020 Observe closely</title>
-    <url>/2024/09/25/UTCTF2020%20Observe%20closely/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111625297.png"
-                      alt="image-20240925111625297"
-                ></p>
-<p>附件是一张图片：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111710078.png"
-                      alt="image-20240925111710078"
-                ></p>
-<p>我们拖进随波逐流一把梭看看</p>
-<ul>
-<li>有LSB隐写，提示这里没有flag</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111920290.png"
-                      alt="image-20240925111920290"
-                ></p>
-<ul>
-<li>有文件包含</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925111957976.png"
-                      alt="image-20240925111957976"
-                ></p>
-<p>使用binwalk提取一下，提取到的压缩包中有个elf文件</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112256663.png"
-                      alt="image-20240925112256663"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112333119.png"
-                      alt="image-20240925112333119"
-                ></p>
-<p>我们运行它一下，得到utflag{2fbe9adc2ad89c71da48cabe90a121c0}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925112419324.png"
-                      alt="image-20240925112419324"
-                ></p>
+<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1152,77 +1292,6 @@
                       alt="image-20240923111224267"
                 ></p>
 <p>得到flag{ab096922210dfd2ca59025513f0eef1c}</p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>羊城杯2021 Baby_Forensic</title>
-    <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130639644.png"
-                      alt="image-20240916130639644"
-                ></p>
-<p>题目附件链接：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130748754.png"
-                      alt="image-20240916130748754"
-                ></p>
-<p>首先进行imageinfo，查看镜像信息</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916130948605.png"
-                      alt="image-20240916130948605"
-                ></p>
-<p>然后cmdscan，查看一下cmd进程</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916131708432.png"
-                      alt="image-20240916131708432"
-                ></p>
-<p>应该跟git有关，而且我们还要想办法找到他的账号。这里我们使用filescan</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 filescan | grep -E &quot;txt|git&quot;</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132031186.png"
-                      alt="image-20240916132031186"
-                ></p>
-<p>使用dumpfiles把ssh.txt给dump下来</p>
-<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 dumpfiles -Q 0x00000000020bf6a0 -D ../</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132355102.png"
-                      alt="image-20240916132355102"
-                ></p>
-<p>dump下来是这个文件，我们base64解码一下</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916132514742.png"
-                      alt="image-20240916132514742"
-                ></p>
-<p>不错，得到邮箱了<a class="link"   href="mailto:&#x73;&#111;&#110;&#x67;&#53;&#x35;&#50;&#48;&#x38;&#x35;&#x31;&#48;&#x37;&#x40;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109;" >&#x73;&#111;&#110;&#x67;&#53;&#x35;&#50;&#48;&#x38;&#x35;&#x31;&#48;&#x37;&#x40;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240916133446332.png"
-                      alt="image-20240916133446332"
-                ></p>
-<p>在Github上搜索此用户，找到关键项目：<br><a class="link"   href="https://github.com/Ha1f00L/whatsthat" >https://github.com/Ha1f00L/whatsthat <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>访问后下载项目中的__APP__，在其中可以找到：<br>U2FuZ0ZvcntTMF8zYXp5XzJfY3JhY2tfbm9vYl9wbGF5ZXJ9<br>base64解码后就得到了flag ：<code>SangFor&#123;S0_3azy_2_crack_noob_player&#125;</code></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1305,40 +1374,70 @@
       </categories>
   </entry>
   <entry>
-    <title>广东强网杯 2021 pic</title>
-    <url>/2024/09/24/%E5%B9%BF%E4%B8%9C%E5%BC%BA%E7%BD%91%E6%9D%AF2021%20pic/</url>
+    <title>羊城杯2021 Baby_Forensic</title>
+    <url>/2024/09/22/%E7%BE%8A%E5%9F%8E%E6%9D%AF2021%20Baby_Forensic/</url>
     <content><![CDATA[<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240924162449931.png"
-                      alt="image-20240924162449931"
+                     data-src="/images/image-20240916130639644.png"
+                      alt="image-20240916130639644"
                 ></p>
-<p>附件是一个12.png，拖进随波逐流一把梭看一下：</p>
+<p>题目附件链接：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240924162544453.png"
-                      alt="image-20240924162544453"
+                     data-src="/images/image-20240916130748754.png"
+                      alt="image-20240916130748754"
                 ></p>
-<p>有文件包含，使用binwalk文件分离，分离得到了这些：</p>
+<p>首先进行imageinfo，查看镜像信息</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240924162644386.png"
-                      alt="image-20240924162644386"
+                     data-src="/images/image-20240916130948605.png"
+                      alt="image-20240916130948605"
                 ></p>
-<p>解压看看，有两个图片，盲猜是 盲水印，我们使用的工具是BlindWaterMark</p>
-<p><a class="link"   href="https://github.com/chishaxie/BlindWaterMark" >https://github.com/chishaxie/BlindWaterMark <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>提取图中的盲水印 (需要原图)</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">python bwmforpy3.py decode 6.png 67.png flag.png</span><br></pre></td></tr></table></figure></div>
+<p>然后cmdscan，查看一下cmd进程</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure></div>
 
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/flag.png"
-                      alt="flag"
+                     data-src="/images/image-20240916131708432.png"
+                      alt="image-20240916131708432"
                 ></p>
-<p>得到NSSCTF{VhdRCg1v7OzzoYM}</p>
+<p>应该跟git有关，而且我们还要想办法找到他的账号。这里我们使用filescan</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 filescan | grep -E &quot;txt|git&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132031186.png"
+                      alt="image-20240916132031186"
+                ></p>
+<p>使用dumpfiles把ssh.txt给dump下来</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">python2 ../vol.py -f ../demo.raw --profile=WinXPSP2x86 dumpfiles -Q 0x00000000020bf6a0 -D ../</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132355102.png"
+                      alt="image-20240916132355102"
+                ></p>
+<p>dump下来是这个文件，我们base64解码一下</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916132514742.png"
+                      alt="image-20240916132514742"
+                ></p>
+<p>不错，得到邮箱了<a class="link"   href="mailto:&#115;&#111;&#x6e;&#x67;&#x35;&#x35;&#x32;&#x30;&#x38;&#53;&#49;&#48;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;" >&#115;&#111;&#x6e;&#x67;&#x35;&#x35;&#x32;&#x30;&#x38;&#53;&#49;&#48;&#55;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240916133446332.png"
+                      alt="image-20240916133446332"
+                ></p>
+<p>在Github上搜索此用户，找到关键项目：<br><a class="link"   href="https://github.com/Ha1f00L/whatsthat" >https://github.com/Ha1f00L/whatsthat <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>访问后下载项目中的__APP__，在其中可以找到：<br>U2FuZ0ZvcntTMF8zYXp5XzJfY3JhY2tfbm9vYl9wbGF5ZXJ9<br>base64解码后就得到了flag ：<code>SangFor&#123;S0_3azy_2_crack_noob_player&#125;</code></p>
 ]]></content>
       <categories>
         <category>CTF复现</category>
@@ -1489,109 +1588,6 @@
       </categories>
   </entry>
   <entry>
-    <title>隐写-Wbs43open使用教程</title>
-    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
-<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925210024956.png"
-                      alt="image-20240925210024956"
-                ></p>
-<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925210128262.png"
-                      alt="image-20240925210128262"
-                ></p>
-<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220330209.png"
-                      alt="image-20240925220330209"
-                ></p>
-<p>如果想加密，就选encode；解密就选decode。然后continue</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220408474.png"
-                      alt="image-20240925220408474"
-                ></p>
-<p>以decode为例</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240925220545035.png"
-                      alt="image-20240925220545035"
-                ></p>
-<p>continue</p>
-]]></content>
-      <categories>
-        <category>CTF教程分享</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>鹤城杯2021 A_MISC</title>
-    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924165930083.png"
-                      alt="image-20240924165930083"
-                ></p>
-<p>附件是一个加密的压缩包</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170010613.png"
-                      alt="image-20240924170010613"
-                ></p>
-<p>拖进随波逐流看一看</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170211965.png"
-                      alt="image-20240924170211965"
-                ></p>
-<p>试了一下不是伪加密</p>
-<p>我们试试密码爆破，密码为qwer</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170439100.png"
-                      alt="image-20240924170439100"
-                ></p>
-<p>把加密压缩包解密，得到了一个图片。</p>
-<p>我们再把图片拖进随波逐流，得到了这个：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170615384.png"
-                      alt="image-20240924170615384"
-                ></p>
-<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924170854737.png"
-                      alt="image-20240924170854737"
-                ></p>
-<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240924171131923.png"
-                      alt="image-20240924171131923"
-                ></p>
-]]></content>
-      <categories>
-        <category>CTF复现</category>
-        <category>Misc</category>
-      </categories>
-  </entry>
-  <entry>
     <title>鹏城杯2022 Misc_water</title>
     <url>/2024/09/28/%E9%B9%8F%E5%9F%8E%E6%9D%AF2022%20Misc_water/</url>
     <content><![CDATA[<p><img  
@@ -1678,6 +1674,109 @@
       <categories>
         <category>CTF复现</category>
         <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>鹤城杯2021 A_MISC</title>
+    <url>/2024/09/24/%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%20A_MISC/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924165930083.png"
+                      alt="image-20240924165930083"
+                ></p>
+<p>附件是一个加密的压缩包</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170010613.png"
+                      alt="image-20240924170010613"
+                ></p>
+<p>拖进随波逐流看一看</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170211965.png"
+                      alt="image-20240924170211965"
+                ></p>
+<p>试了一下不是伪加密</p>
+<p>我们试试密码爆破，密码为qwer</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170439100.png"
+                      alt="image-20240924170439100"
+                ></p>
+<p>把加密压缩包解密，得到了一个图片。</p>
+<p>我们再把图片拖进随波逐流，得到了这个：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170615384.png"
+                      alt="image-20240924170615384"
+                ></p>
+<p><a class="link"   href="https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg%EF%BC%8C%E9%99%84%E4%BB%B6%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B5%81%E9%87%8F%E5%8C%85" >https://pan.baidu.com/s/1cG2QvYy3khpQGLfjfbYevg，附件是一个流量包 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924170854737.png"
+                      alt="image-20240924170854737"
+                ></p>
+<p>一把梭flag{cd2c3e2fea463ded9af800d7155be7aq}</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240924171131923.png"
+                      alt="image-20240924171131923"
+                ></p>
+]]></content>
+      <categories>
+        <category>CTF复现</category>
+        <category>Misc</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>隐写-Wbs43open使用教程</title>
+    <url>/2024/09/25/%E9%9A%90%E5%86%99-Wbs43open%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="1，简介"><a href="#1，简介" class="headerlink" title="1，简介"></a>1，简介</h1><p>wbs43open是一个隐写神器，支持Windows+Linux平台，可以将“秘密文件”隐藏进BMP、 TXT、 HTM 和 PDF中</p>
+<h1 id="2，安装"><a href="#2，安装" class="headerlink" title="2，安装"></a>2，安装</h1><p>下载链接：<a class="link"   href="https://wbstego.wbailer.com/" >https://wbstego.wbailer.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210024956.png"
+                      alt="image-20240925210024956"
+                ></p>
+<h1 id="3，原理"><a href="#3，原理" class="headerlink" title="3，原理"></a>3，原理</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925210128262.png"
+                      alt="image-20240925210128262"
+                ></p>
+<h1 id="4，用法"><a href="#4，用法" class="headerlink" title="4，用法"></a>4，用法</h1><p>首先点continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220330209.png"
+                      alt="image-20240925220330209"
+                ></p>
+<p>如果想加密，就选encode；解密就选decode。然后continue</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220408474.png"
+                      alt="image-20240925220408474"
+                ></p>
+<p>以decode为例</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240925220545035.png"
+                      alt="image-20240925220545035"
+                ></p>
+<p>continue</p>
+]]></content>
+      <categories>
+        <category>CTF教程分享</category>
       </categories>
   </entry>
 </search>
