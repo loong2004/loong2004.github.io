@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C语言-位域</title>
+    <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
+    <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>位域定义在结构体中，可以指定每个成员占用的<strong>比特位数</strong>。例如：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> a : <span class="number">3</span>; <span class="comment">// a 占用 3 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> b : <span class="number">5</span>; <span class="comment">// b 占用 5 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> c : <span class="number">1</span>; <span class="comment">// c 占用 1 位</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>在上面的例子中：</p>
+<ul>
+<li><code>a</code> 占 3 位，可以表示的值范围是 0 到 7（2的3次方，下面的例子依此类推）</li>
+<li><code>b</code> 占 5 位，可以表示的值范围是 0 到 31（2的5次方）</li>
+<li><code>c</code> 占 1 位，可以表示的值范围是 0 或 1（2的1次方）</li>
+</ul>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><strong>节省内存</strong>：相比普通整型，位域只用<strong>指定的位数</strong>来存储，<strong>避免浪费空间</strong>。</p>
+<p><strong>操作硬件寄存器</strong>：位域允许直接访问和修改某些位，非常适合底层硬件开发。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag1 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag2 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> mode : <span class="number">3</span>;  <span class="comment">// 占 3 位</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> <span class="title">f</span> =</span> &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">5</span>&#125;; <span class="comment">// 初始化位域</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;flag1: %u, flag2: %u, mode: %u\n&quot;</span>, f.flag1, f.flag2, f.mode);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-基础语法</title>
+    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-冒泡排序法</title>
+    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C语言-getchar()函数</title>
     <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-getchar()%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p><code>getchar()</code> 函数是 C 标准库中的一个简单输入函数，用于从标准输入（通常是键盘）读取<strong>一个字符</strong>。</p>
@@ -100,48 +142,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-冒泡排序法</title>
-    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-位域</title>
-    <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
-    <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>位域定义在结构体中，可以指定每个成员占用的<strong>比特位数</strong>。例如：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> a : <span class="number">3</span>; <span class="comment">// a 占用 3 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> b : <span class="number">5</span>; <span class="comment">// b 占用 5 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> c : <span class="number">1</span>; <span class="comment">// c 占用 1 位</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
-<p>在上面的例子中：</p>
-<ul>
-<li><code>a</code> 占 3 位，可以表示的值范围是 0 到 7（2的3次方，下面的例子依此类推）</li>
-<li><code>b</code> 占 5 位，可以表示的值范围是 0 到 31（2的5次方）</li>
-<li><code>c</code> 占 1 位，可以表示的值范围是 0 或 1（2的1次方）</li>
-</ul>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><strong>节省内存</strong>：相比普通整型，位域只用<strong>指定的位数</strong>来存储，<strong>避免浪费空间</strong>。</p>
-<p><strong>操作硬件寄存器</strong>：位域允许直接访问和修改某些位，非常适合底层硬件开发。</p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag1 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag2 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> mode : <span class="number">3</span>;  <span class="comment">// 占 3 位</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> <span class="title">f</span> =</span> &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">5</span>&#125;; <span class="comment">// 初始化位域</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;flag1: %u, flag2: %u, mode: %u\n&quot;</span>, f.flag1, f.flag2, f.mode);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-基础语法</title>
-    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-存储类</title>
     <url>/2024/10/17/C%E8%AF%AD%E8%A8%80-%E5%AD%98%E5%82%A8%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
@@ -232,37 +232,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-预处理器</title>
-    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-枚举</title>
-    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Termux之SSH服务配置</title>
     <url>/2024/12/13/TermuxSSH%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>首先查看当前用户名</p>
@@ -287,7 +256,7 @@
                       alt="image.png"
                 ></p>
 <p>更改SSH端口（默认为8022，不修改也可以！）</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd -p 2222</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd -p 2222（此方法重启后失效）</span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -302,6 +271,27 @@
 ]]></content>
       <categories>
         <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-预处理器</title>
+    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
+]]></content>
+      <categories>
+        <category>C/C++</category>
       </categories>
   </entry>
   <entry>
@@ -447,6 +437,16 @@
                      data-src="/images/image-20241016183447884.png"
                       alt="image-20241016183447884"
                 ></p>
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-枚举</title>
+    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
         <category>C/C++</category>
