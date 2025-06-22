@@ -23,6 +23,16 @@
       </categories>
   </entry>
   <entry>
+    <title>C语言-冒泡排序法</title>
+    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C语言-getchar()函数</title>
     <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-getchar()%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p><code>getchar()</code> 函数是 C 标准库中的一个简单输入函数，用于从标准输入（通常是键盘）读取<strong>一个字符</strong>。</p>
@@ -122,25 +132,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-存储类</title>
-    <url>/2024/10/17/C%E8%AF%AD%E8%A8%80-%E5%AD%98%E5%82%A8%E7%B1%BB/</url>
-    <content><![CDATA[<h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
-<p>定义在函数中的变量默认为 auto 存储类，这意味着它们在函数开始时被创建，在函数结束时被销毁。</p>
-<h2 id="register-存储类"><a href="#register-存储类" class="headerlink" title="register 存储类"></a>register 存储类</h2><p><strong>register</strong> 存储类用于定义<strong>存储在寄存器</strong>中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个字），且不能对它应用一元的 ‘&amp;’ 运算符（因为<strong>它没有内存位置</strong>）。</p>
-<p>register 存储类定义存储在寄存器，所以变量的访问速度更快，但是<strong>它不能直接取地址，因为它不是存储在 RAM 中</strong>的。在需要频繁访问的变量上使用 register 存储类可以提高程序的运行速度。寄存器只用于<strong>需要快速访问的变量，比如计数器</strong>。还应注意的是，定义 ‘register’ 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。</p>
-<h2 id="static-存储类"><a href="#static-存储类" class="headerlink" title="static 存储类"></a>static 存储类</h2><p><strong>static</strong> 存储类指示编译器在<strong>程序</strong>的<strong>生命周期内保持局部变量的存在</strong>，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 <strong>static 修饰局部变量</strong>可以在函数调用之间<strong>保持局部变量的值</strong>。</p>
-<p><strong>static 修饰符也可以应用于全局变量</strong>。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。</p>
-<p>全局声明的一个 static 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 static 变量或方法同一个文件中。</p>
-<p><strong>静态变量在程序中只被初始化一次</strong>，即使函数被调用多次，该变量的值也不会重置。</p>
-<h2 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a>extern 存储类</h2><p><strong>extern</strong> 存储类<strong>用于定义在其他文件中声明的全局变量或函数</strong>。当使用 extern 关键字时，不会为变量分配任何存储空间，而只是指示编译器该变量在其他文件中定义。</p>
-<p><strong>extern</strong> 存储类用于提供一个<strong>全局变量</strong>的引用，全局变量对所有的程序文件都是可见的。当您使用 <strong>extern</strong> 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
-<p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-基础语法</title>
     <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
@@ -200,31 +191,11 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-冒泡排序法</title>
-    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-递归函数的应用</title>
     <url>/2024/11/23/C%E8%AF%AD%E8%A8%80-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<h2 id="数的阶乘"><a href="#数的阶乘" class="headerlink" title="数的阶乘"></a>数的阶乘</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">double</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( n==<span class="number">0</span> || n==<span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number n\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">double</span> result = factorial(n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the result is: %lf\n&quot;</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">fibonaci</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> fibonaci(i<span class="number">-1</span>) + fibonaci(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span>  <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;%d\t\n&quot;</span>, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-枚举</title>
-    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <categories>
@@ -257,6 +228,35 @@
     <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B/</url>
     <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SUCCESS = <span class="number">0</span>,</span><br><span class="line">    ERROR_FILE_NOT_FOUND,</span><br><span class="line">    ERROR_INVALID_ARGUMENT,</span><br><span class="line">    ERROR_UNKNOWN</span><br><span class="line">&#125; ErrorCode;</span><br><span class="line"></span><br><span class="line">ErrorCode <span class="title function_">OpenFile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span></span><br><span class="line">&#123;</span><br><span class="line">    errno = <span class="number">0</span>; </span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error: %s\n&quot;</span>, strerror(errno));</span><br><span class="line">        <span class="keyword">return</span> ERROR_FILE_NOT_FOUND;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    ErrorCode result = OpenFile(<span class="string">&quot;file_not_exist.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (result != SUCCESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error code: %d\n&quot;</span>, result);</span><br><span class="line">        <span class="keyword">switch</span> (result) <span class="comment">//这里switch无意义，只是为了演示</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_INVALID_ARGUMENT:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Invalid argument.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_UNKNOWN:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Unknown error.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;An unexpected error occurred.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-枚举</title>
+    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-存储类</title>
+    <url>/2024/10/17/C%E8%AF%AD%E8%A8%80-%E5%AD%98%E5%82%A8%E7%B1%BB/</url>
+    <content><![CDATA[<h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
+<p>定义在函数中的变量默认为 auto 存储类，这意味着它们在函数开始时被创建，在函数结束时被销毁。</p>
+<h2 id="register-存储类"><a href="#register-存储类" class="headerlink" title="register 存储类"></a>register 存储类</h2><p><strong>register</strong> 存储类用于定义<strong>存储在寄存器</strong>中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个字），且不能对它应用一元的 ‘&amp;’ 运算符（因为<strong>它没有内存位置</strong>）。</p>
+<p>register 存储类定义存储在寄存器，所以变量的访问速度更快，但是<strong>它不能直接取地址，因为它不是存储在 RAM 中</strong>的。在需要频繁访问的变量上使用 register 存储类可以提高程序的运行速度。寄存器只用于<strong>需要快速访问的变量，比如计数器</strong>。还应注意的是，定义 ‘register’ 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。</p>
+<h2 id="static-存储类"><a href="#static-存储类" class="headerlink" title="static 存储类"></a>static 存储类</h2><p><strong>static</strong> 存储类指示编译器在<strong>程序</strong>的<strong>生命周期内保持局部变量的存在</strong>，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 <strong>static 修饰局部变量</strong>可以在函数调用之间<strong>保持局部变量的值</strong>。</p>
+<p><strong>static 修饰符也可以应用于全局变量</strong>。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。</p>
+<p>全局声明的一个 static 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 static 变量或方法同一个文件中。</p>
+<p><strong>静态变量在程序中只被初始化一次</strong>，即使函数被调用多次，该变量的值也不会重置。</p>
+<h2 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a>extern 存储类</h2><p><strong>extern</strong> 存储类<strong>用于定义在其他文件中声明的全局变量或函数</strong>。当使用 extern 关键字时，不会为变量分配任何存储空间，而只是指示编译器该变量在其他文件中定义。</p>
+<p><strong>extern</strong> 存储类用于提供一个<strong>全局变量</strong>的引用，全局变量对所有的程序文件都是可见的。当您使用 <strong>extern</strong> 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
+<p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
 ]]></content>
       <categories>
         <category>C/C++</category>
@@ -420,6 +420,73 @@
 <p>远程连接Termux</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh [用户名]@[IP地址] -p [端口号]</span><br></pre></td></tr></table></figure></div>
 
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux系统文件目录</title>
+    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg"
+                      alt="img"
+                ></p>
+<ul>
+<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
+</li>
+<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
+</li>
+<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+</li>
+<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
+</li>
+<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+</li>
+<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
+</li>
+<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+</li>
+<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种<code>伪文件系统</code>（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+</li>
+<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
+</li>
+<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+</li>
+<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
+</li>
+<li><p><strong>&#x2F;sys</strong>：</p>
+<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
+<p>该文件系统是内核设备树的一个直观反映。</p>
+<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+</li>
+<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
+</li>
+<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix system resources(unix 系统资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
+</li>
+<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+</li>
+<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -618,73 +685,6 @@
 <p><strong>MySQL的一些简单配置</strong></p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录mysql-server（刚安装没有设置密码，提示输入密码时按回车即可！）</span></span><br><span class="line">root@1bf7034a513e:/# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 14</span><br><span class="line">Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2024, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置mysql-server的密码，我这里设为123456</span></span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#实现所有IP均可登录你的mysql-server</span></span><br><span class="line"><span class="comment">#首先修改/etc/mysql/mysql.conf.d/mysqld.cnf这个配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="comment">#找到bind-address这一行</span></span><br><span class="line"><span class="comment">#把127.0.0改成0.0.0.0即可！</span></span><br><span class="line"><span class="comment">#接下来再重启mysql-server</span></span><br><span class="line">root@1bf7034a513e:/# service mysql restart</span><br></pre></td></tr></table></figure></div>
 
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux系统文件目录</title>
-    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg"
-                      alt="img"
-                ></p>
-<ul>
-<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
-</li>
-<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
-</li>
-<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
-</li>
-<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
-</li>
-<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
-</li>
-<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
-</li>
-<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
-</li>
-<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
-</li>
-<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
-</li>
-<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
-</li>
-<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种<code>伪文件系统</code>（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
-</li>
-<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
-</li>
-<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
-</li>
-<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
-</li>
-<li><p><strong>&#x2F;sys</strong>：</p>
-<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
-<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
-<p>该文件系统是内核设备树的一个直观反映。</p>
-<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
-</li>
-<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
-</li>
-<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix system resources(unix 系统资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
-</li>
-<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
-</li>
-<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>Linux</category>
