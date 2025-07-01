@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C语言-冒泡排序法</title>
+    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>C语言-位域</title>
     <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
     <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
@@ -122,16 +132,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-冒泡排序法</title>
-    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-存储类</title>
     <url>/2024/10/17/C%E8%AF%AD%E8%A8%80-%E5%AD%98%E5%82%A8%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
@@ -145,6 +145,16 @@
 <h2 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a>extern 存储类</h2><p><strong>extern</strong> 存储类<strong>用于定义在其他文件中声明的全局变量或函数</strong>。当使用 extern 关键字时，不会为变量分配任何存储空间，而只是指示编译器该变量在其他文件中定义。</p>
 <p><strong>extern</strong> 存储类用于提供一个<strong>全局变量</strong>的引用，全局变量对所有的程序文件都是可见的。当您使用 <strong>extern</strong> 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
 <p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-基础语法</title>
+    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
         <category>C/C++</category>
@@ -200,9 +210,11 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-基础语法</title>
-    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+    <title>C语言-递归函数的应用</title>
+    <url>/2024/11/23/C%E8%AF%AD%E8%A8%80-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="数的阶乘"><a href="#数的阶乘" class="headerlink" title="数的阶乘"></a>数的阶乘</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">double</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( n==<span class="number">0</span> || n==<span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number n\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">double</span> result = factorial(n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the result is: %lf\n&quot;</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">fibonaci</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> fibonaci(i<span class="number">-1</span>) + fibonaci(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span>  <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;%d\t\n&quot;</span>, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <categories>
@@ -220,28 +232,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-递归函数的应用</title>
-    <url>/2024/11/23/C%E8%AF%AD%E8%A8%80-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="数的阶乘"><a href="#数的阶乘" class="headerlink" title="数的阶乘"></a>数的阶乘</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">double</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( n==<span class="number">0</span> || n==<span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number n\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">double</span> result = factorial(n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the result is: %lf\n&quot;</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">fibonaci</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> fibonaci(i<span class="number">-1</span>) + fibonaci(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span>  <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;%d\t\n&quot;</span>, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-错误处理代码实例</title>
-    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SUCCESS = <span class="number">0</span>,</span><br><span class="line">    ERROR_FILE_NOT_FOUND,</span><br><span class="line">    ERROR_INVALID_ARGUMENT,</span><br><span class="line">    ERROR_UNKNOWN</span><br><span class="line">&#125; ErrorCode;</span><br><span class="line"></span><br><span class="line">ErrorCode <span class="title function_">OpenFile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span></span><br><span class="line">&#123;</span><br><span class="line">    errno = <span class="number">0</span>; </span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error: %s\n&quot;</span>, strerror(errno));</span><br><span class="line">        <span class="keyword">return</span> ERROR_FILE_NOT_FOUND;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    ErrorCode result = OpenFile(<span class="string">&quot;file_not_exist.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (result != SUCCESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error code: %d\n&quot;</span>, result);</span><br><span class="line">        <span class="keyword">switch</span> (result) <span class="comment">//这里switch无意义，只是为了演示</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_INVALID_ARGUMENT:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Invalid argument.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_UNKNOWN:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Unknown error.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;An unexpected error occurred.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux tar命令</title>
     <url>/2025/06/26/Linux%20tar%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<ul>
@@ -252,7 +242,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images\image-20250629221930467.png"
+                     data-src="/images/image-20250629221930467.png"
                       alt="image-20250629221930467"
                 ></p>
 <ul>
@@ -263,13 +253,13 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images\image-20250629222310066.png"
+                     data-src="/images/image-20250629222310066.png"
                       alt="image-20250629222310066"
                 ></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images\image-20250629222339119.png"
+                     data-src="/images/image-20250629222339119.png"
                       alt="image-20250629222339119"
                 ></p>
 <ul>
@@ -313,21 +303,10 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-预处理器</title>
-    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
+    <title>C语言-错误处理代码实例</title>
+    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SUCCESS = <span class="number">0</span>,</span><br><span class="line">    ERROR_FILE_NOT_FOUND,</span><br><span class="line">    ERROR_INVALID_ARGUMENT,</span><br><span class="line">    ERROR_UNKNOWN</span><br><span class="line">&#125; ErrorCode;</span><br><span class="line"></span><br><span class="line">ErrorCode <span class="title function_">OpenFile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span></span><br><span class="line">&#123;</span><br><span class="line">    errno = <span class="number">0</span>; </span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error: %s\n&quot;</span>, strerror(errno));</span><br><span class="line">        <span class="keyword">return</span> ERROR_FILE_NOT_FOUND;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    ErrorCode result = OpenFile(<span class="string">&quot;file_not_exist.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (result != SUCCESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error code: %d\n&quot;</span>, result);</span><br><span class="line">        <span class="keyword">switch</span> (result) <span class="comment">//这里switch无意义，只是为了演示</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_INVALID_ARGUMENT:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Invalid argument.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_UNKNOWN:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Unknown error.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;An unexpected error occurred.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
 ]]></content>
       <categories>
         <category>C/C++</category>
@@ -455,6 +434,27 @@
       </categories>
   </entry>
   <entry>
+    <title>C语言-预处理器</title>
+    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux系统文件目录</title>
     <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<p><img  
@@ -558,6 +558,52 @@
 <p>远程连接Termux</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh [用户名]@[IP地址] -p [端口号]</span><br></pre></td></tr></table></figure></div>
 
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WSL安装conda</title>
+    <url>/2025/07/01/WSL%E5%AE%89%E8%A3%85conda/</url>
+    <content><![CDATA[<h3 id="1，安装conda"><a href="#1，安装conda" class="headerlink" title="1，安装conda"></a>1，安装conda</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B322C59CB-EE95-42FA-9701-304FFDA03F64%7D.png"
+                      alt="{322C59CB-EE95-42FA-9701-304FFDA03F64}"
+                ></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#赋予其可执行权限</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 777 -R *</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#执行安装脚本</span></span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<p>出现以下字样代表安装成功</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B75C2A05B-582F-4F2A-A064-3627C1881DC5%7D.png"
+                      alt="{75C2A05B-582F-4F2A-A064-3627C1881DC5}"
+                ></p>
+<h3 id="2，配置环境变量"><a href="#2，配置环境变量" class="headerlink" title="2，配置环境变量"></a>2，配置环境变量</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+
+<p>在最下面一行加入这句话：</p>
+<p><code>export PATH=&quot;/home/[你的用户名]/miniconda3/bin:$PATH&quot;</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7BDF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA%7D.png"
+                      alt="{DF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA}"
+                ></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#更新环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+
+<p>大功告成</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B65D98F37-0B1F-4828-8F65-AC37D31A44B9%7D.png"
+                      alt="{65D98F37-0B1F-4828-8F65-AC37D31A44B9}"
+                ></p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -709,52 +755,6 @@
 ]]></content>
       <categories>
         <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>WSL安装conda</title>
-    <url>/2025/07/01/WSL%E5%AE%89%E8%A3%85conda/</url>
-    <content><![CDATA[<h3 id="1，安装conda"><a href="#1，安装conda" class="headerlink" title="1，安装conda"></a>1，安装conda</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images{322C59CB-EE95-42FA-9701-304FFDA03F64}.png"
-                      alt="{322C59CB-EE95-42FA-9701-304FFDA03F64}"
-                ></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#赋予其可执行权限</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 777 -R *</span><br></pre></td></tr></table></figure></div>
-
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#执行安装脚本</span></span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
-
-<p>出现以下字样代表安装成功</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images{75C2A05B-582F-4F2A-A064-3627C1881DC5}.png"
-                      alt="{75C2A05B-582F-4F2A-A064-3627C1881DC5}"
-                ></p>
-<h3 id="2，配置环境变量"><a href="#2，配置环境变量" class="headerlink" title="2，配置环境变量"></a>2，配置环境变量</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>在最下面一行加入这句话：</p>
-<p><code>export PATH=&quot;/home/[你的用户名]/miniconda3/bin:$PATH&quot;</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images{DF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA}.png"
-                      alt="{DF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA}"
-                ></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#更新环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>大功告成</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="E:\🐔de档案\博客\yangyilong2004\source\images{65D98F37-0B1F-4828-8F65-AC37D31A44B9}.png"
-                      alt="{65D98F37-0B1F-4828-8F65-AC37D31A44B9}"
-                ></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
       </categories>
   </entry>
   <entry>
