@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言-位域</title>
-    <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
-    <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>位域定义在结构体中，可以指定每个成员占用的<strong>比特位数</strong>。例如：</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> a : <span class="number">3</span>; <span class="comment">// a 占用 3 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> b : <span class="number">5</span>; <span class="comment">// b 占用 5 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> c : <span class="number">1</span>; <span class="comment">// c 占用 1 位</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
-
-<p>在上面的例子中：</p>
-<ul>
-<li><code>a</code> 占 3 位，可以表示的值范围是 0 到 7（2的3次方，下面的例子依此类推）</li>
-<li><code>b</code> 占 5 位，可以表示的值范围是 0 到 31（2的5次方）</li>
-<li><code>c</code> 占 1 位，可以表示的值范围是 0 或 1（2的1次方）</li>
-</ul>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><strong>节省内存</strong>：相比普通整型，位域只用<strong>指定的位数</strong>来存储，<strong>避免浪费空间</strong>。</p>
-<p><strong>操作硬件寄存器</strong>：位域允许直接访问和修改某些位，非常适合底层硬件开发。</p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag1 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag2 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> mode : <span class="number">3</span>;  <span class="comment">// 占 3 位</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> <span class="title">f</span> =</span> &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">5</span>&#125;; <span class="comment">// 初始化位域</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;flag1: %u, flag2: %u, mode: %u\n&quot;</span>, f.flag1, f.flag2, f.mode);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-getchar()函数</title>
     <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-getchar()%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p><code>getchar()</code> 函数是 C 标准库中的一个简单输入函数，用于从标准输入（通常是键盘）读取<strong>一个字符</strong>。</p>
@@ -122,26 +100,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-基础语法</title>
-    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-冒泡排序法</title>
-    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言-存储类</title>
     <url>/2024/10/17/C%E8%AF%AD%E8%A8%80-%E5%AD%98%E5%82%A8%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p><strong>auto</strong> 存储类是所有局部变量默认的存储类。</p>
@@ -161,9 +119,21 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-枚举</title>
-    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+    <title>C语言-位域</title>
+    <url>/2024/11/12/C%E8%AF%AD%E8%A8%80-%E4%BD%8D%E5%9F%9F/</url>
+    <content><![CDATA[<h1 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h1><p>在 C 语言中，<strong>位域</strong>（Bit Fields）是一种<strong>结构体成员</strong>，用于精确控制数据在内存中的位数，通常用于节省存储空间或直接操作位级数据。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>位域定义在结构体中，可以指定每个成员占用的<strong>比特位数</strong>。例如：</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> a : <span class="number">3</span>; <span class="comment">// a 占用 3 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> b : <span class="number">5</span>; <span class="comment">// b 占用 5 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> c : <span class="number">1</span>; <span class="comment">// c 占用 1 位</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>在上面的例子中：</p>
+<ul>
+<li><code>a</code> 占 3 位，可以表示的值范围是 0 到 7（2的3次方，下面的例子依此类推）</li>
+<li><code>b</code> 占 5 位，可以表示的值范围是 0 到 31（2的5次方）</li>
+<li><code>c</code> 占 1 位，可以表示的值范围是 0 或 1（2的1次方）</li>
+</ul>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p><strong>节省内存</strong>：相比普通整型，位域只用<strong>指定的位数</strong>来存储，<strong>避免浪费空间</strong>。</p>
+<p><strong>操作硬件寄存器</strong>：位域允许直接访问和修改某些位，非常适合底层硬件开发。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag1 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> flag2 : <span class="number">1</span>; <span class="comment">// 占 1 位</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> mode : <span class="number">3</span>;  <span class="comment">// 占 3 位</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Flags</span> <span class="title">f</span> =</span> &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">5</span>&#125;; <span class="comment">// 初始化位域</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;flag1: %u, flag2: %u, mode: %u\n&quot;</span>, f.flag1, f.flag2, f.mode);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <categories>
@@ -171,21 +141,9 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-错误处理代码实例</title>
-    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SUCCESS = <span class="number">0</span>,</span><br><span class="line">    ERROR_FILE_NOT_FOUND,</span><br><span class="line">    ERROR_INVALID_ARGUMENT,</span><br><span class="line">    ERROR_UNKNOWN</span><br><span class="line">&#125; ErrorCode;</span><br><span class="line"></span><br><span class="line">ErrorCode <span class="title function_">OpenFile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span></span><br><span class="line">&#123;</span><br><span class="line">    errno = <span class="number">0</span>; </span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error: %s\n&quot;</span>, strerror(errno));</span><br><span class="line">        <span class="keyword">return</span> ERROR_FILE_NOT_FOUND;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    ErrorCode result = OpenFile(<span class="string">&quot;file_not_exist.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (result != SUCCESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error code: %d\n&quot;</span>, result);</span><br><span class="line">        <span class="keyword">switch</span> (result) <span class="comment">//这里switch无意义，只是为了演示</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_INVALID_ARGUMENT:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Invalid argument.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_UNKNOWN:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Unknown error.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;An unexpected error occurred.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C语言-递归函数的应用</title>
-    <url>/2024/11/23/C%E8%AF%AD%E8%A8%80-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="数的阶乘"><a href="#数的阶乘" class="headerlink" title="数的阶乘"></a>数的阶乘</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">double</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( n==<span class="number">0</span> || n==<span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number n\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">double</span> result = factorial(n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the result is: %lf\n&quot;</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">fibonaci</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> fibonaci(i<span class="number">-1</span>) + fibonaci(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span>  <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;%d\t\n&quot;</span>, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+    <title>C语言-冒泡排序法</title>
+    <url>/2024/12/05/C%E8%AF%AD%E8%A8%80-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">22</span>, <span class="number">34</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">82</span>, <span class="number">55</span>, <span class="number">89</span>, <span class="number">50</span>, <span class="number">37</span>, <span class="number">5</span>, <span class="number">64</span>, <span class="number">35</span>, <span class="number">9</span>, <span class="number">70</span> &#125;;</span><br><span class="line">    <span class="type">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);  <span class="comment">// 计算数组长度</span></span><br><span class="line"> </span><br><span class="line">    bubble_sort(arr, len);  <span class="comment">// 调用冒泡排序函数</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 打印排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 冒泡排序函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="comment">// 交换元素位置</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="type">int</span> temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
       <categories>
@@ -236,6 +194,57 @@
 </tbody></table>
 <p>如果处理的是二进制文件，则需使用下面的访问模式来取代上面的访问模式：</p>
 <div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;rb&quot;</span>, <span class="string">&quot;wb&quot;</span>, <span class="string">&quot;ab&quot;</span>, <span class="string">&quot;rb+&quot;</span>, <span class="string">&quot;r+b&quot;</span>, <span class="string">&quot;wb+&quot;</span>, <span class="string">&quot;w+b&quot;</span>, <span class="string">&quot;ab+&quot;</span>, <span class="string">&quot;a+b&quot;</span></span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-基础语法</title>
+    <url>/2024/10/16/C%E8%AF%AD%E8%A8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi 3.1415926 <span class="comment">// 宏定义，虽然未使用</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>; <span class="comment">// 函数声明，具体函数在main函数后</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;welcome to learn C!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> num1, num2, num3;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input two numbers\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;num1, &amp;num2); <span class="comment">//输入两个整数时记得用“空格”相隔</span></span><br><span class="line"></span><br><span class="line">    num3 = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the third number is:%d\n&quot;</span>, num3);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (num1 &gt; num2) <span class="comment">//比较大小</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is greater than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num1 &lt; num2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is less than num2\n&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;num1 is equal to num2\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;adding num1 and num2...\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;result:%d\n&quot;</span>, add(num1, num2)); <span class="comment">//调用add函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (a + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是多行注释</span></span><br><span class="line"><span class="comment">它可以跨越多行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">标识符是程序中变量、函数、数组等的名字。标识符由字母（大写或小写）、数字和下划线组成，但第一个字符必须是字母或下划线，不能是数字。</span></span><br><span class="line"><span class="comment">标识符区分大小写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">C语言中的字符串字面量是由双引号括起来的字符序列，例如：&quot;Hello, World!&quot;。</span></span><br><span class="line"><span class="comment">在C语言中，字符串字面量实际上是字符数组，以空字符&#x27;\0&#x27;结尾。</span></span><br><span class="line"><span class="comment">例如，字符串&quot;Hello, World!&quot;实际上包含13个字符（包括空格和标点符号），加上一个空字符&#x27;\0&#x27;，共14个字符。</span></span><br><span class="line"><span class="comment">char string[]=&quot;welcome to learn c!&quot;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-枚举</title>
+    <url>/2024/11/18/C%E8%AF%AD%E8%A8%80-%E6%9E%9A%E4%B8%BE/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    zero=<span class="number">0</span>, one, two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    number = one;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fun2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Number</span> <span class="title">number</span>;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number!\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the number is %d:\n&quot;</span>,number);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    fun1();</span><br><span class="line">    fun2();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-错误处理代码实例</title>
+    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SUCCESS = <span class="number">0</span>,</span><br><span class="line">    ERROR_FILE_NOT_FOUND,</span><br><span class="line">    ERROR_INVALID_ARGUMENT,</span><br><span class="line">    ERROR_UNKNOWN</span><br><span class="line">&#125; ErrorCode;</span><br><span class="line"></span><br><span class="line">ErrorCode <span class="title function_">OpenFile</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename)</span></span><br><span class="line">&#123;</span><br><span class="line">    errno = <span class="number">0</span>; </span><br><span class="line">    FILE *file = fopen(filename, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error: %s\n&quot;</span>, strerror(errno));</span><br><span class="line">        <span class="keyword">return</span> ERROR_FILE_NOT_FOUND;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> </span><br><span class="line">&#123;</span><br><span class="line">    ErrorCode result = OpenFile(<span class="string">&quot;file_not_exist.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (result != SUCCESS)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error code: %d\n&quot;</span>, result);</span><br><span class="line">        <span class="keyword">switch</span> (result) <span class="comment">//这里switch无意义，只是为了演示</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;File not found.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_INVALID_ARGUMENT:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Invalid argument.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ERROR_UNKNOWN:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Unknown error.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;An unexpected error occurred.\n&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C语言-预处理器</title>
+    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
+
+<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
 ]]></content>
       <categories>
         <category>C/C++</category>
@@ -313,407 +322,15 @@
       </categories>
   </entry>
   <entry>
-    <title>C语言-预处理器</title>
-    <url>/2024/11/13/C%E8%AF%AD%E8%A8%80-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="预处理器实例"><a href="#预处理器实例" class="headerlink" title="预处理器实例"></a>预处理器实例</h2><p>分析下面的实例来理解不同的指令。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_ARRAY_LENGTH 20</span></span><br></pre></td></tr></table></figure></div>
+    <title>C语言-递归函数的应用</title>
+    <url>/2024/11/23/C%E8%AF%AD%E8%A8%80-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="数的阶乘"><a href="#数的阶乘" class="headerlink" title="数的阶乘"></a>数的阶乘</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">double</span> <span class="title function_">factorial</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>( n==<span class="number">0</span> || n==<span class="number">1</span> )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input a number n\n&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">double</span> result = factorial(n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;the result is: %lf\n&quot;</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>这个指令告诉 CPP 把所有的 MAX_ARRAY_LENGTH 定义为 20。使用 <em>#define</em> 定义常量来增强可读性。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;myheader.h&quot;</span></span></span><br></pre></td></tr></table></figure></div>
+<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">fibonaci</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> fibonaci(i<span class="number">-1</span>) + fibonaci(i<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span>  <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">&quot;%d\t\n&quot;</span>, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>这些指令告诉 CPP 从<strong>系统库</strong>中获取 stdio.h，并添加文本到当前的源文件中。下一行告诉 CPP 从本地目录中获取 <strong>myheader.h</strong>，并添加内容到当前的源文件中。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">undef</span>  FILE_SIZE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FILE_SIZE 42</span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 取消已定义的 FILE_SIZE，并定义它为 42。</p>
-<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MESSAGE</span></span><br><span class="line">   <span class="meta">#<span class="keyword">define</span> MESSAGE <span class="string">&quot;You wish!&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
-
-<p>这个指令告诉 CPP 只有当 MESSAGE 未定义时，才定义 MESSAGE。</p>
 ]]></content>
       <categories>
         <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux系统启动流程</title>
-    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p><strong>Linux系统的启动分为五个流程：</strong></p>
-<ol>
-<li><strong>内核引导</strong></li>
-<li><strong>运行init</strong></li>
-<li><strong>系统初始化</strong></li>
-<li><strong>建立终端</strong></li>
-<li><strong>用户登录</strong></li>
-</ol>
-<h2 id="一，内核引导"><a href="#一，内核引导" class="headerlink" title="一，内核引导"></a>一，内核引导</h2><p>当计算机打开电源后，首先是<strong>BIOS开机自检</strong>，按照<strong>BIOS中设置的启动设备（通常是硬盘）</strong>来启动。</p>
-<p>操作系统接管硬件以后，首先读入 <strong>&#x2F;boot</strong> 目录下的内核文件。</p>
-<h2 id="二，运行init"><a href="#二，运行init" class="headerlink" title="二，运行init"></a>二，运行init</h2><p><strong>init 进程</strong>是系统<strong>所有进程的起点</strong>，你可以把它比拟成系统<strong>所有进程的老祖宗</strong>，没有这个进程，系统中任何进程都不会启动。</p>
-<p><strong>init程序类型又分为以下三种：</strong></p>
-<ul>
-<li><p><strong>SysV:</strong> init, CentOS 5之前, 配置文件： &#x2F;etc&#x2F;inittab。</p>
-</li>
-<li><p><strong>Upstart:</strong> init, CentOS 6, 配置文件： &#x2F;etc&#x2F;inittab, &#x2F;etc&#x2F;init&#x2F;*.conf。</p>
-</li>
-<li><p><strong>Systemd：</strong> systemd, CentOS 7,配置文件： &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system、 &#x2F;etc&#x2F;systemd&#x2F;system。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081703.png"
-                      alt="img"
-                ></p>
-</li>
-</ul>
-<hr>
-<h3 id="1，如何验证自己系统的init程序类型？"><a href="#1，如何验证自己系统的init程序类型？" class="headerlink" title="1，如何验证自己系统的init程序类型？"></a>1，如何验证自己系统的init程序类型？</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ps -p 1 -o <span class="built_in">comm</span>=</span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>若输出 <code>systemd</code>，则系统使用 systemd。</li>
-<li>若输出 <code>init</code>，可能是 SysV init 或 Upstart（旧版本）。</li>
-</ul>
-<h3 id="2，运行级别"><a href="#2，运行级别" class="headerlink" title="2，运行级别"></a>2，运行级别</h3><p>许多程序需要开机启动。它们在<strong>Windows叫做”服务”（service）</strong>，在<strong>Linux就叫做”守护进程”（daemon）</strong>。</p>
-<p>init进程的一大任务，就是去<strong>运行这些开机启动的程序</strong>。</p>
-<p>但是，<strong>不同的场合需要启动不同的程序</strong>，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
-<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做”运行级别”（runlevel）。也就是说，<strong>启动时根据”运行级别”，确定要运行哪些程序。</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081704.png"
-                      alt="img"
-                ></p>
-<table>
-<thead>
-<tr>
-<th align="center">运行级别</th>
-<th align="left">名称</th>
-<th align="left">用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>0</strong></td>
-<td align="left">关机模式</td>
-<td align="left">关闭所有服务并安全关机（<code>init 0</code> 或 <code>poweroff</code>）。</td>
-</tr>
-<tr>
-<td align="center"><strong>1</strong></td>
-<td align="left">单用户模式</td>
-<td align="left">救援模式，仅启动最小服务（无网络、多用户），用于系统修复（<code>init 1</code>）。</td>
-</tr>
-<tr>
-<td align="center"><strong>2</strong></td>
-<td align="left">多用户模式（无网络）</td>
-<td align="left">支持多用户登录，但<strong>不启用网络服务</strong>（部分旧发行版使用，现已少见）。</td>
-</tr>
-<tr>
-<td align="center"><strong>3</strong></td>
-<td align="left">多用户文本模式</td>
-<td align="left">完整的多用户模式，启用网络服务，但<strong>无图形界面</strong>（服务器常用）。</td>
-</tr>
-<tr>
-<td align="center"><strong>4</strong></td>
-<td align="left">未定义</td>
-<td align="left">保留级别，默认与级别 3 相同，可自定义用途。</td>
-</tr>
-<tr>
-<td align="center"><strong>5</strong></td>
-<td align="left">图形界面模式</td>
-<td align="left">与级别 3 类似，但<strong>启用图形界面</strong>（桌面版默认级别）。</td>
-</tr>
-<tr>
-<td align="center"><strong>6</strong></td>
-<td align="left">重启模式</td>
-<td align="left">关闭所有服务并重启系统（<code>init 6</code> 或 <code>reboot</code>）。</td>
-</tr>
-</tbody></table>
-<h3 id="3，查看系统默认的运行级别？"><a href="#3，查看系统默认的运行级别？" class="headerlink" title="3，查看系统默认的运行级别？"></a>3，查看系统默认的运行级别？</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl get-default</span><br></pre></td></tr></table></figure></div>
-
-<h2 id="三，系统初始化"><a href="#三，系统初始化" class="headerlink" title="三，系统初始化"></a>三，系统初始化</h2><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081705.png"
-                      alt="img"
-                ></p>
-<h2 id="四，建立终端"><a href="#四，建立终端" class="headerlink" title="四，建立终端"></a>四，建立终端</h2><p>rc执行完毕后，返回init。这时基本系统环境已经设置好了，各种守护进程也已经启动了。</p>
-<p>init接下来会打开6个终端，以便用户登录系统。在inittab中的以下6行就是定义了6个终端：</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">1:2345:respawn:/sbin/mingetty tty1</span><br><span class="line">2:2345:respawn:/sbin/mingetty tty2</span><br><span class="line">3:2345:respawn:/sbin/mingetty tty3</span><br><span class="line">4:2345:respawn:/sbin/mingetty tty4</span><br><span class="line">5:2345:respawn:/sbin/mingetty tty5</span><br><span class="line">6:2345:respawn:/sbin/mingetty tty6</span><br></pre></td></tr></table></figure></div>
-
-<p>从上面可以看出在2、3、4、5的运行级别中都将以respawn方式运行mingetty程序，mingetty程序能打开终端、设置模式。</p>
-<p>同时它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份。</p>
-<h2 id="五，用户登录"><a href="#五，用户登录" class="headerlink" title="五，用户登录"></a>五，用户登录</h2><p>一般来说，用户的登录方式有三种：</p>
-<ul>
-<li>（1）命令行登录</li>
-<li>（2）ssh登录</li>
-<li>（3）图形界面登录</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081706.png"
-                      alt="img"
-                ></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux系统文件目录</title>
-    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg"
-                      alt="img"
-                ></p>
-<ul>
-<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
-</li>
-<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
-</li>
-<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
-</li>
-<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
-</li>
-<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
-</li>
-<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
-</li>
-<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
-</li>
-<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
-</li>
-<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
-</li>
-<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
-</li>
-<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种<code>伪文件系统</code>（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
-</li>
-<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
-</li>
-<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
-</li>
-<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
-</li>
-<li><p><strong>&#x2F;sys</strong>：</p>
-<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
-<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
-<p>该文件系统是内核设备树的一个直观反映。</p>
-<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
-</li>
-<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
-</li>
-<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix system resources(unix 系统资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
-</li>
-<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
-</li>
-<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
-</li>
-<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Termux之SSH服务配置</title>
-    <url>/2024/12/13/TermuxSSH%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>首先查看当前用户名</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/12/13/ihfe3joKCG872Bk.png"
-                      alt="image.png"
-                ></p>
-<p>为当前用户设置密码（输入密码时不会显示你输入的密码）</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/12/13/WoFk9yuwXvP1S3M.png"
-                      alt="image.png"
-                ></p>
-<p>安装OpenSSH服务</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2024/12/13/VOAs8XR3JvtumlD.png"
-                      alt="image.png"
-                ></p>
-<p>更改SSH端口（默认为8022，不修改也可以！）</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd -p 2222（此方法重启后失效）</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>启动SSH服务</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p>远程连接Termux</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh [用户名]@[IP地址] -p [端口号]</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>一加保姆级线刷教程</title>
-    <url>/2025/07/05/%E4%B8%80%E5%8A%A0%E7%BA%BF%E5%88%B7%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="一，下载全量包"><a href="#一，下载全量包" class="headerlink" title="一，下载全量包"></a>一，下载全量包</h3><p>目前推荐两种方式下载全量包</p>
-<p><strong>1，用手机微信扫码，通过小程序下载对应机型的全量包</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2025/07/05/RCP689WXkqOVtYD.png"
-                      alt="{A3E9AA40-1537-42D6-85B8-C35069D6126F}"
-                ></p>
-<p><strong>2，大侠阿木ROM网址：<a class="link"   href="https://yun.daxiaamu.com/OnePlus_Roms/" >https://yun.daxiaamu.com/OnePlus_Roms/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></strong></p>
-<p><strong>3，有同学反映全量包网址404，不妨试试以下方法</strong></p>
-<p><em>安卓下载器</em>：<a class="link"   href="https://ycbk.lanzoue.com/i1ldZ2rspvaj" >https://ycbk.lanzoue.com/i1ldZ2rspvaj<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><em>Windows下载器</em>：<a class="link"   href="https://ycbk.lanzoue.com/iUpbb2rspdqh" >https://ycbk.lanzoue.com/iUpbb2rspdqh<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><strong>注意！Windows下载器需要把用户代理设置为66666，如图所示！</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2025/07/05/wTgbMGKxF1smzXl.png"
-                      alt="image-20250705165530983"
-                ></p>
-<h3 id="二，下载刷机工具"><a href="#二，下载刷机工具" class="headerlink" title="二，下载刷机工具"></a>二，下载刷机工具</h3><p>这里推荐酷安<strong>可怜太可怜</strong>佬的<strong>Lianbox</strong></p>
-<p>刷机工具下载网址：<strong><a class="link"   href="https://yun.lian86.top/" >https://yun.lian86.top<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></strong></p>
-<p>网站文件夹<strong>访问密码</strong>（有的有密码，有的没密码）：</p>
-<div class="code-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">文件夹twrp<span class="emphasis">_root 密码roottwrptoolbylian666</span></span><br><span class="line"><span class="emphasis">文件夹YCBOX 密码 coolapkliantool666</span></span><br><span class="line"><span class="emphasis">文件夹Lian_</span>Payload<span class="emphasis">_Flash_</span>Tool 密码 coolapkliantool666</span><br></pre></td></tr></table></figure></div>
-
-<p><strong>lianbox工具箱密码：lianbox123</strong></p>
-<h3 id="三，手机打开USB调试"><a href="#三，手机打开USB调试" class="headerlink" title="三，手机打开USB调试"></a>三，手机打开USB调试</h3><p><strong>1，连续点击5次这里</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2025/07/05/oYwjfzrkNeZOyi6.jpg"
-                      alt="940a25e208904f8e0178adae689bbaea"
-                ></p>
-<p><strong>2，打开USB调试</strong></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2025/07/05/pPSHyN9scGuXIKT.jpg"
-                      alt="3287ea29747d45850ba5b889afd30b4e"
-                ></p>
-<h3 id="四，刷机"><a href="#四，刷机" class="headerlink" title="四，刷机"></a>四，刷机</h3><p>首先打开工具箱，输入密码<strong>lianbox123</strong>，手机插上电脑</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://s2.loli.net/2025/07/05/jwMSomRiTcb47Uk.png"
-                      alt="{29943770-49CE-4E65-8B8E-DD050910FD11}"
-                ></p>
-<p>按1即可，然后手动选择<strong>全量包解压后所在的文件夹</strong>，全自动操作！！！</p>
-<p>途中手机会进入recovery，让你手动选择语言等等，<strong>切记不要动手机</strong>！！！</p>
-<p>刷机结束后，工具箱会提示你的！</p>
-]]></content>
-      <categories>
-        <category>安卓</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>WSL安装conda</title>
-    <url>/2025/07/01/WSL%E5%AE%89%E8%A3%85conda/</url>
-    <content><![CDATA[<h3 id="1，安装conda"><a href="#1，安装conda" class="headerlink" title="1，安装conda"></a>1，安装conda</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
-
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%7B322C59CB-EE95-42FA-9701-304FFDA03F64%7D.png"
-                      alt="{322C59CB-EE95-42FA-9701-304FFDA03F64}"
-                ></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#赋予其可执行权限</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 777 -R *</span><br></pre></td></tr></table></figure></div>
-
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#执行安装脚本</span></span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
-
-<p>出现以下字样代表安装成功</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%7B75C2A05B-582F-4F2A-A064-3627C1881DC5%7D.png"
-                      alt="{75C2A05B-582F-4F2A-A064-3627C1881DC5}"
-                ></p>
-<h3 id="2，配置环境变量"><a href="#2，配置环境变量" class="headerlink" title="2，配置环境变量"></a>2，配置环境变量</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>在最下面一行加入这句话：</p>
-<p><code>export PATH=&quot;/home/[你的用户名]/miniconda3/bin:$PATH&quot;</code></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%7BDF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA%7D.png"
-                      alt="{DF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA}"
-                ></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#更新环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></div>
-
-<p>大功告成</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/%7B65D98F37-0B1F-4828-8F65-AC37D31A44B9%7D.png"
-                      alt="{65D98F37-0B1F-4828-8F65-AC37D31A44B9}"
-                ></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>最新版Ubuntu安装MySQL教程</title>
-    <url>/2024/11/16/%E6%9C%80%E6%96%B0%E7%89%88Ubuntu%E5%AE%89%E8%A3%85MySQL%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>进入命令行，使用下面的命令<strong>查看当前Ubuntu的版本：</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Ubuntu 24.04.1 LTS&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;Ubuntu&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;24.04&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;24.04.1 LTS (Noble Numbat)&quot;</span></span><br><span class="line">VERSION_CODENAME=noble</span><br><span class="line">ID=ubuntu</span><br><span class="line">ID_LIKE=debian</span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.ubuntu.com/&quot;</span></span><br><span class="line">SUPPORT_URL=<span class="string">&quot;https://help.ubuntu.com/&quot;</span></span><br><span class="line">BUG_REPORT_URL=<span class="string">&quot;https://bugs.launchpad.net/ubuntu/&quot;</span></span><br><span class="line">PRIVACY_POLICY_URL=<span class="string">&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;</span></span><br><span class="line">UBUNTU_CODENAME=noble</span><br><span class="line">LOGO=ubuntu-logo</span><br></pre></td></tr></table></figure></div>
-
-<p>我的是24.04版本，版本比较新</p>
-<p><strong>切换到root用户</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="comment">#然后记得输入密码，密码在输入过程中不会显示</span></span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>更新一下软件：</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt update</span><br><span class="line">Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]</span><br><span class="line">Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]</span><br><span class="line">Get:3 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [15.3 kB]</span><br><span class="line">Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]</span><br><span class="line">Get:5 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [586 kB]</span><br><span class="line">Get:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]</span><br><span class="line">Get:7 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [725 kB]</span><br><span class="line">Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]    </span><br><span class="line">Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [548 kB]</span><br><span class="line">Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]          </span><br><span class="line">Get:11 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]                                                                          </span><br><span class="line">Get:12 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]                                                                          </span><br><span class="line">Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [18.4 kB]                                                                 </span><br><span class="line">Get:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [548 kB]                                                                  </span><br><span class="line">Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [933 kB]                                                                    </span><br><span class="line">Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [812 kB]                                                                        </span><br><span class="line">Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [11.8 kB]                                                                 </span><br><span class="line">Fetched 26.4 MB <span class="keyword">in</span> 8s (3393 kB/s)                                                                                                                         </span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree... Done</span><br><span class="line">Reading state information... Done</span><br><span class="line">8 packages can be upgraded. Run <span class="string">&#x27;apt list --upgradable&#x27;</span> to see them.</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>搜索可以使用的安装包：</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt search sql-server</span><br><span class="line">Sorting... Done</span><br><span class="line">Full Text Search... Done</span><br><span class="line">default-mysql-server/noble 1.1.0build1 all</span><br><span class="line">  MySQL database server binaries and system database setup (metapackage)</span><br><span class="line"></span><br><span class="line">default-mysql-server-core/noble 1.1.0build1 all</span><br><span class="line">  MySQL database server binaries (metapackage)</span><br><span class="line"></span><br><span class="line">mysql-server/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 all</span><br><span class="line">  MySQL database server (metapackage depending on the latest version)</span><br><span class="line"></span><br><span class="line">mysql-server-8.0/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 amd64</span><br><span class="line">  MySQL database server binaries and system database setup</span><br><span class="line"></span><br><span class="line">mysql-server-core-8.0/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 amd64</span><br><span class="line">  MySQL database server binaries</span><br><span class="line"></span><br><span class="line">postgresql-server-dev-16/noble-updates 16.4-0ubuntu0.24.04.2 amd64</span><br><span class="line">  development files <span class="keyword">for</span> PostgreSQL 16 server-side programming</span><br><span class="line"></span><br><span class="line">postgresql-server-dev-all/noble-updates 257build1.1 amd64</span><br><span class="line">  extension build tool <span class="keyword">for</span> multiple PostgreSQL versions</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>安装MySQL-server</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt install -y mysql-server</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>启动MySQL</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下面命令二选一即可（两种方案都可以）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方案一</span></span><br><span class="line">root@1bf7034a513e:/# service mysql start</span><br><span class="line"> * Starting MySQL database server mysqld                                                                     </span><br><span class="line"> </span><br><span class="line"><span class="comment">#方案二</span></span><br><span class="line">root@1bf7034a513e:/# systemctl start mysql</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>设置MySQL开机自启动</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# systemctl <span class="built_in">enable</span> mysql</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>查看MySQL的运行状态</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#以下两种方案均可，二选一</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方案一</span></span><br><span class="line">root@1bf7034a513e:/# service mysql status</span><br><span class="line"> * /usr/bin/mysqladmin  Ver 8.0.40-0ubuntu0.24.04.1 <span class="keyword">for</span> Linux on x86_64 ((Ubuntu))</span><br><span class="line">Copyright (c) 2000, 2024, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Server version          8.0.40-0ubuntu0.24.04.1</span><br><span class="line">Protocol version        10</span><br><span class="line">Connection              Localhost via UNIX socket</span><br><span class="line">UNIX socket             /var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:                 5 min 10 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 12  Slow queries: 0  Opens: 119  Flush tables: 3  Open tables: 38  Queries per second avg: 0.038</span><br><span class="line"></span><br><span class="line"><span class="comment">#方案二</span></span><br><span class="line">root@1bf7034a513e:/# systemctl status mysql</span><br></pre></td></tr></table></figure></div>
-
-
-
-<p><strong>MySQL的一些简单配置</strong></p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录mysql-server（刚安装没有设置密码，提示输入密码时按回车即可！）</span></span><br><span class="line">root@1bf7034a513e:/# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 14</span><br><span class="line">Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2024, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置mysql-server的密码，我这里设为123456</span></span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#实现所有IP均可登录你的mysql-server</span></span><br><span class="line"><span class="comment">#首先修改/etc/mysql/mysql.conf.d/mysqld.cnf这个配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="comment">#找到bind-address这一行</span></span><br><span class="line"><span class="comment">#把127.0.0改成0.0.0.0即可！</span></span><br><span class="line"><span class="comment">#接下来再重启mysql-server</span></span><br><span class="line">root@1bf7034a513e:/# service mysql restart</span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -862,6 +479,389 @@
 ]]></content>
       <categories>
         <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux系统启动流程</title>
+    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p><strong>Linux系统的启动分为五个流程：</strong></p>
+<ol>
+<li><strong>内核引导</strong></li>
+<li><strong>运行init</strong></li>
+<li><strong>系统初始化</strong></li>
+<li><strong>建立终端</strong></li>
+<li><strong>用户登录</strong></li>
+</ol>
+<h2 id="一，内核引导"><a href="#一，内核引导" class="headerlink" title="一，内核引导"></a>一，内核引导</h2><p>当计算机打开电源后，首先是<strong>BIOS开机自检</strong>，按照<strong>BIOS中设置的启动设备（通常是硬盘）</strong>来启动。</p>
+<p>操作系统接管硬件以后，首先读入 <strong>&#x2F;boot</strong> 目录下的内核文件。</p>
+<h2 id="二，运行init"><a href="#二，运行init" class="headerlink" title="二，运行init"></a>二，运行init</h2><p><strong>init 进程</strong>是系统<strong>所有进程的起点</strong>，你可以把它比拟成系统<strong>所有进程的老祖宗</strong>，没有这个进程，系统中任何进程都不会启动。</p>
+<p><strong>init程序类型又分为以下三种：</strong></p>
+<ul>
+<li><p><strong>SysV:</strong> init, CentOS 5之前, 配置文件： &#x2F;etc&#x2F;inittab。</p>
+</li>
+<li><p><strong>Upstart:</strong> init, CentOS 6, 配置文件： &#x2F;etc&#x2F;inittab, &#x2F;etc&#x2F;init&#x2F;*.conf。</p>
+</li>
+<li><p><strong>Systemd：</strong> systemd, CentOS 7,配置文件： &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system、 &#x2F;etc&#x2F;systemd&#x2F;system。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081703.png"
+                      alt="img"
+                ></p>
+</li>
+</ul>
+<hr>
+<h3 id="1，如何验证自己系统的init程序类型？"><a href="#1，如何验证自己系统的init程序类型？" class="headerlink" title="1，如何验证自己系统的init程序类型？"></a>1，如何验证自己系统的init程序类型？</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ps -p 1 -o <span class="built_in">comm</span>=</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>若输出 <code>systemd</code>，则系统使用 systemd。</li>
+<li>若输出 <code>init</code>，可能是 SysV init 或 Upstart（旧版本）。</li>
+</ul>
+<h3 id="2，运行级别"><a href="#2，运行级别" class="headerlink" title="2，运行级别"></a>2，运行级别</h3><p>许多程序需要开机启动。它们在<strong>Windows叫做”服务”（service）</strong>，在<strong>Linux就叫做”守护进程”（daemon）</strong>。</p>
+<p>init进程的一大任务，就是去<strong>运行这些开机启动的程序</strong>。</p>
+<p>但是，<strong>不同的场合需要启动不同的程序</strong>，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
+<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做”运行级别”（runlevel）。也就是说，<strong>启动时根据”运行级别”，确定要运行哪些程序。</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081704.png"
+                      alt="img"
+                ></p>
+<table>
+<thead>
+<tr>
+<th align="center">运行级别</th>
+<th align="left">名称</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>0</strong></td>
+<td align="left">关机模式</td>
+<td align="left">关闭所有服务并安全关机（<code>init 0</code> 或 <code>poweroff</code>）。</td>
+</tr>
+<tr>
+<td align="center"><strong>1</strong></td>
+<td align="left">单用户模式</td>
+<td align="left">救援模式，仅启动最小服务（无网络、多用户），用于系统修复（<code>init 1</code>）。</td>
+</tr>
+<tr>
+<td align="center"><strong>2</strong></td>
+<td align="left">多用户模式（无网络）</td>
+<td align="left">支持多用户登录，但<strong>不启用网络服务</strong>（部分旧发行版使用，现已少见）。</td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="left">多用户文本模式</td>
+<td align="left">完整的多用户模式，启用网络服务，但<strong>无图形界面</strong>（服务器常用）。</td>
+</tr>
+<tr>
+<td align="center"><strong>4</strong></td>
+<td align="left">未定义</td>
+<td align="left">保留级别，默认与级别 3 相同，可自定义用途。</td>
+</tr>
+<tr>
+<td align="center"><strong>5</strong></td>
+<td align="left">图形界面模式</td>
+<td align="left">与级别 3 类似，但<strong>启用图形界面</strong>（桌面版默认级别）。</td>
+</tr>
+<tr>
+<td align="center"><strong>6</strong></td>
+<td align="left">重启模式</td>
+<td align="left">关闭所有服务并重启系统（<code>init 6</code> 或 <code>reboot</code>）。</td>
+</tr>
+</tbody></table>
+<h3 id="3，查看系统默认的运行级别？"><a href="#3，查看系统默认的运行级别？" class="headerlink" title="3，查看系统默认的运行级别？"></a>3，查看系统默认的运行级别？</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl get-default</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="三，系统初始化"><a href="#三，系统初始化" class="headerlink" title="三，系统初始化"></a>三，系统初始化</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081705.png"
+                      alt="img"
+                ></p>
+<h2 id="四，建立终端"><a href="#四，建立终端" class="headerlink" title="四，建立终端"></a>四，建立终端</h2><p>rc执行完毕后，返回init。这时基本系统环境已经设置好了，各种守护进程也已经启动了。</p>
+<p>init接下来会打开6个终端，以便用户登录系统。在inittab中的以下6行就是定义了6个终端：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">1:2345:respawn:/sbin/mingetty tty1</span><br><span class="line">2:2345:respawn:/sbin/mingetty tty2</span><br><span class="line">3:2345:respawn:/sbin/mingetty tty3</span><br><span class="line">4:2345:respawn:/sbin/mingetty tty4</span><br><span class="line">5:2345:respawn:/sbin/mingetty tty5</span><br><span class="line">6:2345:respawn:/sbin/mingetty tty6</span><br></pre></td></tr></table></figure></div>
+
+<p>从上面可以看出在2、3、4、5的运行级别中都将以respawn方式运行mingetty程序，mingetty程序能打开终端、设置模式。</p>
+<p>同时它会显示一个文本登录界面，这个界面就是我们经常看到的登录界面，在这个登录界面中会提示用户输入用户名，而用户输入的用户将作为参数传给login程序来验证用户的身份。</p>
+<h2 id="五，用户登录"><a href="#五，用户登录" class="headerlink" title="五，用户登录"></a>五，用户登录</h2><p>一般来说，用户的登录方式有三种：</p>
+<ul>
+<li>（1）命令行登录</li>
+<li>（2）ssh登录</li>
+<li>（3）图形界面登录</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/bg2013081706.png"
+                      alt="img"
+                ></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Termux之SSH服务配置</title>
+    <url>/2024/12/13/TermuxSSH%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>首先查看当前用户名</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/12/13/ihfe3joKCG872Bk.png"
+                      alt="image.png"
+                ></p>
+<p>为当前用户设置密码（输入密码时不会显示你输入的密码）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/12/13/WoFk9yuwXvP1S3M.png"
+                      alt="image.png"
+                ></p>
+<p>安装OpenSSH服务</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2024/12/13/VOAs8XR3JvtumlD.png"
+                      alt="image.png"
+                ></p>
+<p>更改SSH端口（默认为8022，不修改也可以！）</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd -p 2222（此方法重启后失效）</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>启动SSH服务</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>远程连接Termux</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">ssh [用户名]@[IP地址] -p [端口号]</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux系统文件目录</title>
+    <url>/2025/03/20/Linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg"
+                      alt="img"
+                ></p>
+<ul>
+<li><p><strong>&#x2F;bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的命令。</p>
+</li>
+<li><p><strong>&#x2F;boot：</strong><br>这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
+</li>
+<li><p><strong>&#x2F;dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>&#x2F;etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+</li>
+<li><p><strong>&#x2F;home</strong>：<br>用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的，如上图中的 alice、bob 和 eve。</p>
+</li>
+<li><p><strong>&#x2F;lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的动态连接共享库，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>&#x2F;lost+found</strong>：<br>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+</li>
+<li><p><strong>&#x2F;media</strong>：<br>linux 系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>&#x2F;mnt</strong>：<br>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在 &#x2F;mnt&#x2F; 上，然后进入该目录就可以查看光驱里的内容了。</p>
+</li>
+<li><p><strong>&#x2F;opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+</li>
+<li><p><strong>&#x2F;proc</strong>：<br>proc 是 Processes(进程) 的缩写，&#x2F;proc 是一种<code>伪文件系统</code>（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><strong>&#x2F;root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+</li>
+<li><p><strong>&#x2F;sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
+</li>
+<li><p><strong>&#x2F;selinux</strong>：<br> 这个目录是 Redhat&#x2F;CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+</li>
+<li><p><strong>&#x2F;srv</strong>：<br> 该目录存放一些服务启动之后需要提取的数据。</p>
+</li>
+<li><p><strong>&#x2F;sys</strong>：</p>
+<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
+<p>该文件系统是内核设备树的一个直观反映。</p>
+<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+</li>
+<li><p><strong>&#x2F;tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
+</li>
+<li><p><strong>&#x2F;usr</strong>：<br> usr 是 unix system resources(unix 系统资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;bin：</strong><br>系统用户使用的应用程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;sbin：</strong><br>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+</li>
+<li><p><strong>&#x2F;usr&#x2F;src：</strong><br>内核源代码默认的放置目录。</p>
+</li>
+<li><p><strong>&#x2F;var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+</li>
+<li><p><strong>&#x2F;run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 &#x2F;var&#x2F;run 目录，应该让它指向 run。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WSL安装conda</title>
+    <url>/2025/07/01/WSL%E5%AE%89%E8%A3%85conda/</url>
+    <content><![CDATA[<h3 id="1，安装conda"><a href="#1，安装conda" class="headerlink" title="1，安装conda"></a>1，安装conda</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B322C59CB-EE95-42FA-9701-304FFDA03F64%7D.png"
+                      alt="{322C59CB-EE95-42FA-9701-304FFDA03F64}"
+                ></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#赋予其可执行权限</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 777 -R *</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#执行安装脚本</span></span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<p>出现以下字样代表安装成功</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B75C2A05B-582F-4F2A-A064-3627C1881DC5%7D.png"
+                      alt="{75C2A05B-582F-4F2A-A064-3627C1881DC5}"
+                ></p>
+<h3 id="2，配置环境变量"><a href="#2，配置环境变量" class="headerlink" title="2，配置环境变量"></a>2，配置环境变量</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+
+<p>在最下面一行加入这句话：</p>
+<p><code>export PATH=&quot;/home/[你的用户名]/miniconda3/bin:$PATH&quot;</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7BDF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA%7D.png"
+                      alt="{DF0266F7-6C7A-49D2-B0A7-F25F9FA07DEA}"
+                ></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#更新环境变量</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+
+<p>大功告成</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%7B65D98F37-0B1F-4828-8F65-AC37D31A44B9%7D.png"
+                      alt="{65D98F37-0B1F-4828-8F65-AC37D31A44B9}"
+                ></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>一加保姆级线刷教程</title>
+    <url>/2025/07/05/%E4%B8%80%E5%8A%A0%E7%BA%BF%E5%88%B7%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="一，下载全量包"><a href="#一，下载全量包" class="headerlink" title="一，下载全量包"></a>一，下载全量包</h3><p>目前推荐两种方式下载全量包</p>
+<p><strong>1，用手机微信扫码，通过小程序下载对应机型的全量包</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2025/07/05/RCP689WXkqOVtYD.png"
+                      alt="{A3E9AA40-1537-42D6-85B8-C35069D6126F}"
+                ></p>
+<p><strong>2，大侠阿木ROM网址：<a class="link"   href="https://yun.daxiaamu.com/OnePlus_Roms/" >https://yun.daxiaamu.com/OnePlus_Roms/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></strong></p>
+<p><strong>3，有同学反映全量包网址404，不妨试试以下方法</strong></p>
+<p><em>安卓下载器</em>：<a class="link"   href="https://ycbk.lanzoue.com/i1ldZ2rspvaj" >https://ycbk.lanzoue.com/i1ldZ2rspvaj<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><em>Windows下载器</em>：<a class="link"   href="https://ycbk.lanzoue.com/iUpbb2rspdqh" >https://ycbk.lanzoue.com/iUpbb2rspdqh<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><strong>注意！Windows下载器需要把用户代理设置为66666，如图所示！</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2025/07/05/wTgbMGKxF1smzXl.png"
+                      alt="image-20250705165530983"
+                ></p>
+<h3 id="二，下载刷机工具"><a href="#二，下载刷机工具" class="headerlink" title="二，下载刷机工具"></a>二，下载刷机工具</h3><p>这里推荐酷安<strong>可怜太可怜</strong>佬的<strong>Lianbox</strong></p>
+<p>刷机工具下载网址：<strong><a class="link"   href="https://yun.lian86.top/" >https://yun.lian86.top<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></strong></p>
+<p>网站文件夹<strong>访问密码</strong>（有的有密码，有的没密码）：</p>
+<div class="code-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="code"><pre><span class="line">文件夹twrp<span class="emphasis">_root 密码roottwrptoolbylian666</span></span><br><span class="line"><span class="emphasis">文件夹YCBOX 密码 coolapkliantool666</span></span><br><span class="line"><span class="emphasis">文件夹Lian_</span>Payload<span class="emphasis">_Flash_</span>Tool 密码 coolapkliantool666</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>lianbox工具箱密码：lianbox123</strong></p>
+<h3 id="三，手机打开USB调试"><a href="#三，手机打开USB调试" class="headerlink" title="三，手机打开USB调试"></a>三，手机打开USB调试</h3><p><strong>1，连续点击5次这里</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2025/07/05/oYwjfzrkNeZOyi6.jpg"
+                      alt="940a25e208904f8e0178adae689bbaea"
+                ></p>
+<p><strong>2，打开USB调试</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2025/07/05/pPSHyN9scGuXIKT.jpg"
+                      alt="3287ea29747d45850ba5b889afd30b4e"
+                ></p>
+<h3 id="四，刷机"><a href="#四，刷机" class="headerlink" title="四，刷机"></a>四，刷机</h3><p>首先打开工具箱，输入密码<strong>lianbox123</strong>，手机插上电脑</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://s2.loli.net/2025/07/05/jwMSomRiTcb47Uk.png"
+                      alt="{29943770-49CE-4E65-8B8E-DD050910FD11}"
+                ></p>
+<p>按1即可，然后手动选择<strong>全量包解压后所在的文件夹</strong>，全自动操作！！！</p>
+<p>途中手机会进入recovery，让你手动选择语言等等，<strong>切记不要动手机</strong>！！！</p>
+<p>刷机结束后，工具箱会提示你的！</p>
+]]></content>
+      <categories>
+        <category>安卓</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>最新版Ubuntu安装MySQL教程</title>
+    <url>/2024/11/16/%E6%9C%80%E6%96%B0%E7%89%88Ubuntu%E5%AE%89%E8%A3%85MySQL%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>进入命令行，使用下面的命令<strong>查看当前Ubuntu的版本：</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# <span class="built_in">cat</span> /etc/os-release</span><br><span class="line">PRETTY_NAME=<span class="string">&quot;Ubuntu 24.04.1 LTS&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;Ubuntu&quot;</span></span><br><span class="line">VERSION_ID=<span class="string">&quot;24.04&quot;</span></span><br><span class="line">VERSION=<span class="string">&quot;24.04.1 LTS (Noble Numbat)&quot;</span></span><br><span class="line">VERSION_CODENAME=noble</span><br><span class="line">ID=ubuntu</span><br><span class="line">ID_LIKE=debian</span><br><span class="line">HOME_URL=<span class="string">&quot;https://www.ubuntu.com/&quot;</span></span><br><span class="line">SUPPORT_URL=<span class="string">&quot;https://help.ubuntu.com/&quot;</span></span><br><span class="line">BUG_REPORT_URL=<span class="string">&quot;https://bugs.launchpad.net/ubuntu/&quot;</span></span><br><span class="line">PRIVACY_POLICY_URL=<span class="string">&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;</span></span><br><span class="line">UBUNTU_CODENAME=noble</span><br><span class="line">LOGO=ubuntu-logo</span><br></pre></td></tr></table></figure></div>
+
+<p>我的是24.04版本，版本比较新</p>
+<p><strong>切换到root用户</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line"><span class="comment">#然后记得输入密码，密码在输入过程中不会显示</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>更新一下软件：</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt update</span><br><span class="line">Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]</span><br><span class="line">Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]</span><br><span class="line">Get:3 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [15.3 kB]</span><br><span class="line">Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]</span><br><span class="line">Get:5 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [586 kB]</span><br><span class="line">Get:6 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]</span><br><span class="line">Get:7 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [725 kB]</span><br><span class="line">Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]    </span><br><span class="line">Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [548 kB]</span><br><span class="line">Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]          </span><br><span class="line">Get:11 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]                                                                          </span><br><span class="line">Get:12 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]                                                                          </span><br><span class="line">Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [18.4 kB]                                                                 </span><br><span class="line">Get:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [548 kB]                                                                  </span><br><span class="line">Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [933 kB]                                                                    </span><br><span class="line">Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [812 kB]                                                                        </span><br><span class="line">Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [11.8 kB]                                                                 </span><br><span class="line">Fetched 26.4 MB <span class="keyword">in</span> 8s (3393 kB/s)                                                                                                                         </span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree... Done</span><br><span class="line">Reading state information... Done</span><br><span class="line">8 packages can be upgraded. Run <span class="string">&#x27;apt list --upgradable&#x27;</span> to see them.</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>搜索可以使用的安装包：</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt search sql-server</span><br><span class="line">Sorting... Done</span><br><span class="line">Full Text Search... Done</span><br><span class="line">default-mysql-server/noble 1.1.0build1 all</span><br><span class="line">  MySQL database server binaries and system database setup (metapackage)</span><br><span class="line"></span><br><span class="line">default-mysql-server-core/noble 1.1.0build1 all</span><br><span class="line">  MySQL database server binaries (metapackage)</span><br><span class="line"></span><br><span class="line">mysql-server/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 all</span><br><span class="line">  MySQL database server (metapackage depending on the latest version)</span><br><span class="line"></span><br><span class="line">mysql-server-8.0/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 amd64</span><br><span class="line">  MySQL database server binaries and system database setup</span><br><span class="line"></span><br><span class="line">mysql-server-core-8.0/noble-updates,noble-security 8.0.40-0ubuntu0.24.04.1 amd64</span><br><span class="line">  MySQL database server binaries</span><br><span class="line"></span><br><span class="line">postgresql-server-dev-16/noble-updates 16.4-0ubuntu0.24.04.2 amd64</span><br><span class="line">  development files <span class="keyword">for</span> PostgreSQL 16 server-side programming</span><br><span class="line"></span><br><span class="line">postgresql-server-dev-all/noble-updates 257build1.1 amd64</span><br><span class="line">  extension build tool <span class="keyword">for</span> multiple PostgreSQL versions</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>安装MySQL-server</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# apt install -y mysql-server</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>启动MySQL</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下面命令二选一即可（两种方案都可以）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方案一</span></span><br><span class="line">root@1bf7034a513e:/# service mysql start</span><br><span class="line"> * Starting MySQL database server mysqld                                                                     </span><br><span class="line"> </span><br><span class="line"><span class="comment">#方案二</span></span><br><span class="line">root@1bf7034a513e:/# systemctl start mysql</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>设置MySQL开机自启动</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">root@1bf7034a513e:/# systemctl <span class="built_in">enable</span> mysql</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>查看MySQL的运行状态</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#以下两种方案均可，二选一</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#方案一</span></span><br><span class="line">root@1bf7034a513e:/# service mysql status</span><br><span class="line"> * /usr/bin/mysqladmin  Ver 8.0.40-0ubuntu0.24.04.1 <span class="keyword">for</span> Linux on x86_64 ((Ubuntu))</span><br><span class="line">Copyright (c) 2000, 2024, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Server version          8.0.40-0ubuntu0.24.04.1</span><br><span class="line">Protocol version        10</span><br><span class="line">Connection              Localhost via UNIX socket</span><br><span class="line">UNIX socket             /var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:                 5 min 10 sec</span><br><span class="line"></span><br><span class="line">Threads: 2  Questions: 12  Slow queries: 0  Opens: 119  Flush tables: 3  Open tables: 38  Queries per second avg: 0.038</span><br><span class="line"></span><br><span class="line"><span class="comment">#方案二</span></span><br><span class="line">root@1bf7034a513e:/# systemctl status mysql</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>MySQL的一些简单配置</strong></p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#登录mysql-server（刚安装没有设置密码，提示输入密码时按回车即可！）</span></span><br><span class="line">root@1bf7034a513e:/# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 14</span><br><span class="line">Server version: 8.0.40-0ubuntu0.24.04.1 (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2024, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置mysql-server的密码，我这里设为123456</span></span><br><span class="line">mysql&gt; ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#实现所有IP均可登录你的mysql-server</span></span><br><span class="line"><span class="comment">#首先修改/etc/mysql/mysql.conf.d/mysqld.cnf这个配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="comment">#找到bind-address这一行</span></span><br><span class="line"><span class="comment">#把127.0.0改成0.0.0.0即可！</span></span><br><span class="line"><span class="comment">#接下来再重启mysql-server</span></span><br><span class="line">root@1bf7034a513e:/# service mysql restart</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
       </categories>
   </entry>
 </search>
